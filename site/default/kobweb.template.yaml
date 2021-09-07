@@ -1,0 +1,26 @@
+metadata:
+  version: 1
+
+variables:
+  - siteName:
+      type: string
+      prompt: "What do you want to name your project?"
+      default: "My Site"
+      validation: "isNotEmpty"
+  - groupId:
+      type: string
+      prompt: "What is the group ID for your project?"
+      default: "com.placeholder"
+      validation: "isPackage"
+  - package:
+      type: string
+      prompt: "What package prefix would you like to use for code in your project?"
+      default: "${toPackage(groupId, siteName)}"
+      validation: "isPackage"
+
+instructions:
+  - move:
+      from: "src/*"
+      to: "src/${packagePath}"
+  - delete:
+      file: "kobweb.template.yaml"
