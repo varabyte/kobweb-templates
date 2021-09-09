@@ -1,26 +1,25 @@
 metadata:
   version: 1
 
-variables:
-  - siteName:
-      type: string
-      prompt: "What do you want to name your project?"
-      default: "My Site"
-      validation: "isNotEmpty"
-  - groupId:
-      type: string
+# Note: Kobweb generates "projectName" and "projectFolder" arguments already
+
+instructions:
+  - queryVar:
+      name: "groupId"
       prompt: "What is the group ID for your project?"
       default: "com.placeholder"
       validation: "isPackage"
-  - package:
-      type: string
-      prompt: "What package prefix would you like to use for code in your project?"
-      default: "${toPackage(groupId, siteName)}"
+  - queryVar:
+      name: "package"
+      prompt: "What package would you like to use for code in your project?"
+      default: "${toPackage(groupId, projectFolder)}"
       validation: "isPackage"
-
-instructions:
+  - processFreemarker:
+  - defineVar:
+      name: "packagePath"
+      value: "${packageToPath(package)}"
   - move:
       from: "src/*"
       to: "src/${packagePath}"
-  - delete:
-      file: "kobweb.template.yaml"
+  - keep:
+      exclude: "kobweb.template.yaml"
