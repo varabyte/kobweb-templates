@@ -12,7 +12,7 @@ instructions:
   - !<QueryVar>
     name: "package"
     prompt: "What package would you like to use for code in your project?"
-    default: "${toPackage(groupId, projectFolder)}"
+    default: "${groupId}.${projectFolder}"
     validation: "isPackage"
 
   - !<ProcessFreemarker>
