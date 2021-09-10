@@ -28,5 +28,7 @@ instructions:
   - !<Move>
     from: "src/*"
     to: "src/jsMain/kotlin/${packagePath}"
+    description: "Rearranging code files to conform to the user's package"
 
   - !<Keep>
+    description: "Populating the final project"
