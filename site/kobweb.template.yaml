@@ -1,25 +1,28 @@
 metadata:
-  version: 1
-
-# Note: Kobweb generates "projectName" and "projectFolder" arguments already
+  description: "A template for a minimal site that still demonstrates the basic features of Kobweb"
 
 instructions:
-  - queryVar:
-      name: "groupId"
-      prompt: "What is the group ID for your project?"
-      default: "com.placeholder"
-      validation: "isPackage"
-  - queryVar:
-      name: "package"
-      prompt: "What package would you like to use for code in your project?"
-      default: "${toPackage(groupId, projectFolder)}"
-      validation: "isPackage"
-  - processFreemarker:
-  - defineVar:
-      name: "packagePath"
-      value: "${packageToPath(package)}"
-  - move:
-      from: "src/*"
-      to: "src/${packagePath}"
-  - keep:
-      exclude: "kobweb.template.yaml"
+  # Note: Kobweb defines "projectName" and "projectFolder" arguments already
+
+  - !<QueryVar>
+    name: "groupId"
+    prompt: "What is the group ID for your project?"
+    default: "com.placeholder"
+    validation: "isPackage"
+  - !<QueryVar>
+    name: "package"
+    prompt: "What package would you like to use for code in your project?"
+    default: "${toPackage(groupId, projectFolder)}"
+    validation: "isPackage"
+
+  - !<ProcessFreemarker>
+
+  - !<DefineVar>
+    name: "packagePath"
+    value: "${packageToPath(package)}"
+  - !<Move>
+    from: "src/"
+    to: "src/${packagePath}"
+
+  - !<Keep>
+    exclude: "kobweb.template.yaml"
