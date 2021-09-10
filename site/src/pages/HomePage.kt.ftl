@@ -21,7 +21,7 @@ class HomePage : Page {
                 }
             )
             P()
-            Text("Hello ${name.takeIf { it.isNotBlank() } ?: "World"}!")
+            Text("Hello ${r'${name.takeIf { it.isNotBlank() } ?: "World"}'}!")
         }
     }
 }

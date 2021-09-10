@@ -2,8 +2,13 @@ metadata:
   description: "A template for a minimal site that still demonstrates the basic features of Kobweb"
 
 instructions:
-  # Note: Kobweb defines "projectName" and "projectFolder" arguments already
+  # Note: Kobweb provides a "projectFolder" variable for us already
 
+  - !<QueryVar>
+    name: "projectName"
+    prompt: "What is your project named?"
+    default: "${fileToName(projectFolder)}"
+    validation: "isNotEmpty"
   - !<QueryVar>
     name: "groupId"
     prompt: "What is the group ID for your project?"
@@ -12,7 +17,7 @@ instructions:
   - !<QueryVar>
     name: "package"
     prompt: "What package would you like to use for code in your project?"
-    default: "${groupId}.${projectFolder}"
+    default: "${groupId}.${fileToPackage(projectFolder)}"
     validation: "isPackage"
 
   - !<ProcessFreemarker>
