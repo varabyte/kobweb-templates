@@ -26,8 +26,7 @@ instructions:
     name: "packagePath"
     value: "${packageToPath(package)}"
   - !<Move>
-    from: "src/"
-    to: "src/${packagePath}"
+    from: "src/*"
+    to: "src/jsMain/kotlin/${packagePath}"
 
   - !<Keep>
-    exclude: "kobweb.template.yaml"
