@@ -12,12 +12,12 @@ instructions:
   - !<QueryVar>
     name: "groupId"
     prompt: "What is the group ID for your project?"
-    default: "com.placeholder"
+    default: "com.placeholder.${fileToPackage(projectFolder)}"
     validation: "isPackage"
   - !<QueryVar>
     name: "package"
     prompt: "What package would you like to use for code in your project?"
-    default: "${groupId}.${fileToPackage(projectFolder)}"
+    default: "${groupId}"
     validation: "isPackage"
 
   - !<ProcessFreemarker>
@@ -29,6 +29,3 @@ instructions:
     from: "src/*"
     to: "src/jsMain/kotlin/${packagePath}"
     description: "Rearranging code files to conform to the user's package"
-
-  - !<Keep>
-    description: "Populating the final project"
