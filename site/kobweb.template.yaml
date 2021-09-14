@@ -9,6 +9,8 @@ instructions:
     prompt: "What is your project named?"
     default: "${fileToName(projectFolder)}"
     validation: "isNotEmpty"
+  - !<Inform>
+    message: "Note: The group ID should uniquely identify your project and organization."
   - !<QueryVar>
     name: "groupId"
     prompt: "What is the group ID for your project?"
