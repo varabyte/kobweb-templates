@@ -1,7 +1,14 @@
 // Add compose gradle plugin
 plugins {
-    kotlin("multiplatform")
-    id("org.jetbrains.compose")
+    kotlin("multiplatform") version "1.5.21"
+    id("org.jetbrains.compose") version "1.0.0-alpha1"
+}
+
+repositories {
+    mavenCentral()
+    maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+    google()
+    maven("https://us-central1-maven.pkg.dev/varabyte-repos/public")
 }
 
 group = "${groupId}"
@@ -18,10 +25,10 @@ kotlin {
             dependencies {
                 implementation(compose.runtime)
 
-                implementation(project(":lib:core"))
-                implementation(project(":lib:ui"))
-                implementation(project(":lib:ui-icons-fa"))
-            }
+                implementation("com.varabyte.kobweb:kobweb:0.3.0-SNAPSHOT")
+                implementation("com.varabyte.kobweb:kobweb-silk:0.3.0-SNAPSHOT")
+                implementation("com.varabyte.kobweb:kobweb-silk-icons-fa:1.0-SNAPSHOT")
+             }
         }
     }
 }

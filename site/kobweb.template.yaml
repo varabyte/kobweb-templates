@@ -4,23 +4,19 @@ metadata:
 instructions:
   # Note: Kobweb provides a "projectFolder" variable for us already
 
-  - !<QueryVar>
+  - !<DefineVar>
     name: "projectName"
-    prompt: "What is your project named?"
-    default: "${fileToName(projectFolder)}"
-    validation: "isNotEmpty"
+    value: "${fileToPackage(projectFolder)}"
   - !<Inform>
     message: "Note: The group ID should uniquely identify your project and organization."
   - !<QueryVar>
     name: "groupId"
     prompt: "What is the group ID for your project?"
-    default: "com.placeholder.${fileToPackage(projectFolder)}"
+    default: "com.placeholder.${projectName}"
     validation: "isPackage"
-  - !<QueryVar>
+  - !<DefineVar>
     name: "package"
-    prompt: "What package would you like to use for code in your project?"
-    default: "${groupId}"
-    validation: "isPackage"
+    value: "${groupId}"
 
   - !<ProcessFreemarker>
 
