@@ -25,9 +25,9 @@ kotlin {
             dependencies {
                 implementation(compose.runtime)
 
-                implementation("com.varabyte.kobweb:kobweb:0.3.0-SNAPSHOT")
-                implementation("com.varabyte.kobweb:kobweb-silk:0.3.0-SNAPSHOT")
-                implementation("com.varabyte.kobweb:kobweb-silk-icons-fa:1.0-SNAPSHOT")
+                implementation(libs.kobweb.core)
+                implementation(libs.kobweb.silk.core)
+                implementation(libs.kobweb.silk.icons.fa)
              }
         }
     }

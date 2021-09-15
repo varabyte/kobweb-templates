@@ -1,0 +1,8 @@
+[versions]
+kobweb-common = "0.3.0-SNAPSHOT"
+kobweb-silk-icons-fa = "1.0-SNAPSHOT"
+
+[libraries]
+kobweb-core = { module = "com.varabyte.kobweb:kobweb", version.ref = "kobweb-common" }
+kobweb-silk-core = { module = "com.varabyte.kobweb:kobweb-silk", version.ref = "kobweb-common" }
+kobweb-silk-icons-fa = { module = "com.varabyte.kobweb:kobweb-silk-icons-fa", version.ref = "kobweb-silk-icons-fa" }
