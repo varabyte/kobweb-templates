@@ -4,6 +4,11 @@ metadata:
 instructions:
   # Note: Kobweb provides a "projectFolder" variable for us already
 
+  - !<QueryVar>
+    name: "projectTitle"
+    prompt: "What is the user-visible display title for your project?"
+    default: "${fileToTitle(projectFolder)}"
+    validation: "isNotEmpty"
   - !<DefineVar>
     name: "projectName"
     value: "${fileToPackage(projectFolder)}"
