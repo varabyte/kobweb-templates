@@ -14,6 +14,8 @@ instructions:
     value: "${fileToPackage(projectFolder)}"
   - !<Inform>
     message: "Note: The group ID should uniquely identify your project and organization."
+  - !<Inform>
+    message: "'io.github.(username).(projectname)' can work for a hobby project."
   - !<QueryVar>
     name: "groupId"
     prompt: "What is the group ID for your project?"
