@@ -2,6 +2,7 @@
 plugins {
     kotlin("multiplatform") version "1.5.30"
     id("org.jetbrains.compose") version "1.0.0-alpha4-build331"
+    id("com.varabyte.kobweb") version "0.1.0-SNAPSHOT"
 }
 
 repositories {
@@ -17,7 +18,12 @@ version = "1.0-SNAPSHOT"
 // Enable JS(IR) target and add dependencies
 kotlin {
     js(IR) {
-        browser()
+        moduleName = "${projectName}"
+        browser {
+            commonWebpackConfig {
+                outputFileName = "${projectName}.js"
+            }
+        }
         binaries.executable()
     }
     sourceSets {
