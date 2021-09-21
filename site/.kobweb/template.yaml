@@ -19,7 +19,7 @@ instructions:
   - !<QueryVar>
     name: "groupId"
     prompt: "What is the group ID for your project?"
-    default: "com.placeholder.${projectName}"
+    default: "org.example.${projectName}"
     validation: "isPackage"
   - !<DefineVar>
     name: "package"
