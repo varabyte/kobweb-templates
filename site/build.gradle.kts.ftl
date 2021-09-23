@@ -2,7 +2,7 @@
 plugins {
     kotlin("multiplatform") version "1.5.30"
     id("org.jetbrains.compose") version "1.0.0-alpha4-build331"
-    id("com.varabyte.kobweb") version "0.1.0-SNAPSHOT"
+    id("com.varabyte.kobweb.application") version "0.3.0-SNAPSHOT"
 }
 
 repositories {
