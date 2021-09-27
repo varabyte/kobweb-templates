@@ -4,7 +4,7 @@ site:
 server:
   locations:
     dev:
-      content: "build/processedResources/js/main"
+      contentRoot: "build/processedResources/js/main"
       script: "build/js/packages/${projectName}/kotlin/${projectName}.js"
 
   port: 8080
