@@ -1,8 +1,8 @@
 // Add compose gradle plugin
 plugins {
-    kotlin("multiplatform") version "1.5.30"
-    id("org.jetbrains.compose") version "1.0.0-alpha4-build331"
-    id("com.varabyte.kobweb.application") version "0.3.0-SNAPSHOT"
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.jetbrains.compose)
+    alias(libs.plugins.kobweb.application)
 }
 
 repositories {
