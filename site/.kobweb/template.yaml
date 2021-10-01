@@ -34,3 +34,7 @@ instructions:
     from: "src/*"
     to: "src/jsMain/kotlin/${packagePath}"
     description: "Rearranging code files to conform to the user's package"
+  - !<Move>
+    from: "markdown/*"
+    to: "src/jsMain/resources/markdown"
+    description: "Packaging markdown files into resources"
