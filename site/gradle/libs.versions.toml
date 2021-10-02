@@ -1,16 +1,15 @@
 [versions]
 jetbrains-compose = "1.0.0-alpha4-build331"
-kobweb-common = "0.3.0-SNAPSHOT"
-kobweb-silk-icons-fa = "1.0-SNAPSHOT"
+kobweb = "0.3.0-SNAPSHOT"
 kotlin = "1.5.30"
 
 [libraries]
-kobweb-core = { module = "com.varabyte.kobweb:kobweb", version.ref = "kobweb-common" }
-kobweb-silk-core = { module = "com.varabyte.kobweb:kobweb-silk", version.ref = "kobweb-common" }
-kobweb-silk-icons-fa = { module = "com.varabyte.kobweb:kobweb-silk-icons-fa", version.ref = "kobweb-silk-icons-fa" }
+kobweb-core = { module = "com.varabyte.kobweb:kobweb", version.ref = "kobweb" }
+kobweb-silk-core = { module = "com.varabyte.kobweb:kobweb-silk", version.ref = "kobweb" }
+kobweb-silk-icons-fa = { module = "com.varabyte.kobweb:kobweb-silk-icons-fa", version.ref = "kobweb" }
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "jetbrains-compose" }
-kobweb-application = { id = "com.varabyte.kobweb.application", version.ref = "kobweb-common" }
-kobwebx-markdown = { id = "com.varabyte.kobwebx.markdown", version.ref = "kobweb-common" }
+kobweb-application = { id = "com.varabyte.kobweb.application", version.ref = "kobweb" }
+kobwebx-markdown = { id = "com.varabyte.kobwebx.markdown", version.ref = "kobweb" }
