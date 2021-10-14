@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.kobweb.application)
     alias(libs.plugins.kobwebx.markdown)
-
 }
 
 repositories {
@@ -19,6 +18,11 @@ version = "1.0-SNAPSHOT"
 
 // Enable JS(IR) target and add dependencies
 kotlin {
+    jvm() {
+        tasks.named("jvmJar", Jar::class.java).configure {
+            archiveFileName.set("${projectName}.jar")
+        }
+    }
     js(IR) {
         moduleName = "${projectName}"
         browser {
@@ -29,13 +33,23 @@ kotlin {
         binaries.executable()
     }
     sourceSets {
-        val jsMain by getting {
+        val commonMain by getting {
             dependencies {
                 implementation(compose.runtime)
+            }
+        }
 
+        val jsMain by getting {
+            dependencies {
                 implementation(libs.kobweb.core)
                 implementation(libs.kobweb.silk.core)
                 implementation(libs.kobweb.silk.icons.fa)
+             }
+        }
+
+        val jvmMain by getting {
+            dependencies {
+                implementation(libs.kobweb.api)
              }
         }
     }
