@@ -1,4 +1,3 @@
-// Add compose gradle plugin
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.jetbrains.compose)
@@ -16,7 +15,6 @@ repositories {
 group = "${groupId}"
 version = "1.0-SNAPSHOT"
 
-// Enable JS(IR) target and add dependencies
 kotlin {
     jvm() {
         tasks.named("jvmJar", Jar::class.java).configure {
