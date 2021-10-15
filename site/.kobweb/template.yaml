@@ -31,11 +31,11 @@ instructions:
     name: "packagePath"
     value: "${packageToPath(package)}"
   - !<Move>
-    from: "src/*"
+    from: "src/site/*"
     to: "src/jsMain/kotlin/${packagePath}"
     description: "Rearranging site source to conform to the user's package"
   - !<Move>
-    from: "api/*"
+    from: "src/api/*"
     to: "src/jvmMain/kotlin/${packagePath}/api"
     description: "Rearranging API source to conform to the user's package"
   - !<Move>
