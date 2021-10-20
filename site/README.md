@@ -2,7 +2,7 @@ This is a [Kobweb](https://github.com/varabyte/kobweb) project bootstrapped with
 
 ## Getting Started
 
-First, run the development server:
+First, run the development server by typing the following command in a terminal at this project's root:
 
 ```bash
 kobweb run
