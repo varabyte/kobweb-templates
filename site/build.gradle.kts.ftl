@@ -16,7 +16,7 @@ group = "${groupId}"
 version = "1.0-SNAPSHOT"
 
 kotlin {
-    jvm() {
+    jvm {
         tasks.named("jvmJar", Jar::class.java).configure {
             archiveFileName.set("${projectName}.jar")
         }
