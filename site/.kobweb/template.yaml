@@ -1,5 +1,5 @@
 metadata:
-  description: "A template for a minimal site that still demonstrates the basic features of Kobweb"
+  description: "A template for a minimal site that demonstrates the basic features of Kobweb"
 
 instructions:
   # Note: Kobweb provides a "projectFolder" variable for us already
