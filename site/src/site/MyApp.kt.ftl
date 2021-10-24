@@ -23,7 +23,6 @@ object CssGlobalsStyleSheet : StyleSheet() {
     }
 }
 
-
 @App
 @Composable
 fun MyApp(content: @Composable () -> Unit) {
