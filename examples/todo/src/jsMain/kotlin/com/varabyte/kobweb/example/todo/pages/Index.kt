@@ -12,6 +12,7 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.fillMaxSize
 import com.varabyte.kobweb.compose.ui.fillMaxWidth
+import com.varabyte.kobweb.compose.ui.maxWidth
 import com.varabyte.kobweb.compose.ui.padding
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.example.todo.Styles
@@ -27,6 +28,7 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Footer
 import org.jetbrains.compose.web.dom.Text
 import com.varabyte.kobweb.silk.components.text.Text as SilkText
@@ -75,28 +77,33 @@ fun HomePage() {
             Link("https://github.com/varabyte/kobweb", "Kobweb!")
         }
 
-        Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
-            TodoForm("Type a TODO and press ENTER", loadingCount > 0) { todo ->
-                coroutineScope.launch {
-                    loadingCount++
-                    window.api.post("add?owner=$id&todo=$todo")
-                    loadAndReplaceTodos(id, todos)
-                    loadingCount--
-                }
-            }
-
-            todos.forEachIndexed { i, todo ->
-                TodoCard(onClick = {
+        Column(Modifier.fillMaxSize()) {
+            Column(
+                Modifier.fillMaxWidth().maxWidth(800.px).align(Alignment.CenterHorizontally),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                TodoForm("Type a TODO and press ENTER", loadingCount > 0) { todo ->
                     coroutineScope.launch {
                         loadingCount++
-                        todos.removeAt(i)
-                        window.api.post("remove?owner=$id&todo=${todo.id}")
+                        window.api.post("add?owner=$id&todo=$todo")
                         loadAndReplaceTodos(id, todos)
                         loadingCount--
                     }
-                }) {
-                    // Avoid collision with Silk's Text method.
-                    Text(todo.text)
+                }
+
+                todos.forEachIndexed { i, todo ->
+                    TodoCard(onClick = {
+                        coroutineScope.launch {
+                            loadingCount++
+                            todos.removeAt(i)
+                            window.api.post("remove?owner=$id&todo=${todo.id}")
+                            loadAndReplaceTodos(id, todos)
+                            loadingCount--
+                        }
+                    }) {
+                        // Avoid collision with Silk's Text method.
+                        Text(todo.text)
+                    }
                 }
             }
 
