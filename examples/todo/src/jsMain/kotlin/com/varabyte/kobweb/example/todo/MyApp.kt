@@ -56,6 +56,7 @@ const val BORDER_COLOR = "#eaeaea"
 const val INTERACT_COLOR = "#0070f3"
 
 // The standard Web Compose way of defining styles
+// Note: It is hoped as Kobweb improves this section will be less and less necessary
 object TodoStyleSheet : StyleSheet() {
     init {
         "body" style {
