@@ -22,6 +22,7 @@ import com.varabyte.kobweb.example.todo.components.widgets.TodoCard
 import com.varabyte.kobweb.example.todo.components.widgets.TodoForm
 import com.varabyte.kobweb.example.todo.model.TodoItem
 import com.varabyte.kobweb.silk.components.navigation.Link
+import com.varabyte.kobweb.silk.components.navigation.UnderCursorLinkVariant
 import kotlinx.browser.window
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -74,7 +75,7 @@ fun HomePage() {
 
         Row(Styles.Title, horizontalArrangement = Arrangement.Center) {
             SilkText("TODO App with ")
-            Link("https://github.com/varabyte/kobweb", "Kobweb!")
+            Link("https://github.com/varabyte/kobweb", "Kobweb!", variant = UnderCursorLinkVariant)
         }
 
         Column(Modifier.fillMaxSize()) {
@@ -111,7 +112,11 @@ fun HomePage() {
             Footer {
                 Row {
                     SilkText("Project inspired by ")
-                    Link("https://blog.upstash.com/nextjs-todo", "Upstash's Next.js TODO App")
+                    Link(
+                        "https://blog.upstash.com/nextjs-todo",
+                        "Upstash's Next.js TODO App",
+                        variant = UnderCursorLinkVariant
+                    )
                 }
             }
         }
