@@ -2,7 +2,7 @@ package com.varabyte.kobweb.example.todo.api
 
 import com.varabyte.kobweb.api.Api
 import com.varabyte.kobweb.api.ApiContext
-import com.varabyte.kobweb.api.http.setPayloadText
+import com.varabyte.kobweb.api.http.setBodyText
 import java.util.*
 
 /**
@@ -11,5 +11,5 @@ import java.util.*
  */
 @Api
 fun generateId(ctx: ApiContext) {
-    ctx.res.setPayloadText(UUID.randomUUID().toString())
+    ctx.res.setBodyText(UUID.randomUUID().toString())
 }

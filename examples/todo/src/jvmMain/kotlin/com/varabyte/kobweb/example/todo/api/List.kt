@@ -3,7 +3,7 @@ package com.varabyte.kobweb.example.todo.api
 import com.varabyte.kobweb.api.Api
 import com.varabyte.kobweb.api.ApiContext
 import com.varabyte.kobweb.api.data.getValue
-import com.varabyte.kobweb.api.http.setPayloadText
+import com.varabyte.kobweb.api.http.setBodyText
 import com.varabyte.kobweb.example.todo.model.TodoStore
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -17,5 +17,5 @@ fun listTodos(ctx: ApiContext) {
     }
 
     val todos = ctx.data.getValue<TodoStore>()
-    ctx.res.setPayloadText(Json.encodeToString(todos[ownerId]))
+    ctx.res.setBodyText(Json.encodeToString(todos[ownerId]))
 }
