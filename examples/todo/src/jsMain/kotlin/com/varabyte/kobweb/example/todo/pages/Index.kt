@@ -13,10 +13,10 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.fillMaxSize
 import com.varabyte.kobweb.compose.ui.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.maxWidth
+import com.varabyte.kobweb.compose.ui.minWidth
 import com.varabyte.kobweb.compose.ui.padding
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.example.todo.Styles
-import com.varabyte.kobweb.example.todo.components.layouts.PageLayout
 import com.varabyte.kobweb.example.todo.components.widgets.LoadingSpinner
 import com.varabyte.kobweb.example.todo.components.widgets.TodoCard
 import com.varabyte.kobweb.example.todo.components.widgets.TodoForm
@@ -24,7 +24,6 @@ import com.varabyte.kobweb.example.todo.model.TodoItem
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.navigation.UnderCursorLinkVariant
 import kotlinx.browser.window
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -65,12 +64,16 @@ fun HomePage() {
         ready = true
     }
 
-    PageLayout {
+    Column(
+        modifier = Modifier.fillMaxSize().minWidth(600.px),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Top,
+    ) {
         if (!ready) {
             Box(Modifier.fillMaxWidth().padding(top = 2.cssRem), contentAlignment = Alignment.TopCenter) {
                 LoadingSpinner()
             }
-            return@PageLayout
+            return@Column
         }
 
         Row(Styles.Title, horizontalArrangement = Arrangement.Center) {
