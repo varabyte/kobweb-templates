@@ -14,11 +14,13 @@ import org.jetbrains.compose.web.css.fontFamily
 import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.css.vw
 
-object CssGlobalsStyleSheet : StyleSheet() {
+object MyStyleSheet : StyleSheet() {
     init {
         "body" style {
-            fontFamily("-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-                "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "sans-serif")
+            fontFamily(
+                "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+                "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "sans-serif"
+            )
         }
     }
 }
@@ -26,7 +28,7 @@ object CssGlobalsStyleSheet : StyleSheet() {
 @App
 @Composable
 fun MyApp(content: @Composable () -> Unit) {
-    Style(CssGlobalsStyleSheet)
+    Style(MyStyleSheet)
     SilkApp {
         SilkTheme {
             Surface(Modifier.width(100.vw).height(100.vh)) {
