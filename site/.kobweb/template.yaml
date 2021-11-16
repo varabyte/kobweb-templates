@@ -39,6 +39,6 @@ instructions:
     to: "src/jvmMain/kotlin/${packagePath}/api"
     description: "Rearranging API source to conform to the user's package"
   - !<Move>
-    from: "markdown/*"
-    to: "src/jsMain/resources/markdown"
-    description: "Packaging markdown files into resources"
+    from: "resources/*"
+    to: "src/jsMain/resources"
+    description: "Rearranging resources"
