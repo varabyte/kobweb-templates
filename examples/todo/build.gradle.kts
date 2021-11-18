@@ -42,13 +42,13 @@ kotlin {
             dependencies {
                 implementation(libs.kobweb.core)
                 implementation(libs.kobweb.silk.core)
-             }
+            }
         }
 
         val jvmMain by getting {
             dependencies {
                 implementation(libs.kobweb.api)
-             }
+            }
         }
     }
 }
