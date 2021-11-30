@@ -9,16 +9,12 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.fillMaxSize
-import com.varabyte.kobweb.compose.ui.fillMaxWidth
-import com.varabyte.kobweb.compose.ui.fontSize
-import com.varabyte.kobweb.compose.ui.graphics.Color
+import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.graphics.toCssColor
-import com.varabyte.kobweb.compose.ui.padding
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.silk.components.forms.Button
-import com.varabyte.kobweb.silk.components.graphics.Canvas
+import com.varabyte.kobweb.silk.components.graphics.Canvas2d
 import com.varabyte.kobweb.silk.components.graphics.ONE_FRAME_MS_60_FPS
 import com.varabyte.kobweb.silk.components.icons.fa.FaMoon
 import com.varabyte.kobweb.silk.components.icons.fa.FaSun
@@ -42,7 +38,7 @@ fun CanvasState.save(block: () -> Unit) {
 private fun BoxScope.Clock() {
     // We technically only need to update once per second, but let's be a bit more aggressive to capture color
     // changes faster if they happen
-    Canvas(400, 400, Modifier.align(Alignment.Center), minDeltaMs = ONE_FRAME_MS_60_FPS * 5) {
+    Canvas2d(400, 400, Modifier.align(Alignment.Center), minDeltaMs = ONE_FRAME_MS_60_FPS * 5) {
         // Adapted from: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations#an_animated_clock
         val date = Date()
         val r = 200.0
