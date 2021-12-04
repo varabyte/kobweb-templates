@@ -155,7 +155,7 @@ fun ClockPage() {
                     onClick = { colorMode = colorMode.opposite() },
                     Modifier.margin(10.px).clip(Circle()).fontSize(24.px)
                 ) {
-                    Box(Modifier.margin(4.px)) {
+                    Box(Modifier.margin(8.px)) {
                         if (colorMode.isLight()) FaSun() else FaMoon()
                     }
                 }

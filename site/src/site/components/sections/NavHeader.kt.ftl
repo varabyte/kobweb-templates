@@ -19,7 +19,7 @@ import com.varabyte.kobweb.silk.theme.shapes.Circle
 import com.varabyte.kobweb.silk.theme.shapes.clip
 import org.jetbrains.compose.web.css.px
 
-private val NAV_ITEM_PADDING = Modifier.padding(0.px, 15.px)
+private val NAV_ITEM_MARGIN = Modifier.margin(0.px, 15.px)
 
 @Composable
 private fun NavLink(path: String, text: String) {
@@ -27,7 +27,7 @@ private fun NavLink(path: String, text: String) {
         path,
         text,
         // Intentionally invert the header colors
-        NAV_ITEM_PADDING.color(SilkTheme.palette.background),
+        NAV_ITEM_MARGIN.color(SilkTheme.palette.background),
         UndecoratedLinkVariant,
     )
 }
@@ -53,9 +53,9 @@ fun NavHeader() {
             Spacer()
             Button(
                 onClick = { colorMode = colorMode.opposite() },
-                NAV_ITEM_PADDING.clip(Circle())
+                NAV_ITEM_MARGIN.clip(Circle())
             ) {
-                Box(Modifier.padding(4.px)) {
+                Box(Modifier.margin(6.px)) {
                     when (colorMode) {
                         ColorMode.LIGHT -> FaSun()
                         ColorMode.DARK -> FaMoon()
