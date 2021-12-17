@@ -1,7 +1,7 @@
 package ${package}.components.layouts
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.*
+import com.varabyte.kobweb.compose.css.*
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -18,7 +18,7 @@ fun PageLayout(title: String, content: @Composable () -> Unit) {
     }
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize().textAlign(TextAlign.Center),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         NavHeader()
