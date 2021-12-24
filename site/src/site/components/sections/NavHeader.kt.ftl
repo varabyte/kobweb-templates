@@ -57,8 +57,8 @@ fun NavHeader() {
             ) {
                 Box(Modifier.margin(6.px)) {
                     when (colorMode) {
-                        ColorMode.LIGHT -> FaSun()
-                        ColorMode.DARK -> FaMoon()
+                        ColorMode.LIGHT -> FaMoon()
+                        ColorMode.DARK -> FaSun()
                     }
                 }
             }
