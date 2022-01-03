@@ -36,7 +36,7 @@ fun PageLayout(content: @Composable BoxScope.() -> Unit) {
                     Modifier.margin(10.px).clip(Circle()).fontSize(24.px)
                 ) {
                     Box(Modifier.margin(4.px)) {
-                        if (colorMode.isLight()) FaSun() else FaMoon()
+                        if (colorMode.isLight()) FaMoon() else FaSun()
                     }
                 }
             }
