@@ -7,4 +7,5 @@ import com.varabyte.kobweb.core.Page
 @Composable
 fun HomePage() {
     // TODO: Add content here
+    println("Hello World!")
 }
