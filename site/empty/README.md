@@ -1,4 +1,10 @@
-This is a [Kobweb](https://github.com/varabyte/kobweb) project bootstrapped with the `site` template.
+This is a [Kobweb](https://github.com/varabyte/kobweb) project bootstrapped with the `site/empty` template.
+
+This template is useful if you already know what you're doing and just want a clean slate. By default, it
+just creates a blank home page (which prints to the console so you can confirm it's working)
+
+If you are still learning, consider instantiating the `site` template (or one of the examples) to see actual,
+working projects.
 
 ## Getting Started
 
@@ -14,37 +20,6 @@ You can use any editor you want for the project, but we recommend using **Intell
 using the [Toolbox App](https://www.jetbrains.com/toolbox-app/).
 
 Press `Q` (or `CMD/CTRL-D`) in the terminal to gracefully stop the server.
-
-## Navigating the Project
-
-This simple project has a couple of example files you can learn from.
-
-### jsMain
-
-* `MyApp.kt`: This is the entry-point composable called for ALL pages. It's a useful place to specify global html/css
-  styles as well as enable other features (like `Silk`). Note that the method is annotated with `@App` which is how
-  `Kobweb` is aware of it.
-* `.../components/layout/PageLayout.kt`: An example layout which, unlike `MyApp`, won't get called automatically.
-  Instead, this is a recommended way to organize your high level, shared, layout composables. It is expected that most
-  pages on your site will share the same layout, but you can create others if different pages have different
-  requirements. You can see this project calling this method explicitly in all our pages.
-* `.../components/sections/NavHeader.kt`: An example re-usable composable which represents a section inside a page. This
-  particular example creates a header that makes it easy to navigate between this demo project.
-* `.../pages/Index.kt`: The top level page, which will get rendered if the user visits `(yoursite.com)/` (the name
-  `index` means it will be a special page that gets visited by default when no explicit page is specified). Note that
-  the method is annotated with `@Page` which is how `Kobweb` is aware of it.
-* `.../pages/About.kt`: An additional page, which will get rendered if the user visits `(yoursite.com)/about`. This page
-  doesn't do much but exists as a way to demonstrate a multi-page layout.
-* `.../resources/markdown/Markdown.md`: A markdown file which generates a reactive page for you automatically at compile
-  time. This page will get rendered if the user visits `(yoursite.com)/markdown` If you are writing a blog, it can be
-  very convenient to write many of your posts using markdown instead of Kotlin code. You can call out to components
-  within your markdown using the `${...}` syntax, e.g. `${.components.widget.VisitorCounter}`
-  (_Note: `${}` not yet implemented, but coming soon_)
-
-### jvmMain
-
-* `.../api/Hello.kt`: An example API endpoint that will be run on the server, triggered if the user visits
-  `(yoursite.com)/api/hello`
 
 ### Live Reload
 
@@ -65,5 +40,10 @@ When finished, you can run a Kobweb server in production mode:
 kobweb run --env prod
 ```
 
-You should be able to run this command in the Cloud provider of your choice, at which point, once your Cloud environment
-is configured, it will serve your site.
+If you want to run this command in the Cloud provider of your choice, consider disabling
+interactive mode since that will remove ANSI requirements, and nobody is sitting around
+watching the console in that case anyway. To do that, use:
+
+```bash
+kobweb run --env prod --mode dumb
+```
