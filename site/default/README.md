@@ -65,5 +65,9 @@ When finished, you can run a Kobweb server in production mode:
 kobweb run --env prod
 ```
 
-You should be able to run this command in the Cloud provider of your choice, at which point, once your Cloud environment
-is configured, it will serve your site.
+If you want to run this command in the Cloud provider of your choice, consider disabling interactive mode since nobody
+is sitting around watching the console in that case anway. To do that, use:
+
+```bash
+kobweb run --env prod --mode dumb
+```
