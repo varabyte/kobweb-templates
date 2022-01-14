@@ -1,0 +1,65 @@
+metadata:
+  description: "A template for an empty skeleton to build a Kobweb app upon"
+
+instructions:
+  # Note: Kobweb provides a "projectFolder" variable for us already
+
+  - !<QueryVar>
+    name: "projectTitle"
+    prompt: "What is the user-visible display title for your project?"
+    default: "${fileToTitle(projectFolder)}"
+    validation: "isNotEmpty"
+  - !<DefineVar>
+    name: "projectName"
+    value: "${fileToPackage(projectFolder)}"
+  - !<Inform>
+    message: "Note: The group ID should uniquely identify your project and organization."
+  - !<Inform>
+    message: "'io.github.(username).(projectname)' can work for a hobby project."
+  - !<QueryVar>
+    name: "groupId"
+    prompt: "What is the group ID for your project?"
+    default: "org.example.${projectName}"
+    validation: "isPackage"
+  - !<DefineVar>
+    name: "package"
+    value: "${groupId}"
+
+  - !<QueryVar>
+    name: "useSilk"
+    prompt: "Would you like to use Silk, Kobweb's powerful UI layer built on top of Web Compose?"
+    default: "yes"
+    validation: "isYesNo"
+    transform: "${yesNoToBool(value)}"
+
+  - !<QueryVar>
+    name: "useServer"
+    prompt: "Would you like to include support for defining server behavior via API routes?"
+    default: "yes"
+    validation: "isYesNo"
+    transform: "${yesNoToBool(value)}"
+
+  - !<QueryVar>
+    name: "useMarkdown"
+    prompt: "Would you like to include support for handling Markdown files?"
+    default: "yes"
+    validation: "isYesNo"
+    transform: "${yesNoToBool(value)}"
+
+  - !<ProcessFreemarker>
+
+  - !<DefineVar>
+    name: "packagePath"
+    value: "${packageToPath(package)}"
+  - !<Move>
+    from: "src/site/*"
+    to: "src/jsMain/kotlin/${packagePath}"
+    description: "Rearranging site source to conform to the user's package"
+  - !<Move>
+    from: "src/api/*"
+    to: "src/jvmMain/kotlin/${packagePath}/api"
+    description: "Rearranging API source to conform to the user's package"
+  - !<Move>
+    from: "resources/*"
+    to: "src/jsMain/resources"
+    description: "Rearranging resources"
