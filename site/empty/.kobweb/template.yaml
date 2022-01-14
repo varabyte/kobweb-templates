@@ -25,6 +25,8 @@ instructions:
     name: "package"
     value: "${groupId}"
 
+  - !<Inform>
+    message: "To learn more: https://github.com/varabyte/kobweb#silk"
   - !<QueryVar>
     name: "useSilk"
     prompt: "Would you like to use Silk, Kobweb's powerful UI layer built on top of Web Compose?"
@@ -32,6 +34,8 @@ instructions:
     validation: "isYesNo"
     transform: "${yesNoToBool(value)}"
 
+  - !<Inform>
+    message: "To learn more: https://github.com/varabyte/kobweb#define-api-routes"
   - !<QueryVar>
     name: "useServer"
     prompt: "Would you like to include support for defining server behavior via API routes?"
@@ -39,6 +43,8 @@ instructions:
     validation: "isYesNo"
     transform: "${yesNoToBool(value)}"
 
+  - !<Inform>
+    message: "To learn more: https://github.com/varabyte/kobweb#markdown"
   - !<QueryVar>
     name: "useMarkdown"
     prompt: "Would you like to include support for handling Markdown files?"
