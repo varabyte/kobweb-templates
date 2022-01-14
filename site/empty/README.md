@@ -40,9 +40,8 @@ When finished, you can run a Kobweb server in production mode:
 kobweb run --env prod
 ```
 
-If you want to run this command in the Cloud provider of your choice, consider disabling
-interactive mode since that will remove ANSI requirements, and nobody is sitting around
-watching the console in that case anyway. To do that, use:
+If you want to run this command in the Cloud provider of your choice, consider disabling interactive mode since nobody
+is sitting around watching the console in that case anyway. To do that, use:
 
 ```bash
 kobweb run --env prod --mode dumb
