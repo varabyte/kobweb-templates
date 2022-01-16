@@ -37,7 +37,7 @@ fun MyApp(content: @Composable () -> Unit) {
             localStorage.setItem(COLOR_MODE_KEY, colorMode.name)
         }
 
-        Surface(Modifier.width(100.vw).height(100.vh)) {
+        Surface(Modifier.minWidth(100.vw).minHeight(100.vh)) {
             content()
         }
     }

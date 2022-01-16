@@ -40,7 +40,7 @@ fun initSiteStyles(ctx: InitSilkContext) {
 @Composable
 fun MyApp(content: @Composable () -> Unit) {
     SilkApp {
-        Surface(Modifier.width(100.vw).height(100.vh)) {
+        Surface(Modifier.minWidth(100.vw).minHeight(100.vh)) {
             content()
         }
     }
