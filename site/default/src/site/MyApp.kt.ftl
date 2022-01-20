@@ -14,7 +14,7 @@ import com.varabyte.kobweb.silk.theme.registerBaseStyle
 import kotlinx.browser.localStorage
 import org.jetbrains.compose.web.css.*
 
-private const val COLOR_MODE_KEY = "${projectName}:app:colorMode"
+private const val COLOR_MODE_KEY = "${projectName}:colorMode"
 
 @InitSilk
 fun updateTheme(ctx: InitSilkContext) {
