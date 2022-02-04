@@ -4,7 +4,7 @@ It is based of the "Getting Started" tutorial provided by JetBrains
 [here](https://github.com/JetBrains/compose-jb/tree/master/tutorials/Web/Getting_Started).
 
 Even though Kobweb provides a extra functionality that you can use, this project doesn't use most of them (note the lack
-of dependencies in the project's `build.gradle.kts` file), and that's OK! Being a thin shim around Web Compose is a
+of dependencies in the project's `build.gradle.kts` file), and that's OK! Being a thin shim around Compose for Web is a
 perfectly acceptable use-case for this framework.
 
 ---

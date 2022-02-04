@@ -29,7 +29,7 @@ instructions:
     message: "To learn more: https://github.com/varabyte/kobweb#silk"
   - !<QueryVar>
     name: "useSilk"
-    prompt: "Would you like to use Silk, Kobweb's powerful UI layer built on top of Web Compose?"
+    prompt: "Would you like to use Silk, Kobweb's powerful UI layer built on top of Compose for Web?"
     default: "yes"
     validation: "isYesNo"
     transform: "${yesNoToBool(value)}"
