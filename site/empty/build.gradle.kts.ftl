@@ -1,3 +1,5 @@
+<#if !useServer?boolean>// </#if>import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.jetbrains.compose)
@@ -18,6 +20,10 @@ version = "1.0-SNAPSHOT"
 kotlin {
     <#if !useServer?boolean>/*</#if>
     jvm {
+        tasks.withType<KotlinCompile> {
+            kotlinOptions.jvmTarget = "11"
+        }
+
         tasks.named("jvmJar", Jar::class.java).configure {
             archiveFileName.set("${projectName}.jar")
         }
