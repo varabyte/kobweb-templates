@@ -38,8 +38,8 @@ This simple project has a couple of example files you can learn from.
 * `.../resources/markdown/Markdown.md`: A markdown file which generates a reactive page for you automatically at compile
   time. This page will get rendered if the user visits `(yoursite.com)/markdown` If you are writing a blog, it can be
   very convenient to write many of your posts using markdown instead of Kotlin code. You can call out to components
-  within your markdown using the `${...}` syntax, e.g. `${.components.widget.VisitorCounter}`
-  (_Note: `${}` not yet implemented, but coming soon_)
+  within your markdown using the inline `${...}` syntax, e.g. `${.components.widget.VisitorCounter}`, or use the
+  block `{{{ ... }}}` syntax to put a larger widget on its own line.
 
 ### jvmMain
 
