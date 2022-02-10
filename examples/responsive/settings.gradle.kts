@@ -5,7 +5,6 @@ pluginManagement {
         maven("https://us-central1-maven.pkg.dev/varabyte-repos/public")
     }
 }
-enableFeaturePreview("VERSION_CATALOGS")
 
 rootProject.name = "responsive"
 
