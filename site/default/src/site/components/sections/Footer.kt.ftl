@@ -22,7 +22,7 @@ val FooterStyle = ComponentStyle.base("footer") {
 @Composable
 fun Footer(modifier: Modifier = Modifier) {
     Row(FooterStyle.toModifier().then(modifier)) {
-        Text("Created with ")
+        Text("Made with ")
         Link("https://github.com/varabyte/kobweb", "Kobweb")
     }
 }
