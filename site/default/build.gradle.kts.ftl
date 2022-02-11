@@ -17,6 +17,12 @@ repositories {
 group = "${groupId}"
 version = "1.0-SNAPSHOT"
 
+kobweb {
+    index {
+        description.set("Powered by Kobweb")
+    }
+}
+
 kotlin {
     jvm {
         tasks.withType<KotlinCompile> {
