@@ -1,0 +1,5 @@
+metadata:
+  description: "An OpenGL demo based on the Mozilla textured cube tutorial"
+
+# No need for any instructions - we just copy the demo as is
+
