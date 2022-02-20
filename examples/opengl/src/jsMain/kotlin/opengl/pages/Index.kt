@@ -276,7 +276,6 @@ private class SceneData(
     val programInfo: ProgramInfo,
     val buffers: Buffers,
     val texture: WebGLTexture,
-    var rotateRad: Double = 0.0,
 ) {
     companion object {
         fun from(gl: GL): SceneData {
@@ -335,10 +334,15 @@ private class SceneData(
     }
 }
 
+private class SceneState(
+    var rotateRad: Double = 0.0,
+)
+
 @Composable
 private fun BoxScope.OpenGlScene() {
     var firstRender = true
     lateinit var sceneData: SceneData
+    val sceneState = remember { SceneState() }
 
     CanvasGl(640, 480, Modifier.align(Alignment.Center), minDeltaMs = ONE_FRAME_MS_60_FPS) {
         val gl = ctx // Makes our code look like official samples
@@ -348,7 +352,8 @@ private fun BoxScope.OpenGlScene() {
         }
 
         with(sceneData) {
-            rotateRad += (elapsedMs / 1000.0)
+            sceneState.rotateRad += (elapsedMs / 1000.0)
+            val rotateRad = sceneState.rotateRad
 
             gl.clearColor(0.0f, 0.0f, 0.0f, 1.0f)
             gl.clearDepth(1.0f)
