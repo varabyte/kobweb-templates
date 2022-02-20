@@ -53,6 +53,7 @@ kotlin {
 
         val jsMain by getting {
             dependencies {
+                implementation(compose.web.core)
                 implementation(libs.kobweb.core)
                 <#if !useSilk?boolean>// </#if>implementation(libs.kobweb.silk.core)
                 <#if !useSilk?boolean>// </#if>implementation(libs.kobweb.silk.icons.fa)

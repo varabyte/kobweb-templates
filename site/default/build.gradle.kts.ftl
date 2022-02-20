@@ -51,6 +51,7 @@ kotlin {
 
         val jsMain by getting {
             dependencies {
+                implementation(compose.web.core)
                 implementation(libs.kobweb.core)
                 implementation(libs.kobweb.silk.core)
                 implementation(libs.kobweb.silk.icons.fa)
