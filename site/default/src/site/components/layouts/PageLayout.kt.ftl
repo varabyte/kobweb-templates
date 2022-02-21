@@ -21,13 +21,15 @@ fun PageLayout(title: String, content: @Composable () -> Unit) {
         document.title = title
     }
 
-    Box(Modifier.fillMaxWidth().minHeight(100.percent).styleModifier {
+    Box(Modifier
+        .fillMaxWidth()
+        .minHeight(100.percent)
         // Create a box with two rows: the main content (fills as much space as it can) and the footer (which reserves
         // space at the bottom). "auto" means the use the height of the row. "1fr" means give the rest of the space to
         // that row. Since this box is set to *at least* 100%, the footer will always appear at least on the bottom but
         // can be pushed further down if the first row grows beyond the page.
-        gridTemplateRows("1fr auto")
-    }) {
+        .gridTemplateRows("1fr auto")
+    ) {
         Column(
             modifier = Modifier.fillMaxSize().textAlign(TextAlign.Center),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -36,9 +38,7 @@ fun PageLayout(title: String, content: @Composable () -> Unit) {
             H1 { Text(title) }
             content()
         }
-        Footer(Modifier.align(Alignment.Center).styleModifier {
-            // Associate the footer with the row that will get pushed off the bottom of the page if it can't fit.
-            gridRowStart(2); gridRowEnd(3)
-        })
+        // Associate the footer with the row that will get pushed off the bottom of the page if it can't fit.
+        Footer(Modifier.align(Alignment.Center).gridRowStart(2).gridRowEnd(3))
     }
 }
