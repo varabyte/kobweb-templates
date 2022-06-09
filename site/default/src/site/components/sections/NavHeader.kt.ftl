@@ -32,7 +32,7 @@ val NavItemStyle = ComponentStyle("nav-item") {
     // Intentionally invert the header colors from the rest of the page
     val linkColor = colorMode.toSilkPalette().background
 
-    base { Modifier.margin(topBottom = 0.px, leftRight = 15.px) }
+    base { Modifier.margin(leftRight = 15.px) }
 
     link { Modifier.color(linkColor) }
     visited { Modifier.color(linkColor) }
