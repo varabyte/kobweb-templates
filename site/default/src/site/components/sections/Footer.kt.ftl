@@ -7,7 +7,7 @@ import com.varabyte.kobweb.compose.ui.graphics.toCssColor
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.style.*
-import com.varabyte.kobweb.silk.components.text.Text
+import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.theme.SilkTheme
 import org.jetbrains.compose.web.css.*
 
@@ -22,7 +22,7 @@ val FooterStyle = ComponentStyle.base("footer") {
 @Composable
 fun Footer(modifier: Modifier = Modifier) {
     Row(FooterStyle.toModifier().then(modifier)) {
-        Text("Made with ")
+        SpanText("Made with ")
         Link("https://github.com/varabyte/kobweb", "Kobweb")
     }
 }

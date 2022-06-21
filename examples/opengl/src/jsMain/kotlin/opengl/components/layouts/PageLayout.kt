@@ -1,6 +1,7 @@
 package opengl.components.layouts
 
 import androidx.compose.runtime.*
+import com.varabyte.kobweb.compose.css.WhiteSpace
 import com.varabyte.kobweb.compose.foundation.layout.*
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -49,7 +50,8 @@ fun PageLayout(content: @Composable BoxScope.() -> Unit) {
                 .fontSize(1.5.cssRem),
             Alignment.Center
         ) {
-            Row(Modifier.margin(topBottom = 1.cssRem, leftRight = 0.cssRem)) {
+            // Use PreWrap to preserve trailing space in text
+            Row(Modifier.margin(topBottom = 1.cssRem, leftRight = 0.cssRem).whiteSpace(WhiteSpace.PreWrap)) {
                 Text("This project is built using ")
                 Link(
                     "https://github.com/varabyte/kobweb",
