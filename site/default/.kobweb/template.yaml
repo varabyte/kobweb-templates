@@ -34,12 +34,12 @@ instructions:
   - !<Move>
     from: "src/site/*"
     to: "src/jsMain/kotlin/${packagePath}"
-    description: "Rearranging site source to conform to the user's package"
+    description: "Copying frontend code"
   - !<Move>
     from: "src/api/*"
     to: "src/jvmMain/kotlin/${packagePath}/api"
-    description: "Rearranging API source to conform to the user's package"
+    description: "Copying backend code"
   - !<Move>
     from: "resources/*"
     to: "src/jsMain/resources"
-    description: "Rearranging resources"
+    description: "Copying resources"
