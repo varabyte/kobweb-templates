@@ -11,7 +11,7 @@ import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.icons.fa.FaMoon
 import com.varabyte.kobweb.silk.components.icons.fa.FaSun
 import com.varabyte.kobweb.silk.components.navigation.Link
-import com.varabyte.kobweb.silk.components.text.Text
+import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.theme.SilkTheme
 import com.varabyte.kobweb.silk.theme.colors.rememberColorMode
 import com.varabyte.kobweb.silk.theme.shapes.Circle
@@ -52,12 +52,12 @@ fun PageLayout(content: @Composable BoxScope.() -> Unit) {
         ) {
             // Use PreWrap to preserve trailing space in text
             Row(Modifier.margin(topBottom = 1.cssRem, leftRight = 0.cssRem).whiteSpace(WhiteSpace.PreWrap)) {
-                Text("This project is built using ")
+                SpanText("This project is built using ")
                 Link(
                     "https://github.com/varabyte/kobweb",
                     "Kobweb",
                 )
-                Text(", a full-stack Kotlin framework.")
+                SpanText(", a full-stack Kotlin framework.")
             }
         }
     }
