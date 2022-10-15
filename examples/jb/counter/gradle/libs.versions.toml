@@ -1,7 +1,7 @@
 [versions]
-jetbrains-compose = "1.1.1"
-kobweb = "0.9.14"
-kotlin = "1.6.10"
+jetbrains-compose = "1.2.0"
+kobweb = "0.10.0"
+kotlin = "1.7.10"
 
 [libraries]
 kobweb-core = { module = "com.varabyte.kobweb:kobweb-core", version.ref = "kobweb" }
