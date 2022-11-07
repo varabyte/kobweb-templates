@@ -1,6 +1,7 @@
 package ${package}.components.sections
 
 import androidx.compose.runtime.*
+import com.varabyte.kobweb.compose.css.AlignSelf
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.toCssColor
