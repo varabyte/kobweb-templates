@@ -5,6 +5,7 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.core.App
 import com.varabyte.kobweb.silk.SilkApp
+import com.varabyte.kobweb.silk.components.layout.AnimatedColorSurfaceVariant
 import com.varabyte.kobweb.silk.components.layout.Surface
 import com.varabyte.kobweb.silk.theme.SilkTheme
 import org.jetbrains.compose.web.css.Style
@@ -29,7 +30,7 @@ object MyStyleSheet : StyleSheet() {
 fun MyApp(content: @Composable () -> Unit) {
     Style(MyStyleSheet)
     SilkApp {
-        Surface(Modifier.minWidth(100.vw).minHeight(100.vh)) {
+        Surface(Modifier.minWidth(100.vw).minHeight(100.vh), variant = AnimatedColorSurfaceVariant) {
             content()
         }
     }

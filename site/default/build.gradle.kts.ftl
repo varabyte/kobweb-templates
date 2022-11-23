@@ -18,8 +18,10 @@ group = "${groupId}"
 version = "1.0-SNAPSHOT"
 
 kobweb {
-    index {
-        description.set("Powered by Kobweb")
+    app {
+        index {
+            description.set("Powered by Kobweb")
+        }
     }
 }
 

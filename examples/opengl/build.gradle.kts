@@ -17,7 +17,7 @@ repositories {
 group = "opengl"
 version = "1.0-SNAPSHOT"
 
-kobweb.index.head.add {
+kobweb.app.index.head.add {
     script {
         src = "https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/3.4.2/gl-matrix-min.js"
     }
