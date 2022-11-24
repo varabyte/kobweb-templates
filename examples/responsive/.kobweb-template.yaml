@@ -2,7 +2,7 @@
 # behind by legacy kobweb binaries. Feel free to remove it if you're seeing this!
 
 metadata:
-  description: "A demo showcasing responsive widgets / layouts (WIP)"
+  description: "A demo showcasing responsive widgets / layouts"
 
 # No need for any instructions - we just copy the demo as is
 
