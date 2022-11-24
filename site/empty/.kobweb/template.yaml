@@ -1,3 +1,10 @@
+# Note: This is a legacy file that will be deleted before Kobweb hits 1.0
+# It is left here to prevent older versions of the Kobweb CLI from breaking.
+# The new source of truth is .kobweb-template.yaml in the root directory.
+
+# This file should get deleted upon project instantiation, but it may get left
+# behind by legacy kobweb binaries. Feel free to remove it if you're seeing this!
+
 metadata:
   description: "A template for an empty skeleton to build a Kobweb app upon"
   shouldHighlight: true

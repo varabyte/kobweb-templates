@@ -1,12 +1,8 @@
-# Note: This is a legacy file that will be deleted before Kobweb hits 1.0
-# It is left here to prevent older versions of the Kobweb CLI from breaking.
-# The new source of truth is .kobweb-template.yaml in the root directory.
-
 # This file should get deleted upon project instantiation, but it may get left
 # behind by legacy kobweb binaries. Feel free to remove it if you're seeing this!
 
 metadata:
-  description: "A template for a minimal site that demonstrates the basic features of Kobweb"
+  description: "A template for an empty skeleton to build a Kobweb app upon"
   shouldHighlight: true
 
 instructions:
@@ -33,6 +29,33 @@ instructions:
     name: "package"
     value: "${groupId}"
 
+  - !<Inform>
+    message: "To learn more: https://github.com/varabyte/kobweb#silk"
+  - !<QueryVar>
+    name: "useSilk"
+    prompt: "Would you like to use Silk, Kobweb's powerful UI layer built on top of Compose for Web?"
+    default: "yes"
+    validation: "isYesNo"
+    transform: "${yesNoToBool(value)}"
+
+  - !<Inform>
+    message: "To learn more: https://github.com/varabyte/kobweb#define-api-routes"
+  - !<QueryVar>
+    name: "useServer"
+    prompt: "Would you like to include support for defining server behavior via API routes?"
+    default: "yes"
+    validation: "isYesNo"
+    transform: "${yesNoToBool(value)}"
+
+  - !<Inform>
+    message: "To learn more: https://github.com/varabyte/kobweb#markdown"
+  - !<QueryVar>
+    name: "useMarkdown"
+    prompt: "Would you like to include support for handling Markdown files?"
+    default: "yes"
+    validation: "isYesNo"
+    transform: "${yesNoToBool(value)}"
+
   - !<ProcessFreemarker>
 
   - !<DefineVar>
@@ -41,12 +64,12 @@ instructions:
   - !<Move>
     from: "src/site/*"
     to: "src/jsMain/kotlin/${packagePath}"
-    description: "Copying frontend code"
+    description: "Rearranging site source to conform to the user's package"
   - !<Move>
     from: "src/api/*"
     to: "src/jvmMain/kotlin/${packagePath}/api"
-    description: "Copying backend code"
+    description: "Rearranging API source to conform to the user's package"
   - !<Move>
     from: "resources/*"
     to: "src/jsMain/resources"
-    description: "Copying resources"
+    description: "Rearranging resources"
