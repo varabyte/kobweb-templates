@@ -1,3 +1,4 @@
+import com.varabyte.kobweb.gradle.application.util.kobwebServerJar
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -31,9 +32,7 @@ kotlin {
             kotlinOptions.jvmTarget = "11"
         }
 
-        tasks.named("jvmJar", Jar::class.java).configure {
-            archiveFileName.set("${projectName}.jar")
-        }
+        kobwebServerJar("${projectName}.jar")
     }
     js(IR) {
         moduleName = "${projectName}"
