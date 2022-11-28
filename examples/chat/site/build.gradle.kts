@@ -1,4 +1,4 @@
-import com.varabyte.kobweb.gradle.application.util.kobwebServerJar
+import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -10,14 +10,8 @@ group = "chat.site"
 version = "1.0-SNAPSHOT"
 
 kotlin {
-    js(IR) {
-        browser()
-        binaries.executable()
-    }
+    configAsKobwebApplication(includeServer = true)
 
-    jvm {
-        kobwebServerJar("chat.jar")
-    }
     sourceSets {
         val commonMain by getting {
             dependencies {

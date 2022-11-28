@@ -1,3 +1,5 @@
+import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
+
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.jetbrains.compose)
@@ -15,15 +17,8 @@ group = "counter"
 version = "1.0-SNAPSHOT"
 
 kotlin {
-    js(IR) {
-        moduleName = "counter"
-        browser {
-            commonWebpackConfig {
-                outputFileName = "counter.js"
-            }
-        }
-        binaries.executable()
-    }
+    configAsKobwebApplication()
+
     sourceSets {
         val jsMain by getting {
             dependencies {

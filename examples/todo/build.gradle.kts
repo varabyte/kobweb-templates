@@ -1,4 +1,4 @@
-import com.varabyte.kobweb.gradle.application.util.kobwebServerJar
+import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -19,22 +19,14 @@ group = "todo"
 version = "1.0-SNAPSHOT"
 
 kotlin {
+    configAsKobwebApplication(includeServer = true)
+    
     jvm {
         tasks.withType<KotlinCompile> {
             kotlinOptions.jvmTarget = "11"
         }
+    }
 
-        kobwebServerJar("todo.jar")
-    }
-    js(IR) {
-        moduleName = "todo"
-        browser {
-            commonWebpackConfig {
-                outputFileName = "todo.js"
-            }
-        }
-        binaries.executable()
-    }
     sourceSets {
         val commonMain by getting {
             dependencies {

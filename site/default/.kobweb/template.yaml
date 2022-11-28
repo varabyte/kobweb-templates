@@ -29,6 +29,12 @@ instructions:
     prompt: "What is the group ID for your project?"
     default: "org.example.${projectName}"
     validation: "isPackage"
+  # Overwrite projectName, since the user's group ID should be a more accurate indication
+  # of what the user wants their project name to be than the initial folder.
+  - !<DefineVar>
+    name: "projectName"
+    value: "${groupId?keep_after_last(\".\")}"
+  # Copy "groupId" as "package" -- it reads better in some cases.
   - !<DefineVar>
     name: "package"
     value: "${groupId}"

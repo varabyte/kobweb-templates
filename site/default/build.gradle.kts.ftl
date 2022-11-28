@@ -1,4 +1,4 @@
-import com.varabyte.kobweb.gradle.application.util.kobwebServerJar
+import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -27,22 +27,8 @@ kobweb {
 }
 
 kotlin {
-    jvm {
-        tasks.withType<KotlinCompile> {
-            kotlinOptions.jvmTarget = "11"
-        }
+    configAsKobwebApplication("${projectName}", includeServer = true)
 
-        kobwebServerJar("${projectName}.jar")
-    }
-    js(IR) {
-        moduleName = "${projectName}"
-        browser {
-            commonWebpackConfig {
-                outputFileName = "${projectName}.js"
-            }
-        }
-        binaries.executable()
-    }
     sourceSets {
         val commonMain by getting {
             dependencies {

@@ -6,9 +6,9 @@ server:
     dev:
       contentRoot: "build/processedResources/js/main/public"
       script: "../build/js/packages/chat-site/kotlin/chat-site.js"
-      api: "build/libs/chat.jar"
+      api: "build/libs/chat-site.jar"
     prod:
-      script: "build/distributions/chat.js"
+      script: "build/distributions/chat-site.js"
       siteRoot: ".kobweb/site"
 
   port: 8080

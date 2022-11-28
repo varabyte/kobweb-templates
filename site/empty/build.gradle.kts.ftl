@@ -1,5 +1,4 @@
-<#if !useServer?boolean>// </#if>import com.varabyte.kobweb.gradle.application.util.kobwebServerJar
-<#if !useServer?boolean>// </#if>import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -27,24 +26,15 @@ kobweb {
 }
 
 kotlin {
-    <#if !useServer?boolean>/*</#if>
-    jvm {
-        tasks.withType<KotlinCompile> {
-            kotlinOptions.jvmTarget = "11"
-        }
+    <#if !useServer?boolean>
+    configAsKobwebApplication("${projectName}")
+    <#else>
+    configAsKobwebApplication("${projectName}", includeServer = true)
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+        kotlinOptions.jvmTarget = "11"
+    }
+    </#if>
 
-        kobwebServerJar("${projectName}.jar")
-    }
-    <#if !useServer?boolean>*/</#if>
-    js(IR) {
-        moduleName = "${projectName}"
-        browser {
-            commonWebpackConfig {
-                outputFileName = "${projectName}.js"
-            }
-        }
-        binaries.executable()
-    }
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -61,13 +51,12 @@ kotlin {
                 <#if !useMarkdown?boolean>// </#if>implementation(libs.kobwebx.markdown)
              }
         }
-
-        <#if !useServer?boolean>/*</#if>
+        <#if useServer?boolean>
         val jvmMain by getting {
             dependencies {
                 implementation(libs.kobweb.api)
              }
         }
-        <#if !useServer?boolean>*/</#if>
+        </#if>
     }
 }
