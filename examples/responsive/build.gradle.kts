@@ -25,6 +25,7 @@ kotlin {
                 implementation(compose.runtime)
                 implementation(libs.kobweb.core)
                 implementation(libs.kobweb.silk.core)
+                implementation(libs.kobweb.silk.icons.fa)
             }
         }
     }
