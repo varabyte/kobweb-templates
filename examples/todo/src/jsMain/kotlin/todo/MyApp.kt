@@ -15,15 +15,15 @@ import org.jetbrains.compose.web.css.*
 val BORDER_COLOR = Color.rgb(0xea, 0xea, 0xea)
 
 @InitSilk
-fun initSiteStyles(ctx: InitSilkContext) {
-    ctx.config.registerBaseStyle("body") {
+fun initSiteStyles(ctx: InitSilkContext) = ctx.config.apply {
+    registerBaseStyle("body") {
         Modifier.fontFamily(
                 "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
                 "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "sans-serif"
             )
     }
 
-    ctx.config.registerBaseStyle("footer") {
+    registerBaseStyle("footer") {
         Modifier
             .width(100.percent)
             .height(100.px)

@@ -9,27 +9,24 @@ import com.varabyte.kobweb.silk.InitSilkContext
 import com.varabyte.kobweb.silk.SilkApp
 import com.varabyte.kobweb.silk.components.layout.Surface
 import com.varabyte.kobweb.silk.theme.SilkTheme
-import org.jetbrains.compose.web.css.Style
-import org.jetbrains.compose.web.css.StyleSheet
-import org.jetbrains.compose.web.css.fontFamily
+import com.varabyte.kobweb.silk.theme.registerBaseStyle
 import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.css.vw
 
-object MyStyleSheet : StyleSheet() {
-    init {
-        "body" style {
-            fontFamily(
+@InitSilk
+fun registerGlobalStyles(ctx: InitSilkContext) = ctx.config.apply {
+    registerBaseStyle("body") {
+        Modifier
+            .fontFamily(
                 "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
                 "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "sans-serif"
             )
-        }
     }
 }
 
 @App
 @Composable
 fun MyApp(content: @Composable () -> Unit) {
-    Style(MyStyleSheet)
     SilkApp {
         Surface(Modifier.minWidth(100.vw).minHeight(100.vh)) {
             content()
