@@ -14,10 +14,7 @@ import responsive.components.sections.NavSideMenu
 
 @Composable
 private fun ContentColumn(modifier: Modifier, content: @Composable () -> Unit) {
-    Column(
-        Modifier.padding(top = 20.px).then(modifier),
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
+    Column(modifier, horizontalAlignment = Alignment.CenterHorizontally) {
         content()
     }
 }
@@ -26,8 +23,10 @@ private fun ContentColumn(modifier: Modifier, content: @Composable () -> Unit) {
 fun PageLayout(content: @Composable () -> Unit) {
     val bp by rememberBreakpoint()
     if (bp < Breakpoint.MD) {
-        NavMenuButton()
-        ContentColumn(Modifier.fillMaxSize(), content)
+        Column(Modifier.fillMaxWidth()) {
+            NavMenuButton()
+            ContentColumn(Modifier.fillMaxSize(), content)
+        }
     } else {
         Row(Modifier.fillMaxSize()) {
             NavSideMenu()
