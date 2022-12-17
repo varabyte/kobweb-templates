@@ -45,6 +45,7 @@ val TitleStyle = ComponentStyle.base("nav-title") {
 val NavButtonStyle = ComponentStyle.base("nav-button-outer") {
     Modifier
         .margin(leftRight = 5.px)
+        .padding(0.px)
         .size(40.px)
         .clip(Circle())
 }

@@ -33,7 +33,11 @@ fun PageLayout(content: @Composable BoxScope.() -> Unit) {
                 var colorMode by rememberColorMode()
                 Button(
                     onClick = { colorMode = colorMode.opposite() },
-                    Modifier.margin(10.px).clip(Circle()).fontSize(24.px)
+                    Modifier
+                        .margin(10.px)
+                        .padding(0.px)
+                        .clip(Circle())
+                        .fontSize(24.px)
                 ) {
                     Box(Modifier.margin(4.px)) {
                         if (colorMode.isLight()) FaMoon() else FaSun()

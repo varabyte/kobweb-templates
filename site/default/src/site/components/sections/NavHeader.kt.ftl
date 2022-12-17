@@ -39,7 +39,7 @@ val NavItemStyle = ComponentStyle("nav-item") {
 }
 
 val NavButtonVariant = NavItemStyle.addVariant("button") {
-    base { Modifier.clip(Circle()) }
+    base { Modifier.padding(0.px).clip(Circle()) }
 }
 
 @Composable
