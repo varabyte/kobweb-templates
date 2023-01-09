@@ -5,7 +5,7 @@ server:
   files:
     dev:
       contentRoot: "build/processedResources/js/main/public"
-      script: "build/js/packages/${projectName}/kotlin/${projectName}.js"
+      script: "build/developmentExecutable/${projectName}.js"
       api: "build/libs/${projectName}.jar"
     prod:
       script: "build/distributions/${projectName}.js"

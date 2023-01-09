@@ -5,7 +5,7 @@ server:
   files:
     dev:
       contentRoot: "build/processedResources/js/main/public"
-      script: "../build/js/packages/chat-site/kotlin/chat-site.js"
+      script: "build/developmentExecutable/chat-site.js"
       api: "build/libs/chat-site.jar"
     prod:
       script: "build/distributions/chat-site.js"
