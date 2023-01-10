@@ -2,8 +2,8 @@
 # behind by legacy kobweb binaries. Feel free to remove it if you're seeing this!
 
 metadata:
-  name: "site"
-  description: "A template for a minimal site that demonstrates the basic features of Kobweb"
+  name: "app"
+  description: "A template for a minimal web app that demonstrates the basic features of Kobweb"
   shouldHighlight: true
 
 instructions:
