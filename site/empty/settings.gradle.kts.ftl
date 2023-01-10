@@ -8,3 +8,4 @@ pluginManagement {
 
 rootProject.name = "${projectName}"
 
+include(":site")

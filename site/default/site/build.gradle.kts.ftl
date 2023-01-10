@@ -4,14 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.kobweb.application)
-    <#if !useMarkdown?boolean>// </#if>alias(libs.plugins.kobwebx.markdown)
-}
-
-repositories {
-    mavenCentral()
-    maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
-    google()
-    maven("https://us-central1-maven.pkg.dev/varabyte-repos/public")
+    alias(libs.plugins.kobwebx.markdown)
 }
 
 group = "${groupId}"
@@ -26,14 +19,7 @@ kobweb {
 }
 
 kotlin {
-    <#if !useServer?boolean>
-    configAsKobwebApplication("${projectName}")
-    <#else>
     configAsKobwebApplication("${projectName}", includeServer = true)
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions.jvmTarget = "11"
-    }
-    </#if>
 
     sourceSets {
         val commonMain by getting {
@@ -46,17 +32,16 @@ kotlin {
             dependencies {
                 implementation(compose.web.core)
                 implementation(libs.kobweb.core)
-                <#if !useSilk?boolean>// </#if>implementation(libs.kobweb.silk.core)
-                <#if !useSilk?boolean>// </#if>implementation(libs.kobweb.silk.icons.fa)
-                <#if !useMarkdown?boolean>// </#if>implementation(libs.kobwebx.markdown)
+                implementation(libs.kobweb.silk.core)
+                implementation(libs.kobweb.silk.icons.fa)
+                implementation(libs.kobwebx.markdown)
              }
         }
-        <#if useServer?boolean>
+
         val jvmMain by getting {
             dependencies {
                 implementation(libs.kobweb.api)
              }
         }
-        </#if>
     }
 }

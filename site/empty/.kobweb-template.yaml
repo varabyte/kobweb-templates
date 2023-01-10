@@ -68,14 +68,14 @@ instructions:
     name: "packagePath"
     value: "${packageToPath(package)}"
   - !<Move>
-    from: "src/site/*"
-    to: "src/jsMain/kotlin/${packagePath}"
+    from: "site/src/site/*"
+    to: "site/src/jsMain/kotlin/${packagePath}"
     description: "Rearranging site source to conform to the user's package"
   - !<Move>
-    from: "src/api/*"
-    to: "src/jvmMain/kotlin/${packagePath}/api"
+    from: "site/src/api/*"
+    to: "site/src/jvmMain/kotlin/${packagePath}/api"
     description: "Rearranging API source to conform to the user's package"
   - !<Move>
-    from: "resources/*"
-    to: "src/jsMain/resources"
+    from: "site/resources/*"
+    to: "site/src/jsMain/resources"
     description: "Rearranging resources"

@@ -42,14 +42,14 @@ instructions:
     name: "packagePath"
     value: "${packageToPath(package)}"
   - !<Move>
-    from: "src/site/*"
-    to: "src/jsMain/kotlin/${packagePath}"
+    from: "site/src/site/*"
+    to: "site/src/jsMain/kotlin/${packagePath}"
     description: "Copying frontend code"
   - !<Move>
-    from: "src/api/*"
-    to: "src/jvmMain/kotlin/${packagePath}/api"
+    from: "site/src/api/*"
+    to: "site/src/jvmMain/kotlin/${packagePath}/api"
     description: "Copying backend code"
   - !<Move>
-    from: "resources/*"
-    to: "src/jsMain/resources"
+    from: "site/resources/*"
+    to: "site/src/jsMain/resources"
     description: "Copying resources"

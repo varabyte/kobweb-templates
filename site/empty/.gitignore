@@ -25,7 +25,3 @@ kotlin-js-store
 # Gradle ignores
 .gradle
 
-# Kobweb ignores
-.kobweb-template.yaml
-.kobweb/*
-!.kobweb/conf.yaml
