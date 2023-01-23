@@ -52,7 +52,7 @@ val NavButtonStyle = ComponentStyle.base("nav-button-outer") {
 
 @Composable
 private fun NavButton(onClick: () -> Unit, content: @Composable BoxScope.() -> Unit) {
-    Button(onClick, NavButtonStyle.toModifier(), content = content)
+    Button(onClick = { onClick() }, NavButtonStyle.toModifier(), content = content)
 }
 
 abstract class NavHeaderAction {

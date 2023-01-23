@@ -18,8 +18,13 @@ val TextButtonStyle = ComponentStyle.base("text-button") {
 }
 
 @Composable
-fun TextButton(text: String, modifier: Modifier = Modifier, enabled: Boolean = true, onClick: () -> Unit) {
-    Button(onClick = onClick, TextButtonStyle.toModifier().then(modifier), enabled = enabled) {
+fun TextButton(
+    text: String,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    onClick: () -> Unit
+) {
+    Button(onClick = { onClick() }, TextButtonStyle.toModifier().then(modifier), enabled = enabled) {
         Text(text)
     }
 }
