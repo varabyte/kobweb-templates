@@ -9,7 +9,7 @@ import chat.core.G
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 
-val TextButtonStyle = ComponentStyle.base("text-button") {
+val TextButtonStyle by ComponentStyle.base {
     Modifier
         .width(G.Ui.Width.Medium)
         .margin(10.px)

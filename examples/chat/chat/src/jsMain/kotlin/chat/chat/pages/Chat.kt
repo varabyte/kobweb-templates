@@ -29,7 +29,7 @@ import chat.core.components.widgets.TextInput
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 
-val ChatBoxStyle = ComponentStyle.base("chat-box") {
+val ChatBoxStyle by ComponentStyle.base {
     Modifier
         .padding(5.px)
         .borderRadius(5.px)

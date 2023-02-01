@@ -20,7 +20,7 @@ import com.varabyte.kobweb.silk.theme.shapes.clip
 import com.varabyte.kobweb.silk.theme.toSilkPalette
 import org.jetbrains.compose.web.css.px
 
-val NavHeaderStyle = ComponentStyle.base("nav-header") {
+val NavHeaderStyle by ComponentStyle.base {
     Modifier
         .fillMaxWidth()
         .height(50.px)
@@ -28,7 +28,7 @@ val NavHeaderStyle = ComponentStyle.base("nav-header") {
         .backgroundColor(colorMode.toSilkPalette().color)
 }
 
-val NavItemStyle = ComponentStyle("nav-item") {
+val NavItemStyle by ComponentStyle {
     // Intentionally invert the header colors from the rest of the page
     val linkColor = colorMode.toSilkPalette().background
 
@@ -38,7 +38,7 @@ val NavItemStyle = ComponentStyle("nav-item") {
     visited { Modifier.color(linkColor) }
 }
 
-val NavButtonVariant = NavItemStyle.addVariant("button") {
+val NavButtonVariant by NavItemStyle.addVariant {
     base { Modifier.padding(0.px).clip(Circle()) }
 }
 
