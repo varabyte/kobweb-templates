@@ -18,8 +18,6 @@ import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.theme.SilkTheme
 import com.varabyte.kobweb.silk.theme.colors.rememberColorMode
-import com.varabyte.kobweb.silk.theme.shapes.Circle
-import com.varabyte.kobweb.silk.theme.shapes.clip
 import org.jetbrains.compose.web.css.*
 
 @Composable
@@ -36,7 +34,7 @@ fun PageLayout(content: @Composable BoxScope.() -> Unit) {
                     Modifier
                         .margin(10.px)
                         .padding(0.px)
-                        .clip(Circle())
+                        .borderRadius(50.percent)
                         .fontSize(24.px)
                 ) {
                     Box(Modifier.margin(4.px)) {

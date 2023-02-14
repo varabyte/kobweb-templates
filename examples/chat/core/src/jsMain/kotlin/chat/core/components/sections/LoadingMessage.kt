@@ -18,8 +18,6 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaSun
 import com.varabyte.kobweb.silk.components.style.*
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.rememberColorMode
-import com.varabyte.kobweb.silk.theme.shapes.Circle
-import com.varabyte.kobweb.silk.theme.shapes.clip
 import com.varabyte.kobweb.silk.theme.toSilkPalette
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
