@@ -1,6 +1,7 @@
 package ${package}.components.sections
 
 import androidx.compose.runtime.*
+import com.varabyte.kobweb.compose.dom.ElementTarget
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.foundation.layout.Spacer
@@ -12,6 +13,8 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaMoon
 import com.varabyte.kobweb.silk.components.icons.fa.FaSun
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.navigation.UndecoratedLinkVariant
+import com.varabyte.kobweb.silk.components.overlay.PopupPlacement
+import com.varabyte.kobweb.silk.components.overlay.Tooltip
 import com.varabyte.kobweb.silk.components.style.*
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.rememberColorMode
@@ -58,6 +61,7 @@ fun NavHeader() {
             NavLink("/about", "ABOUT")
             NavLink("/markdown", "MARKDOWN")
             Spacer()
+
             Button(
                 onClick = { colorMode = colorMode.opposite() },
                 NavItemStyle.toModifier(NavButtonVariant)
@@ -69,6 +73,7 @@ fun NavHeader() {
                     }
                 }
             }
+            Tooltip(ElementTarget.PreviousSibling, "Toggle color mode", placement = PopupPlacement.BottomRight)
         }
     }
 }
