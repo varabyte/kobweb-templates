@@ -7,9 +7,9 @@ import com.varabyte.kobweb.core.App
 import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.SilkApp
-import com.varabyte.kobweb.silk.components.layout.AnimatedColorSurfaceVariant
 import com.varabyte.kobweb.silk.components.layout.Surface
-import com.varabyte.kobweb.silk.theme.SilkTheme
+import com.varabyte.kobweb.silk.components.style.common.SmoothColorStyle
+import com.varabyte.kobweb.silk.components.style.toModifier
 import com.varabyte.kobweb.silk.init.registerBaseStyle
 import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.css.vw
@@ -29,7 +29,7 @@ fun registerGlobalStyles(ctx: InitSilkContext) = ctx.stylesheet.apply {
 @Composable
 fun MyApp(content: @Composable () -> Unit) {
     SilkApp {
-        Surface(Modifier.minWidth(100.vw).minHeight(100.vh), variant = AnimatedColorSurfaceVariant) {
+        Surface(SmoothColorStyle.toModifier().minWidth(100.vw).minHeight(100.vh)) {
             content()
         }
     }
