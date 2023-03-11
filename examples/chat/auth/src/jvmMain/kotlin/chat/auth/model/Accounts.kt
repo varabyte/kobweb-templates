@@ -1,9 +1,9 @@
 package chat.auth.model
 
-import com.varabyte.kobweb.api.InitApi
-import com.varabyte.kobweb.api.InitApiContext
-import com.varabyte.kobweb.api.data.add
 import chat.auth.model.auth.Account
+import com.varabyte.kobweb.api.data.add
+import com.varabyte.kobweb.api.init.InitApi
+import com.varabyte.kobweb.api.init.InitApiContext
 
 @InitApi
 fun initAccounts(ctx: InitApiContext) {
