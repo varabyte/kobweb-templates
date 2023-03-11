@@ -42,7 +42,7 @@ val TodoTextStyle by ComponentStyle.base {
         .padding(1.5.cssRem)
         .fontSize(1.25.cssRem)
         // We use "A" tags for accessibility, but we want our colors to come from our container
-        .color("inherit")
+        .color(Color("inherit"))
 }
 
 /** Styles for the input element which handles user input */
