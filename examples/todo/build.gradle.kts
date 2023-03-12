@@ -1,5 +1,4 @@
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 @Suppress("DSL_SCOPE_VIOLATION") // https://youtrack.jetbrains.com/issue/KTIJ-19369
 plugins {
@@ -21,12 +20,7 @@ version = "1.0-SNAPSHOT"
 
 kotlin {
     configAsKobwebApplication(includeServer = true)
-    
-    jvm {
-        tasks.withType<KotlinCompile> {
-            kotlinOptions.jvmTarget = "11"
-        }
-    }
+    jvmToolchain(11) // Kobweb server should use at least Java 11
 
     sourceSets {
         val commonMain by getting {

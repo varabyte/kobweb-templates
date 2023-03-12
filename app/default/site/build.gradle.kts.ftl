@@ -21,6 +21,7 @@ kobweb {
 
 kotlin {
     configAsKobwebApplication("${projectName}", includeServer = true)
+    jvmToolchain(11) // Kobweb server should use at least Java 11
 
     sourceSets {
         val commonMain by getting {

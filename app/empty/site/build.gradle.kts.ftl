@@ -24,9 +24,7 @@ kotlin {
     configAsKobwebApplication("${projectName}")
     <#else>
     configAsKobwebApplication("${projectName}", includeServer = true)
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions.jvmTarget = "11"
-    }
+    jvmToolchain(11) // Kobweb server should use at least Java 11
     </#if>
 
     sourceSets {
