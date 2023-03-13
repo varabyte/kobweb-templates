@@ -13,6 +13,7 @@ version = "1.0-SNAPSHOT"
 
 kotlin {
     configAsKobwebLibrary(includeServer = true)
+    jvmToolchain(11)
 
     sourceSets {
         val commonMain by getting {
