@@ -1,0 +1,29 @@
+metadata:
+  description: "A small example fullstack app, showcasing a simple chatgpt chat bot"
+
+instructions:
+  - !<Inform>
+    message: |
+      To run this application...
+
+      • You'll need an account at https://platform.openai.com
+      • The account must have some remaining usage
+      • You can create a new secret key at https://platform.openai.com/account/api-keys
+      • Secret keys look something like "sk-abcxyz123..."
+
+      You can press CTRL-C if you want to abort creating this project.
+
+  - !<QueryVar>
+    name: "openaikey"
+    prompt: "Please type or paste (CTRL_SHIFT+V in most terminals) your secret API key"
+    validation: "isNotEmpty"
+
+  - !<Inform>
+    message: "📝 Your API key will be written to `jvmMain/resources/openaikey.txt`, in case you need to change it later."
+
+  - !<Inform>
+    message: "⚠️  Remember: Never share your secret API key or check it into a public repository!\n"
+
+  - !<ProcessFreemarker>
+
+

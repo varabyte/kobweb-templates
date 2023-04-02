@@ -1,0 +1,14 @@
+site:
+  title: "ChatGPT Demo"
+
+server:
+  files:
+    dev:
+      contentRoot: "build/processedResources/js/main/public"
+      script: "build/developmentExecutable/chatgpt.js"
+      api: "build/libs/chatgpt.jar"
+    prod:
+      script: "build/distributions/chatgpt.js"
+      siteRoot: ".kobweb/site"
+
+  port: 8080
