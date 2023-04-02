@@ -23,10 +23,13 @@ fun PageLayout(title: String, content: @Composable () -> Unit) {
         .fillMaxWidth()
         .minHeight(100.percent)
         // Create a box with two rows: the main content (fills as much space as it can) and the footer (which reserves
-        // space at the bottom). "auto" means the use the height of the row. "1fr" means give the rest of the space to
-        // that row. Since this box is set to *at least* 100%, the footer will always appear at least on the bottom but
-        // can be pushed further down if the first row grows beyond the page.
-        .gridTemplateRows("1fr auto")
+        // space at the bottom). "min-content" means the use the height of the row, which we use for the footer. "1fr"
+        // means give the rest of the space to that row, and "minmax(0, 1fr)" is a CSS trick which essentially means
+        // the same thing but can avoid a measurement issue if you end up nesting additional grids inside of it. (See
+        // also: https://github.com/w3c/csswg-drafts/issues/1777) Since this box is set to *at least* 100%, the footer
+        // will always appear at least on the bottom but can be pushed further down if the first row grows beyond the
+        // page.
+        .gridTemplateRows("minmax(0, 1fr) min-content")
     ) {
         Column(
             modifier = Modifier.fillMaxSize().textAlign(TextAlign.Center),
