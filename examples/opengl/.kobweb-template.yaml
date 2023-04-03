@@ -1,6 +1,3 @@
-# This file should get deleted upon project instantiation, but it may get left
-# behind by legacy kobweb binaries. Feel free to remove it if you're seeing this!
-
 metadata:
   description: "An OpenGL demo based on the Mozilla textured cube tutorial"
 
