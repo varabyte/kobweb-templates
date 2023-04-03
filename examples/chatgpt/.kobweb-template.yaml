@@ -15,7 +15,7 @@ instructions:
 
   - !<QueryVar>
     name: "openaikey"
-    prompt: "Please type or paste (CTRL_SHIFT+V in most terminals) your secret API key"
+    prompt: "Please type or paste (CTRL+SHIFT+V in most terminals) your secret API key"
     validation: "isNotEmpty"
 
   - !<Inform>
