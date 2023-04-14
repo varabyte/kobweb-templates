@@ -26,6 +26,7 @@ kotlin {
     jvmToolchain(11) // Kobweb server should use at least Java 11
     </#if>
 
+    @Suppress("UNUSED_VARIABLE") // Suppress spurious warnings about sourceset variables not being used
     sourceSets {
         val commonMain by getting {
             dependencies {
