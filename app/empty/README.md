@@ -45,7 +45,7 @@ If you want to run this command in the Cloud provider of your choice, consider d
 is sitting around watching the console in that case anyway. To do that, use:
 
 ```bash
-kobweb run --env prod --mode dumb
+kobweb run --env prod --notty
 ```
 
 Kobweb also supports exporting to a static layout which is compatible with static hosting providers, such as GitHub
