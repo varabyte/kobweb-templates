@@ -17,7 +17,7 @@ as well as `inline code` formatting.
 
 Of course, links are supported. For example:
 
-"Use Kobweb to create rich, dynamic web apps with ease, leveraging [Kotlin](https://kotlinlang.org/) and [Compose for Web](https://compose-web.ui.pages.jetbrains.team/)."
+"Use Kobweb to create rich, dynamic web apps with ease, leveraging [Kotlin](https://kotlinlang.org/) and [Compose HTML](https://github.com/JetBrains/compose-multiplatform#compose-html)."
 
 You can also embed HTML code directly inside your page. Here, the following will create a badge that links to the
 Varabyte Discord server:
