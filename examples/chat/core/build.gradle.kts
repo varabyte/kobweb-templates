@@ -14,7 +14,6 @@ kotlin {
     // Even though this module doesn't actually define any server routes itself, 'includeServer = true' allows us to
     // depened on ":core" as a commonMain dependency from other modules, instead of a JS-only dependency.
     configAsKobwebLibrary(includeServer = true)
-    jvmToolchain(11) // Kobweb server should use at least Java 11
 
     @Suppress("UNUSED_VARIABLE") // Suppress spurious warnings about sourceset variables not being used
     sourceSets {

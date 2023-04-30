@@ -19,12 +19,7 @@ kobweb {
 }
 
 kotlin {
-    <#if !useServer?boolean>
-    configAsKobwebApplication("${projectName}")
-    <#else>
-    configAsKobwebApplication("${projectName}", includeServer = true)
-    jvmToolchain(11) // Kobweb server should use at least Java 11
-    </#if>
+    configAsKobwebApplication("${projectName}"<#if useServer?boolean>, includeServer = true</#if>)
 
     @Suppress("UNUSED_VARIABLE") // Suppress spurious warnings about sourceset variables not being used
     sourceSets {

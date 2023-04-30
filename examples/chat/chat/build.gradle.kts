@@ -12,7 +12,6 @@ version = "1.0-SNAPSHOT"
 
 kotlin {
     configAsKobwebLibrary(includeServer = true)
-    jvmToolchain(11) // Kobweb server should use at least Java 11
 
     @Suppress("UNUSED_VARIABLE") // Suppress spurious warnings about sourceset variables not being used
     sourceSets {
