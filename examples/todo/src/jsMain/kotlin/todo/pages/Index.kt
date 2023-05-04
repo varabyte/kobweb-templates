@@ -33,7 +33,7 @@ import todo.components.widgets.TodoForm
 import todo.model.TodoItem
 
 private suspend fun loadAndReplaceTodos(id: String, todos: SnapshotStateList<TodoItem>) {
-    return window.api.get("list?owner=$id")!!.let { listBytes ->
+    return window.api.get("list?owner=$id").let { listBytes ->
         Snapshot.withMutableSnapshot {
             todos.clear()
             todos.addAll(Json.decodeFromString(listBytes.decodeToString()))
@@ -61,7 +61,7 @@ fun HomePage() {
     LaunchedEffect(Unit) {
         check(!ready && loadingCount == 1)
         id = window.localStorage.getItem("id") ?: run {
-            window.api.get("id")!!.decodeToString().also {
+            window.api.get("id").decodeToString().also {
                 window.localStorage.setItem("id", it)
             }
         }

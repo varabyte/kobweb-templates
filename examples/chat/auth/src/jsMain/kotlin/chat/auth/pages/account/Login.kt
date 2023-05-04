@@ -46,7 +46,7 @@ fun LoginPage() {
                 val account = Account(username, password)
                 val accountBytes = Json.encodeToString(account).encodeToByteArray()
                 coroutine.launch {
-                    val response = window.api.post("/account/login", body = accountBytes)!!
+                    val response = window.api.post("/account/login", body = accountBytes)
                         .decodeToString().let { Json.decodeFromString(LoginResponse.serializer(), it) }
 
                     if (response.succeeded) {

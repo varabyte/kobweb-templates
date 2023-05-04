@@ -55,7 +55,7 @@ fun ChatPage() {
         coroutineScope.launch {
             while (true) {
                 val request = FetchRequest(messageEntries.lastOrNull()?.id)
-                messageEntries = messageEntries + window.api.get("/chat/fetchmessages?request=${Json.encodeToString(FetchRequest.serializer(), request)}")!!
+                messageEntries = messageEntries + window.api.get("/chat/fetchmessages?request=${Json.encodeToString(FetchRequest.serializer(), request)}")
                     .decodeToString().let { Json.decodeFromString<FetchResponse>(it) }.messages
                 localMessage = null
                 delay(1000)

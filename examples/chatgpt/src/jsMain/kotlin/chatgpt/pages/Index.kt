@@ -94,7 +94,7 @@ private fun SendMessage(coroutineScope: CoroutineScope, chatId: String, onReques
                 body = JsonSerializer
                     .encodeToString(messageRequest)
                     .encodeToByteArray()
-            )!!
+            )
 
             onResponse(JsonSerializer.decodeFromString<MessageResponse>(response.decodeToString()).text)
         }
@@ -122,7 +122,7 @@ fun HomePage() {
     var chatId by remember { mutableStateOf("") }
 
     coroutineScope.launch {
-        chatId = window.api.get("id")!!.decodeToString()
+        chatId = window.api.get("id").decodeToString()
     }
 
     SimpleGrid(
