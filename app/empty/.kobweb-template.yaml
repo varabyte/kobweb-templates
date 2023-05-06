@@ -1,5 +1,5 @@
 metadata:
-  description: "A template for an empty skeleton to build a Kobweb app upon"
+  description: "A template for building a Kobweb app from an empty skeleton"
   shouldHighlight: true
 
 instructions:
