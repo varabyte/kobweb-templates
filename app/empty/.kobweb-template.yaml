@@ -69,9 +69,13 @@ instructions:
     to: "site/src/jsMain/kotlin/${packagePath}"
     description: "Rearranging site source to conform to the user's package"
   - !<Move>
+    condition: "${useServer}"
     from: "site/src/api/*"
     to: "site/src/jvmMain/kotlin/${packagePath}/api"
     description: "Rearranging API source to conform to the user's package"
+  - !<Delete>
+    files: "site/src/api/*"
+    description: "Removing unused server files (if any)"
   - !<Move>
     from: "site/resources/*"
     to: "site/src/jsMain/resources"
