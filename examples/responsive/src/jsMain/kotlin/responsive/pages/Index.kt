@@ -18,7 +18,7 @@ import responsive.components.layouts.PageLayout
 @Composable
 fun MainPage() {
     PageLayout {
-        val bp by rememberBreakpoint()
+        val bp = rememberBreakpoint()
         val msg = when {
             bp >= Breakpoint.MD -> "This page is currently in desktop mode. Reduce width for mobile mode."
             else -> "This page is currently in mobile mode. Increase width for desktop mode."

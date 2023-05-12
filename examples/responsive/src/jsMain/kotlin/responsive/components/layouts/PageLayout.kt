@@ -8,7 +8,6 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
-import org.jetbrains.compose.web.css.*
 import responsive.components.sections.NavMenuButton
 import responsive.components.sections.NavSideMenu
 
@@ -21,7 +20,7 @@ private fun ContentColumn(modifier: Modifier, content: @Composable () -> Unit) {
 
 @Composable
 fun PageLayout(content: @Composable () -> Unit) {
-    val bp by rememberBreakpoint()
+    val bp = rememberBreakpoint()
     if (bp < Breakpoint.MD) {
         Column(Modifier.fillMaxWidth()) {
             NavMenuButton()

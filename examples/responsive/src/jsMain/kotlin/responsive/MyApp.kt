@@ -8,7 +8,6 @@ import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.SilkApp
 import com.varabyte.kobweb.silk.components.layout.Surface
-import com.varabyte.kobweb.silk.theme.SilkTheme
 import com.varabyte.kobweb.silk.init.registerBaseStyle
 import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.css.vw
