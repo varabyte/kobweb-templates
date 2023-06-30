@@ -36,13 +36,13 @@ kotlin {
                 <#if !useSilk?boolean>// </#if>implementation(libs.kobweb.silk.core)
                 <#if !useSilk?boolean>// </#if>implementation(libs.kobweb.silk.icons.fa)
                 <#if !useMarkdown?boolean>// </#if>implementation(libs.kobwebx.markdown)
-             }
+            }
         }
         <#if useServer?boolean>
         val jvmMain by getting {
             dependencies {
                 implementation(libs.kobweb.api)
-             }
+            }
         }
         </#if>
     }

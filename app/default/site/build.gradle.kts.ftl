@@ -36,13 +36,13 @@ kotlin {
                 implementation(libs.kobweb.silk.core)
                 implementation(libs.kobweb.silk.icons.fa)
                 implementation(libs.kobwebx.markdown)
-             }
+            }
         }
 
         val jvmMain by getting {
             dependencies {
                 implementation(libs.kobweb.api)
-             }
+            }
         }
     }
 }
