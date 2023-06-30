@@ -32,6 +32,7 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import org.jetbrains.compose.web.css.CSSColorValue
+import org.jetbrains.compose.web.css.fr
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Br
@@ -147,7 +148,11 @@ fun HomePage() {
             .minWidth(500.px)
             .height(100.percent)
             .justifyItems(JustifyItems.Center)
-            .gridTemplateRows("min-content minmax(0, 1fr) min-content")
+            .gridTemplateRows {
+                size(minContent).named("title")
+                size(1.fr).named("content")
+                size(minContent).named("chat")
+            }
     ) {
         H1 {
             Text("ChatGPT Demo")

@@ -27,7 +27,7 @@ fun PageLayout(title: String, content: @Composable () -> Unit) {
             // space at the bottom). "min-content" means the use the height of the row, which we use for the footer.
             // Since this box is set to *at least* 100%, the footer will always appear at least on the bottom but can be
             // pushed further down if the first row grows beyond the page.
-            .gridTemplateRows("1fr min-content")
+            .gridTemplateRows { size(1.fr); size(minContent) }
     ) {
         Column(
             modifier = Modifier.fillMaxSize().textAlign(TextAlign.Center),
