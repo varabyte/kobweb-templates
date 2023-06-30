@@ -55,7 +55,14 @@ fun ChatPage() {
         coroutineScope.launch {
             while (true) {
                 val request = FetchRequest(messageEntries.lastOrNull()?.id)
-                messageEntries = messageEntries + window.api.get("/chat/fetchmessages?request=${Json.encodeToString(FetchRequest.serializer(), request)}")
+                messageEntries = messageEntries + window.api.get(
+                    "/chat/fetchmessages?request=${
+                        Json.encodeToString(
+                            FetchRequest.serializer(),
+                            request
+                        )
+                    }"
+                )
                     .decodeToString().let { Json.decodeFromString<FetchResponse>(it) }.messages
                 localMessage = null
                 delay(1000)
@@ -63,7 +70,9 @@ fun ChatPage() {
         }
 
         CenteredColumnContent {
-            Column(ChatBoxStyle.toModifier().height(80.percent).width(G.Ui.Width.Large).fontSize(G.Ui.Text.MediumSmall)) {
+            Column(
+                ChatBoxStyle.toModifier().height(80.percent).width(G.Ui.Width.Large).fontSize(G.Ui.Text.MediumSmall)
+            ) {
                 messageEntries.forEach { entry ->
                     val message = entry.message
                     Text(message.toChatLine())
@@ -81,15 +90,26 @@ fun ChatPage() {
                     localMessage = messageCopy
                     message = ""
                     coroutineScope.launch {
-                        window.api.post("/chat/sendmessage",
+                        window.api.post(
+                            "/chat/sendmessage",
                             body = Json
                                 .encodeToString(Message.serializer(), messageCopy)
                                 .encodeToByteArray()
                         )
                     }
                 }
-                TextInput(message, Modifier.width(70.percent).align(Alignment.BottomStart), ref = { it.focus() }, onCommit = ::sendMessage) { message = it }
-                TextButton("Send", Modifier.width(20.percent).align(Alignment.BottomEnd), enabled = message.isNotBlank(), onClick = ::sendMessage)
+                TextInput(
+                    message,
+                    Modifier.width(70.percent).align(Alignment.BottomStart),
+                    ref = { it.focus() },
+                    onCommit = ::sendMessage
+                ) { message = it }
+                TextButton(
+                    "Send",
+                    Modifier.width(20.percent).align(Alignment.BottomEnd),
+                    enabled = message.isNotBlank(),
+                    onClick = ::sendMessage
+                )
             }
         }
     }

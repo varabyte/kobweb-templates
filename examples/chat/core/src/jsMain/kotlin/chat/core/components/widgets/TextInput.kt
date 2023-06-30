@@ -33,7 +33,13 @@ val TextInputStyle by ComponentStyle.base {
 
 /** A text input box with a descriptive label above it. */
 @Composable
-fun LabeledTextInput(label: String, mask: Boolean = false, ref: ((HTMLInputElement) -> Unit)? = null, onCommit: () -> Unit = {}, onValueChanged: (String) -> Unit) {
+fun LabeledTextInput(
+    label: String,
+    mask: Boolean = false,
+    ref: ((HTMLInputElement) -> Unit)? = null,
+    onCommit: () -> Unit = {},
+    onValueChanged: (String) -> Unit
+) {
     Column {
         SpanText(label, TextInputLabelStyle.toModifier())
         TextInput(mask, ref, onCommit, onValueChanged)
@@ -42,7 +48,12 @@ fun LabeledTextInput(label: String, mask: Boolean = false, ref: ((HTMLInputEleme
 
 /** An uncontrolled text input box. */
 @Composable
-fun TextInput(mask: Boolean = false, ref: ((HTMLInputElement) -> Unit)? = null, onCommit: () -> Unit = {}, onValueChanged: (String) -> Unit) {
+fun TextInput(
+    mask: Boolean = false,
+    ref: ((HTMLInputElement) -> Unit)? = null,
+    onCommit: () -> Unit = {},
+    onValueChanged: (String) -> Unit
+) {
     Input(
         if (mask) InputType.Password else InputType.Text,
         attrs = TextInputStyle.toModifier().toAttrs {
@@ -65,7 +76,14 @@ fun TextInput(mask: Boolean = false, ref: ((HTMLInputElement) -> Unit)? = null, 
 
 /** A controlled text input box. */
 @Composable
-fun TextInput(text: String, modifier: Modifier = Modifier, mask: Boolean = false, ref: ((HTMLInputElement) -> Unit)? = null, onCommit: () -> Unit = {}, onValueChanged: (String) -> Unit) {
+fun TextInput(
+    text: String,
+    modifier: Modifier = Modifier,
+    mask: Boolean = false,
+    ref: ((HTMLInputElement) -> Unit)? = null,
+    onCommit: () -> Unit = {},
+    onValueChanged: (String) -> Unit
+) {
     Input(
         if (mask) InputType.Password else InputType.Text,
         attrs = TextInputStyle.toModifier().then(modifier).toAttrs {

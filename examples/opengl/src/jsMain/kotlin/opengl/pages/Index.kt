@@ -208,12 +208,14 @@ private class Buffers(
             val normalBuffer = gl.createBuffer()!!
             run {
                 val faceNormals = arrayOf(
+                    // @formatter:off
                     arrayOf(0.0f,  0.0f,  1.0f), // Front
                     arrayOf(0.0f,  0.0f, -1.0f), // Back
                     arrayOf(0.0f,  1.0f,  0.0f), // Top
                     arrayOf(0.0f, -1.0f,  0.0f), // Bottom
                     arrayOf(1.0f,  0.0f,  0.0f), // Right
                     arrayOf(-1.0f,  0.0f,  0.0f), // Left
+                    // @formatter:on
                 )
 
                 // Each face has four corners, with identical normals, so duplicate each normal four times
@@ -230,10 +232,10 @@ private class Buffers(
             val textureCoordBuffer = gl.createBuffer()!!
             run {
                 val textureCoordsOneFace = arrayOf(
-                    0.0f,  0.0f,
-                    1.0f,  0.0f,
-                    1.0f,  1.0f,
-                    0.0f,  1.0f,
+                    0.0f, 0.0f,
+                    1.0f, 0.0f,
+                    1.0f, 1.0f,
+                    0.0f, 1.0f,
                 )
                 // Same texture on all 6 faces means same UV coords.
                 val textureCoords = Array(6) { textureCoordsOneFace }
@@ -252,12 +254,14 @@ private class Buffers(
                 // position.
 
                 val indices = arrayOf<Short>(
+                    // @formatter:off
                     0,  1,  2,      0,  2,  3,    // front
                     4,  5,  6,      4,  6,  7,    // back
                     8,  9,  10,     8,  10, 11,   // top
                     12, 13, 14,     12, 14, 15,   // bottom
                     16, 17, 18,     16, 18, 19,   // right
                     20, 21, 22,     20, 22, 23,   // left
+                    // @formatter:on
                 )
 
                 gl.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, indexBuffer)

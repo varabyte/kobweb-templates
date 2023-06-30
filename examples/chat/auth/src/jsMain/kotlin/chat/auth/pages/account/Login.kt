@@ -38,7 +38,7 @@ fun LoginPage() {
             }
 
             fun isValid() = username.isNotEmpty() && username.none { it.isWhitespace() }
-                    && password.isNotEmpty() && password.none { it.isWhitespace() }
+                && password.isNotEmpty() && password.none { it.isWhitespace() }
 
             fun tryLogin() {
                 if (!isValid()) return

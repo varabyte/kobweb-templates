@@ -9,11 +9,13 @@ object G {
             val Human = Colors.AliceBlue
             val Bot = Colors.LightGray
         }
+
         object Width {
             val Small = 200.px
             val Medium = 400.px
             val Large = 600.px
         }
+
         object Text {
             val Small = 18.px
             val MediumSmall = 22.px
@@ -22,4 +24,3 @@ object G {
         }
     }
 }
-

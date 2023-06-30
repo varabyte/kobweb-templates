@@ -7,7 +7,9 @@ import org.jetbrains.compose.web.dom.A
 @Composable
 fun TodoCard(onClick: (() -> Unit)? = null, content: @Composable () -> Unit) {
     val styles = mutableListOf(TodoStyle, TodoContainerStyle, TodoTextStyle)
-    if (onClick != null) { styles.add(TodoClickableStyle) }
+    if (onClick != null) {
+        styles.add(TodoClickableStyle)
+    }
 
     // Use "A" so the item supports a11y (you can tab on it and press enter to click it)
     A(href = "#", attrs = styles.toAttrs {

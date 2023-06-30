@@ -27,7 +27,13 @@ val TextInputStyle by ComponentStyle.base {
 
 /** A controlled text input box. */
 @Composable
-fun TextInput(text: String, modifier: Modifier = Modifier, ref: ((HTMLInputElement) -> Unit)? = null, onCommit: () -> Unit = {}, onValueChanged: (String) -> Unit) {
+fun TextInput(
+    text: String,
+    modifier: Modifier = Modifier,
+    ref: ((HTMLInputElement) -> Unit)? = null,
+    onCommit: () -> Unit = {},
+    onValueChanged: (String) -> Unit
+) {
     Input(
         InputType.Text,
         attrs = TextInputStyle.toModifier().then(modifier).toAttrs {

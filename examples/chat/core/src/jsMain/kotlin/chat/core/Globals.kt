@@ -9,6 +9,7 @@ object G {
             val Medium = 400.px
             val Large = 600.px
         }
+
         object Text {
             val Small = 18.px
             val MediumSmall = 22.px
@@ -17,4 +18,3 @@ object G {
         }
     }
 }
-

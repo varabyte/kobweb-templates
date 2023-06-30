@@ -72,7 +72,12 @@ private fun approximateTokenCountOf(text: String): Int {
     return Regex("""\b\w+\b""").findAll(text).count()
 }
 
-suspend fun sendMessageToChatGpt(json: Json, httpClient: OkHttpClient, message: String, history: List<Message>): ChatResponse? {
+suspend fun sendMessageToChatGpt(
+    json: Json,
+    httpClient: OkHttpClient,
+    message: String,
+    history: List<Message>
+): ChatResponse? {
     var tokenLimit = 4096 - approximateTokenCountOf(message)
     val recentHistory =
         history.reversed().takeWhile {
@@ -81,7 +86,7 @@ suspend fun sendMessageToChatGpt(json: Json, httpClient: OkHttpClient, message: 
             tokenLimit -= tokenCount
             keepGoing
         }
-        .reversed()
+            .reversed()
 
     val request = Request.Builder()
         .url("${CHATGPT_BASE_URL}chat/completions")

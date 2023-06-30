@@ -53,9 +53,15 @@ private fun TextBubble(text: String, color: CSSColorValue, modifier: Modifier = 
 }
 
 @Composable
-private fun History(entries: List<HistoryEntry>, onHistoryChanged: (HTMLElement) -> Unit, modifier: Modifier = Modifier) {
+private fun History(
+    entries: List<HistoryEntry>,
+    onHistoryChanged: (HTMLElement) -> Unit,
+    modifier: Modifier = Modifier
+) {
     var historyElement by remember { mutableStateOf<HTMLElement?>(null) }
-    Column(Modifier.width(500.px).gap(10.px).padding(leftRight = 20.px).then(modifier), ref = ref { historyElement = it }) {
+    Column(
+        Modifier.width(500.px).gap(10.px).padding(leftRight = 20.px).then(modifier),
+        ref = ref { historyElement = it }) {
         entries.forEach { entry ->
             Row(Modifier.align(Alignment.Start).gap(5.px)) {
                 SpanText("\uD83D\uDDE3\uFE0F", Modifier.padding(top = 5.px)) // Person speaking icon
@@ -80,7 +86,12 @@ private fun History(entries: List<HistoryEntry>, onHistoryChanged: (HTMLElement)
 }
 
 @Composable
-private fun SendMessage(coroutineScope: CoroutineScope, chatId: String, onRequest: (String) -> Unit, onResponse: (String) -> Unit) {
+private fun SendMessage(
+    coroutineScope: CoroutineScope,
+    chatId: String,
+    onRequest: (String) -> Unit,
+    onResponse: (String) -> Unit
+) {
     var userText by remember { mutableStateOf("") }
 
     fun sendMessage() {
@@ -109,7 +120,11 @@ private fun SendMessage(coroutineScope: CoroutineScope, chatId: String, onReques
                 it.placeholder = "Send a message to ChatGPT"
             }, onCommit = { sendMessage() }
         ) { userText = it }
-        Button(onClick = { sendMessage() }, Modifier.fillMaxHeight(), enabled = chatId.isNotEmpty() && userText.isNotBlank()) {
+        Button(
+            onClick = { sendMessage() },
+            Modifier.fillMaxHeight(),
+            enabled = chatId.isNotEmpty() && userText.isNotBlank()
+        ) {
             FaPaperPlane(style = IconStyle.FILLED)
         }
     }

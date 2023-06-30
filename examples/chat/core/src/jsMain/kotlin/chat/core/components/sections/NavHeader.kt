@@ -71,7 +71,9 @@ object ExtraNavHeaderAction {
 
     var current: NavHeaderAction?
         get() = mutableActionState.value
-        set(value) { mutableActionState.value = value }
+        set(value) {
+            mutableActionState.value = value
+        }
 }
 
 @Composable

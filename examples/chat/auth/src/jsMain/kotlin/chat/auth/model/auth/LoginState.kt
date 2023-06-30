@@ -30,6 +30,7 @@ sealed class LoginState {
                             }
                         }
                     }
+
                     LoggedOut -> {
                         ExtraNavHeaderAction.current = null
                     }

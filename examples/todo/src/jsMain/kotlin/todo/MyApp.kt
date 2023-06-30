@@ -18,9 +18,9 @@ val BORDER_COLOR = Color.rgb(0xea, 0xea, 0xea)
 fun initSiteStyles(ctx: InitSilkContext) = ctx.stylesheet.apply {
     registerBaseStyle("body") {
         Modifier.fontFamily(
-                "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-                "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "sans-serif"
-            )
+            "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+            "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "sans-serif"
+        )
     }
 
     registerBaseStyle("footer") {
