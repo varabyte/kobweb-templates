@@ -19,6 +19,7 @@ kotlin {
             dependencies {
                 implementation(compose.runtime)
                 implementation(libs.kotlinx.serialization.json)
+                implementation(libs.kobweb.streams)
                 implementation(project(":core"))
                 implementation(project(":auth"))
             }

@@ -1,6 +1,6 @@
 [versions]
 jetbrains-compose = "1.4.1"
-kobweb = "0.13.8"
+kobweb = "0.13.9-SNAPSHOT"
 kotlin = "1.8.20"
 kotlinx-serialization-json = "1.4.1"
 
@@ -9,6 +9,7 @@ kobweb-api = { module = "com.varabyte.kobweb:kobweb-api", version.ref = "kobweb"
 kobweb-core = { module = "com.varabyte.kobweb:kobweb-core", version.ref = "kobweb" }
 kobweb-silk-core = { module = "com.varabyte.kobweb:kobweb-silk", version.ref = "kobweb" }
 kobweb-silk-icons-fa = { module = "com.varabyte.kobweb:kobweb-silk-icons-fa", version.ref = "kobweb" }
+kobweb-streams = { module = "com.varabyte.kobweb:kobweb-streams", version.ref = "kobweb" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
 
 [plugins]

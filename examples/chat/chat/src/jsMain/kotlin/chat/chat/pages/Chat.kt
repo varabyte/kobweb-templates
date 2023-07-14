@@ -1,7 +1,14 @@
 package chat.chat.pages
 
 import androidx.compose.runtime.*
-import com.varabyte.kobweb.browser.api
+import chat.auth.components.sections.LoggedOutMessage
+import chat.auth.model.auth.LoginState
+import chat.chat.model.Message
+import chat.core.G
+import chat.core.components.layouts.PageLayout
+import chat.core.components.sections.CenteredColumnContent
+import chat.core.components.widgets.TextButton
+import chat.core.components.widgets.TextInput
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -9,25 +16,18 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.core.Page
-import com.varabyte.kobweb.silk.components.style.*
-import kotlinx.browser.window
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.varabyte.kobweb.silk.components.style.ComponentStyle
+import com.varabyte.kobweb.silk.components.style.base
+import com.varabyte.kobweb.silk.components.style.toModifier
+import com.varabyte.kobweb.streams.ApiStream
 import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import chat.auth.components.sections.LoggedOutMessage
-import chat.auth.model.auth.LoginState
-import chat.chat.model.FetchRequest
-import chat.chat.model.FetchResponse
-import chat.chat.model.Message
-import chat.chat.model.MessageEntry
-import chat.core.G
-import chat.core.components.layouts.PageLayout
-import chat.core.components.sections.CenteredColumnContent
-import chat.core.components.widgets.TextButton
-import chat.core.components.widgets.TextInput
-import org.jetbrains.compose.web.css.*
-import org.jetbrains.compose.web.dom.*
+import org.jetbrains.compose.web.css.LineStyle
+import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.dom.Br
+import org.jetbrains.compose.web.dom.Text
 
 val ChatBoxStyle by ComponentStyle.base {
     Modifier
@@ -48,24 +48,11 @@ fun ChatPage() {
             return@PageLayout
         }
 
-        var messageEntries by remember { mutableStateOf(listOf<MessageEntry>()) }
-        var localMessage by remember { mutableStateOf<Message?>(null) }
-        val coroutineScope = rememberCoroutineScope()
-
-        coroutineScope.launch {
-            while (true) {
-                val request = FetchRequest(messageEntries.lastOrNull()?.id)
-                messageEntries = messageEntries + window.api.get(
-                    "/chat/fetchmessages?request=${
-                        Json.encodeToString(
-                            FetchRequest.serializer(),
-                            request
-                        )
-                    }"
-                )
-                    .decodeToString().let { Json.decodeFromString<FetchResponse>(it) }.messages
-                localMessage = null
-                delay(1000)
+        val messages = remember { mutableStateListOf<Message>() }
+        val chatStream = remember { ApiStream("chat") }
+        LaunchedEffect(Unit) {
+            chatStream.connect { text ->
+                messages.add(Json.decodeFromString<Message>(text))
             }
         }
 
@@ -73,13 +60,9 @@ fun ChatPage() {
             Column(
                 ChatBoxStyle.toModifier().height(80.percent).width(G.Ui.Width.Large).fontSize(G.Ui.Text.MediumSmall)
             ) {
-                messageEntries.forEach { entry ->
-                    val message = entry.message
-                    Text(message.toChatLine())
+                messages.forEach { entry ->
+                    Text(entry.toChatLine())
                     Br()
-                }
-                localMessage?.let { localMessage ->
-                    Text(localMessage.toChatLine())
                 }
             }
             Box(Modifier.width(G.Ui.Width.Large).height(60.px)) {
@@ -87,16 +70,9 @@ fun ChatPage() {
 
                 fun sendMessage() {
                     val messageCopy = Message(account.username, message.trim())
-                    localMessage = messageCopy
+                    messages.add(messageCopy)
                     message = ""
-                    coroutineScope.launch {
-                        window.api.post(
-                            "/chat/sendmessage",
-                            body = Json
-                                .encodeToString(Message.serializer(), messageCopy)
-                                .encodeToByteArray()
-                        )
-                    }
+                    chatStream.send(Json.encodeToString<Message>(messageCopy))
                 }
                 TextInput(
                     message,
