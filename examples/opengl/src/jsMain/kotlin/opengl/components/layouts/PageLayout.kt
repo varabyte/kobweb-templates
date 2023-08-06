@@ -12,7 +12,7 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaSun
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.theme.SilkTheme
-import com.varabyte.kobweb.silk.theme.colors.rememberColorMode
+import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import org.jetbrains.compose.web.css.*
 
 @Composable
@@ -23,9 +23,9 @@ fun PageLayout(content: @Composable BoxScope.() -> Unit) {
     ) {
         Column(Modifier.fillMaxSize()) {
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                var colorMode by rememberColorMode()
+                var colorMode by ColorMode.currentState
                 Button(
-                    onClick = { colorMode = colorMode.opposite() },
+                    onClick = { colorMode = colorMode.opposite },
                     Modifier
                         .margin(10.px)
                         .padding(0.px)
@@ -33,7 +33,7 @@ fun PageLayout(content: @Composable BoxScope.() -> Unit) {
                         .fontSize(24.px)
                 ) {
                     Box(Modifier.margin(4.px)) {
-                        if (colorMode.isLight()) FaSun() else FaMoon()
+                        if (colorMode.isLight) FaSun() else FaMoon()
                     }
                 }
             }

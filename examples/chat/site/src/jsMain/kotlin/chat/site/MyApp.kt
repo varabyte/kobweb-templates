@@ -11,7 +11,6 @@ import com.varabyte.kobweb.silk.components.layout.Surface
 import com.varabyte.kobweb.silk.components.style.common.SmoothColorStyle
 import com.varabyte.kobweb.silk.components.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
-import com.varabyte.kobweb.silk.theme.colors.getColorMode
 import com.varabyte.kobweb.silk.init.registerBaseStyle
 import kotlinx.browser.localStorage
 import org.jetbrains.compose.web.css.vh
@@ -39,7 +38,7 @@ fun registerGlobalStyles(ctx: InitSilkContext) = ctx.stylesheet.apply {
 @Composable
 fun MyApp(content: @Composable () -> Unit) {
     SilkApp {
-        val colorMode = getColorMode()
+        val colorMode = ColorMode.current
         LaunchedEffect(colorMode) {
             localStorage.setItem(COLOR_MODE_KEY, colorMode.name)
         }

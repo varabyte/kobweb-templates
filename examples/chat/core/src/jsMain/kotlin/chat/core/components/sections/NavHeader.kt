@@ -19,7 +19,6 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaSun
 import com.varabyte.kobweb.silk.components.style.*
 import com.varabyte.kobweb.silk.components.style.common.SmoothColorStyle
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
-import com.varabyte.kobweb.silk.theme.colors.rememberColorMode
 import com.varabyte.kobweb.silk.theme.toSilkPalette
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
@@ -79,7 +78,7 @@ object ExtraNavHeaderAction {
 @Composable
 fun NavHeader() {
     val ctx = rememberPageContext()
-    var colorMode by rememberColorMode()
+    var colorMode by ColorMode.currentState
     Box(NavHeaderStyle.toModifier()) {
         Row(
             Modifier.fillMaxSize(),
@@ -96,7 +95,7 @@ fun NavHeader() {
                 }
             }
 
-            NavButton(onClick = { colorMode = colorMode.opposite() }) {
+            NavButton(onClick = { colorMode = colorMode.opposite }) {
                 when (colorMode) {
                     ColorMode.LIGHT -> FaMoon()
                     ColorMode.DARK -> FaSun()

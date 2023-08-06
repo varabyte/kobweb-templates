@@ -18,7 +18,6 @@ import com.varabyte.kobweb.silk.components.overlay.Tooltip
 import com.varabyte.kobweb.silk.components.style.*
 import com.varabyte.kobweb.silk.components.style.common.SmoothColorStyle
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
-import com.varabyte.kobweb.silk.theme.colors.rememberColorMode
 import com.varabyte.kobweb.silk.theme.toSilkPalette
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
@@ -52,7 +51,7 @@ private fun NavLink(path: String, text: String) {
 
 @Composable
 fun NavHeader() {
-    var colorMode by rememberColorMode()
+    var colorMode by ColorMode.currentState
     Box(NavHeaderStyle.toModifier()) {
         Row(
             Modifier.fillMaxSize(),
@@ -64,7 +63,7 @@ fun NavHeader() {
             Spacer()
 
             Button(
-                onClick = { colorMode = colorMode.opposite() },
+                onClick = { colorMode = colorMode.opposite },
                 NavItemStyle.toModifier(NavButtonVariant)
             ) {
                 Box(Modifier.margin(8.px)) {
