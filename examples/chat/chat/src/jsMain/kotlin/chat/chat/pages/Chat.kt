@@ -20,6 +20,7 @@ import com.varabyte.kobweb.silk.components.style.ComponentStyle
 import com.varabyte.kobweb.silk.components.style.base
 import com.varabyte.kobweb.silk.components.style.toModifier
 import com.varabyte.kobweb.streams.ApiStream
+import com.varabyte.kobweb.streams.connect
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -51,8 +52,8 @@ fun ChatPage() {
         val messages = remember { mutableStateListOf<Message>() }
         val chatStream = remember { ApiStream("chat") }
         LaunchedEffect(Unit) {
-            chatStream.connect { text ->
-                messages.add(Json.decodeFromString<Message>(text))
+            chatStream.connect { ctx ->
+                messages.add(Json.decodeFromString<Message>(ctx.text))
             }
         }
 
