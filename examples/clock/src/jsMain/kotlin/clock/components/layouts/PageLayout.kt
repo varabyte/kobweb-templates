@@ -63,7 +63,7 @@ fun PageLayout(content: @Composable BoxScope.() -> Unit) {
                     "https://github.com/varabyte/kobweb",
                     "Kobweb",
                 )
-                SpanText(", a full-stack Kotlin framework.")
+                SpanText(", a full-stack Kotlin web framework.")
             }
         }
     }
