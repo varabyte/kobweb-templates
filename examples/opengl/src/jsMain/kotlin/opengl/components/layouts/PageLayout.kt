@@ -26,15 +26,9 @@ fun PageLayout(content: @Composable BoxScope.() -> Unit) {
                 var colorMode by ColorMode.currentState
                 Button(
                     onClick = { colorMode = colorMode.opposite },
-                    Modifier
-                        .margin(10.px)
-                        .padding(0.px)
-                        .borderRadius(50.percent)
-                        .fontSize(24.px)
+                    Modifier.margin(10.px).padding(0.px).borderRadius(50.percent)
                 ) {
-                    Box(Modifier.margin(4.px)) {
-                        if (colorMode.isLight) FaSun() else FaMoon()
-                    }
+                    if (colorMode.isLight) FaSun() else FaMoon()
                 }
             }
             Box(Modifier.fillMaxSize()) {

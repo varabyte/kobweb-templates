@@ -2,7 +2,6 @@ package chatgpt.pages
 
 import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshots.Snapshot
-import chat.core.components.widgets.TextInput
 import chatgpt.G
 import chatgpt.components.widgets.LoadingSpinner
 import chatgpt.model.MessageRequest
@@ -18,9 +17,9 @@ import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.silk.components.forms.Button
+import com.varabyte.kobweb.silk.components.forms.TextInput
 import com.varabyte.kobweb.silk.components.icons.fa.FaPaperPlane
 import com.varabyte.kobweb.silk.components.icons.fa.IconStyle
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
@@ -113,14 +112,17 @@ private fun SendMessage(
     }
 
     Row(Modifier.fillMaxWidth(95.percent).height(40.px).gap(10.px).margin(20.px)) {
-        TextInput(userText,
-            Modifier.fillMaxSize().fontSize(G.Ui.Text.Small).padding(5.px)
-                .thenIf(chatId.isEmpty(), Modifier.disabled()),
-            ref = {
+        TextInput(
+            userText,
+            { userText = it },
+            Modifier.fillMaxSize(),
+            enabled = chatId.isNotEmpty(),
+            placeholder = "Send a message to ChatGPT",
+            ref = ref {
                 it.focus()
                 it.placeholder = "Send a message to ChatGPT"
             }, onCommit = { sendMessage() }
-        ) { userText = it }
+        )
         Button(
             onClick = { sendMessage() },
             Modifier.fillMaxHeight(),
@@ -149,9 +151,9 @@ fun HomePage() {
             .height(100.percent)
             .justifyItems(JustifyItems.Center)
             .gridTemplateRows {
-                size(minContent).named("title")
-                size(1.fr).named("content")
-                size(minContent).named("chat")
+                lineNames("title"); size(minContent)
+                lineNames("content"); size(1.fr)
+                lineNames("chat"); size(minContent)
             }
     ) {
         H1 {
@@ -162,7 +164,6 @@ fun HomePage() {
         History(
             historyEntries,
             onHistoryChanged = { historyElement ->
-                println("HERE?")
                 historyElement.scrollTop = historyElement.scrollHeight.toDouble()
             },
             Modifier.minHeight(200.px).overflowY(Overflow.Auto)

@@ -8,14 +8,15 @@ import chat.core.G
 import chat.core.components.layouts.PageLayout
 import chat.core.components.sections.CenteredColumnContent
 import chat.core.components.widgets.TextButton
-import chat.core.components.widgets.TextInput
 import com.varabyte.kobweb.compose.css.Overflow
+import com.varabyte.kobweb.compose.dom.ref
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.core.Page
+import com.varabyte.kobweb.silk.components.forms.TextInput
 import com.varabyte.kobweb.silk.components.style.ComponentStyle
 import com.varabyte.kobweb.silk.components.style.base
 import com.varabyte.kobweb.silk.components.style.toModifier
@@ -77,10 +78,11 @@ fun ChatPage() {
                 }
                 TextInput(
                     message,
+                    { message = it },
                     Modifier.width(70.percent).align(Alignment.BottomStart),
-                    ref = { it.focus() },
+                    ref = ref { it.focus() },
                     onCommit = ::sendMessage
-                ) { message = it }
+                )
                 TextButton(
                     "Send",
                     Modifier.width(20.percent).align(Alignment.BottomEnd),

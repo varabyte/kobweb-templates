@@ -17,8 +17,9 @@ import chat.auth.model.auth.LoginState
 import chat.core.components.layouts.PageLayout
 import chat.core.components.sections.CenteredColumnContent
 import chat.core.components.widgets.TextButton
-import chat.core.components.widgets.LabeledTextInput
+import chat.core.components.widgets.TitledTextInput
 import chat.core.styles.ErrorTextStyle
+import com.varabyte.kobweb.compose.dom.ref
 
 @Page
 @Composable
@@ -58,8 +59,20 @@ fun LoginPage() {
                 }
             }
 
-            LabeledTextInput("Username", ref = { it.focus() }, onCommit = ::tryLogin) { errorText = ""; username = it }
-            LabeledTextInput("Password", mask = true, onCommit = ::tryLogin) { errorText = ""; password = it }
+            TitledTextInput(
+                "Username",
+                username,
+                { errorText = ""; username = it },
+                ref = ref { it.focus() },
+                onCommit = ::tryLogin
+            )
+            TitledTextInput(
+                "Password",
+                password,
+                { errorText = ""; password = it },
+                masked = true,
+                onCommit = ::tryLogin
+            )
 
             TextButton("Login", enabled = isValid(), onClick = ::tryLogin)
 

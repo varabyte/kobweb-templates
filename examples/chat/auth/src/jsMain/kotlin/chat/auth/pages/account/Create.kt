@@ -16,9 +16,10 @@ import chat.auth.model.auth.CreateAccountResponse
 import chat.auth.model.auth.LoginState
 import chat.core.components.layouts.PageLayout
 import chat.core.components.sections.CenteredColumnContent
-import chat.core.components.widgets.LabeledTextInput
+import chat.core.components.widgets.TitledTextInput
 import chat.core.components.widgets.TextButton
 import chat.core.styles.ErrorTextStyle
+import com.varabyte.kobweb.compose.dom.ref
 
 @Page
 @Composable
@@ -59,9 +60,27 @@ fun CreateAccountPage() {
                 }
             }
 
-            LabeledTextInput("Username", ref = { it.focus() }, onCommit = ::tryCreate) { errorText = ""; username = it }
-            LabeledTextInput("Password", mask = true, onCommit = ::tryCreate) { errorText = ""; password1 = it }
-            LabeledTextInput("Confirm Password", mask = true, onCommit = ::tryCreate) { errorText = ""; password2 = it }
+            TitledTextInput(
+                "Username",
+                username,
+                { errorText = ""; username = it },
+                ref = ref { it.focus() },
+                onCommit = ::tryCreate
+            )
+            TitledTextInput(
+                "Password",
+                password1,
+                { errorText = ""; password1 = it },
+                masked = true,
+                onCommit = ::tryCreate
+            )
+            TitledTextInput(
+                "Confirm Password",
+                password2,
+                { errorText = ""; password2 = it },
+                masked = true,
+                onCommit = ::tryCreate
+            )
 
             TextButton("Create Account", enabled = isValid(), onClick = ::tryCreate)
 
