@@ -3,7 +3,6 @@ package chat.core.components.sections
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.foundation.layout.Box
-import com.varabyte.kobweb.compose.foundation.layout.BoxScope
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.foundation.layout.Spacer
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -49,18 +48,13 @@ val NavButtonStyle by ComponentStyle.base {
 }
 
 @Composable
-private fun NavButton(onClick: () -> Unit, content: @Composable BoxScope.() -> Unit) {
-    Button(onClick = { onClick() }, NavButtonStyle.toModifier(), content = content)
+private fun NavButton(onClick: () -> Unit, content: @Composable () -> Unit) {
+    Button(onClick = { onClick() }, NavButtonStyle.toModifier(), content = { content() })
 }
 
 abstract class NavHeaderAction {
     @Composable
-    fun renderActionInto(scope: BoxScope) {
-        scope.renderAction()
-    }
-
-    @Composable
-    protected abstract fun BoxScope.renderAction()
+    abstract fun render()
 
     abstract fun onActionClicked(router: Router)
 }
@@ -91,7 +85,7 @@ fun NavHeader() {
             val router = rememberPageContext().router
             ExtraNavHeaderAction.current?.let { extraAction ->
                 NavButton(onClick = { extraAction.onActionClicked(router) }) {
-                    extraAction.renderActionInto(this)
+                    extraAction.render()
                 }
             }
 

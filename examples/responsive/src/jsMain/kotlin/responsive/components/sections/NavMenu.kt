@@ -20,9 +20,7 @@ import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 
 val NavMenuButtonStyle by ComponentStyle.base {
-    Modifier
-        .margin(5.px)
-        .padding(5.px)
+    Modifier.margin(5.px).padding(0.px)
 }
 
 val NavMenuStyle by ComponentStyle {
@@ -67,20 +65,18 @@ private fun NavMenuItems(modifier: Modifier = Modifier) {
 @Composable
 fun NavMenuButton() {
     var isMenuShown by remember { mutableStateOf(false) }
-    Column {
-        Button(onClick = { isMenuShown = true }, NavMenuButtonStyle.toModifier()) {
-            FaBars()
-        }
+    Button(onClick = { isMenuShown = true }, NavMenuButtonStyle.toModifier()) {
+        FaBars()
+    }
 
-        if (isMenuShown) {
-            Div(Modifier
-                .position(Position.Absolute)
-                .fillMaxSize()
-                .onClick { isMenuShown = false }
-                .toAttrs()
-            ) {
-                NavMenuItems(Modifier.fillMaxWidth().position(Position.Relative).top(35.px))
-            }
+    if (isMenuShown) {
+        Div(Modifier
+            .position(Position.Absolute)
+            .fillMaxSize()
+            .onClick { isMenuShown = false }
+            .toAttrs()
+        ) {
+            NavMenuItems(Modifier.fillMaxWidth().position(Position.Relative).top(50.px))
         }
     }
 }

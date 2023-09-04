@@ -1,7 +1,6 @@
 package chat.auth.model.auth
 
 import androidx.compose.runtime.*
-import com.varabyte.kobweb.compose.foundation.layout.BoxScope
 import com.varabyte.kobweb.navigation.Router
 import com.varabyte.kobweb.silk.components.icons.fa.FaRightFromBracket
 import chat.core.components.sections.ExtraNavHeaderAction
@@ -20,7 +19,7 @@ sealed class LoginState {
                     is LoggedIn -> {
                         ExtraNavHeaderAction.current = object : NavHeaderAction() {
                             @Composable
-                            override fun BoxScope.renderAction() {
+                            override fun render() {
                                 FaRightFromBracket()
                             }
 

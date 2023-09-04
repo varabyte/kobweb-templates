@@ -65,7 +65,7 @@ val TodoClickableStyle by ComponentStyle {
         Modifier
             .color(INTERACT_COLOR)
             .cursor(Cursor.Pointer)
-            .borderColor(INTERACT_COLOR)
+            .border { color(INTERACT_COLOR) }
             .textDecorationLine(TextDecorationLine.LineThrough)
     }
 }

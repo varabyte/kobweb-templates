@@ -35,8 +35,8 @@ val ChatBoxStyle by ComponentStyle.base {
     Modifier
         .padding(5.px)
         .borderRadius(5.px)
-        .borderStyle(LineStyle.Solid)
-        .overflowY(Overflow.Auto)
+        .border { style(LineStyle.Solid) }
+        .overflow { y(Overflow.Auto) }
 }
 
 private fun Message.toChatLine() = "${this.username}: ${this.text}"
