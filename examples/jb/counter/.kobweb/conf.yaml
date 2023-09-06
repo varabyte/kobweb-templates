@@ -5,9 +5,9 @@ server:
   files:
     dev:
       contentRoot: "build/processedResources/js/main/public"
-      script: "build/developmentExecutable/counter.js"
+      script: "build/dist/js/developmentExecutable/counter.js"
     prod:
-      script: "build/distributions/counter.js"
+      script: "build/dist/js/productionExecutable/counter.js"
       siteRoot: ".kobweb/site"
 
   port: 8080

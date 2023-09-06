@@ -5,10 +5,10 @@ server:
   files:
     dev:
       contentRoot: "build/processedResources/js/main/public"
-      script: "build/developmentExecutable/${projectName}.js"
+      script: "build/dist/js/developmentExecutable/${projectName}.js"
       api: "build/libs/${projectName}.jar"
     prod:
-      script: "build/distributions/${projectName}.js"
+      script: "build/dist/js/productionExecutable/${projectName}.js"
       siteRoot: ".kobweb/site"
 
   port: 8080
