@@ -24,6 +24,7 @@ kotlin {
         val jsMain by getting {
             dependencies {
                 implementation(compose.runtime)
+                implementation(compose.html.core)
                 implementation(libs.kobweb.core)
             }
         }
