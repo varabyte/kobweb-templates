@@ -1,0 +1,82 @@
+metadata:
+  description: "A template for creating a Kobweb library skeleton"
+  shouldHighlight: true
+
+instructions:
+  # Note: Kobweb provides a "projectFolder" variable for us already
+
+  - !<DefineVar>
+    name: "projectName"
+    value: "${fileToPackage(projectFolder)}"
+  - !<Inform>
+    message: "Note: The group ID should uniquely identify your project and organization."
+  - !<Inform>
+    message: "'io.github.(username).(projectname)' can work for a hobby project."
+  - !<QueryVar>
+    name: "groupId"
+    prompt: "What is the group ID for your project?"
+    default: "org.example.${projectName}"
+    validation: "isPackage"
+  # Overwrite projectName, since the user's group ID should be a more accurate source
+  # of what the user wants their project name to be than the initial folder.
+  - !<DefineVar>
+    name: "projectName"
+    value: "${groupId?keep_after_last(\".\")}"
+  # Copy "groupId" as "package" -- it reads better in some cases.
+  - !<DefineVar>
+    name: "package"
+    value: "${groupId}"
+
+  - !<Inform>
+    message: "To learn more: https://github.com/varabyte/kobweb#silk"
+  - !<QueryVar>
+    name: "useSilk"
+    prompt: "Would you like to use Silk, Kobweb's powerful UI layer built on top of Compose for Web?"
+    default: "yes"
+    validation: "isYesNo"
+    transform: "${yesNoToBool(value)}"
+
+  - !<Inform>
+    message: "To learn more: https://github.com/varabyte/kobweb#define-api-routes"
+  - !<QueryVar>
+    name: "useServer"
+    prompt: "Would you like to include support for defining backend logic, such as API routes and API streams?"
+    default: "no"
+    validation: "isYesNo"
+    transform: "${yesNoToBool(value)}"
+
+  - !<Inform>
+    message: "To learn more: https://github.com/varabyte/kobweb#markdown"
+  - !<QueryVar>
+    name: "useMarkdown"
+    prompt: "Would you like to include support for Markdown files?"
+    default: "no"
+    validation: "isYesNo"
+    transform: "${yesNoToBool(value)}"
+
+  - !<ProcessFreemarker>
+
+  - !<DefineVar>
+    name: "packagePath"
+    value: "${packageToPath(package)}"
+  - !<Move>
+    from: "sitelib/build.gradle.kts"
+    to: "${projectName}"
+    description: "Copying build script"
+  - !<Move>
+    from: "sitelib/src/sitelib/*"
+    to: "${projectName}/src/jsMain/kotlin/${packagePath}"
+    description: "Rearranging frontend source to conform to the user's package"
+  - !<Move>
+    condition: "${useServer}"
+    from: "sitelib/src/api/*"
+    to: "${projectName}/src/jvmMain/kotlin/${packagePath}/api"
+    description: "Rearranging backend source to conform to the user's package"
+  - !<Delete>
+    files: "sitelib/src/api/*"
+    description: "Removing unused server files (if any)"
+  - !<Move>
+    from: "sitelib/resources/*"
+    to: "${projectName}/src/jsMain/resources"
+    description: "Rearranging resources"
+
