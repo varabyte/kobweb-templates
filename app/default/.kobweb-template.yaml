@@ -25,9 +25,11 @@ instructions:
     validation: "isPackage"
   # Overwrite projectName, since the user's group ID should be a more accurate indication
   # of what the user wants their project name to be than the initial folder.
+  # Note: the "ensure_starts_with" is kind of a hack, to prevent a crash if someone didn't
+  # put ANY .'s in their group.
   - !<DefineVar>
     name: "projectName"
-    value: "${groupId?keep_after_last(\".\")}"
+    value: "${groupId?ensure_starts_with(\".\")?keep_after_last(\".\")}"
   # Copy "groupId" as "package" -- it reads better in some cases.
   - !<DefineVar>
     name: "package"
