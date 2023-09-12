@@ -14,7 +14,7 @@ import com.varabyte.kobweb.silk.components.style.toModifier
 import org.jetbrains.compose.web.css.*
 
 @InitSilk
-fun updateTheme(ctx: InitSilkContext) {
+fun initSilk(ctx: InitSilkContext) {
     // Configure silk here
 }
 
