@@ -18,7 +18,9 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaSun
 import com.varabyte.kobweb.silk.components.style.*
 import com.varabyte.kobweb.silk.components.style.common.SmoothColorStyle
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
-import com.varabyte.kobweb.silk.theme.toSilkPalette
+import com.varabyte.kobweb.silk.theme.colors.palette.background
+import com.varabyte.kobweb.silk.theme.colors.palette.color
+import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 
@@ -28,7 +30,7 @@ val NavHeaderStyle by ComponentStyle.base(extraModifiers = { SmoothColorStyle.to
         .height(60.px)
         .padding(leftRight = 10.px, topBottom = 5.px)
         // Intentionally invert the header colors from the rest of the page
-        .backgroundColor(colorMode.toSilkPalette().color)
+        .backgroundColor(colorMode.toPalette().color)
 }
 
 val TitleStyle by ComponentStyle.base {
@@ -36,7 +38,7 @@ val TitleStyle by ComponentStyle.base {
         .fontSize(26.px)
         .fontWeight(FontWeight.Bold)
         // Intentionally invert the header colors from the rest of the page
-        .color(colorMode.toSilkPalette().background)
+        .color(colorMode.toPalette().background)
 }
 
 val NavButtonStyle by ComponentStyle.base {

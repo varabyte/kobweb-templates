@@ -166,7 +166,7 @@ fun HomePage() {
             onHistoryChanged = { historyElement ->
                 historyElement.scrollTop = historyElement.scrollHeight.toDouble()
             },
-            Modifier.minHeight(200.px).overflowY(Overflow.Auto)
+            Modifier.minHeight(200.px).overflow { y(Overflow.Auto) }
         )
 
         if (chatId.isNotEmpty()) {

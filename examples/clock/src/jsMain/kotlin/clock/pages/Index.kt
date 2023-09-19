@@ -9,7 +9,7 @@ import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.silk.components.graphics.Canvas2d
 import com.varabyte.kobweb.silk.components.graphics.ONE_FRAME_MS_60_FPS
-import com.varabyte.kobweb.silk.theme.toSilkPalette
+import com.varabyte.kobweb.silk.theme.colors.palette.*
 import org.w3c.dom.CanvasLineCap
 import org.w3c.dom.CanvasState
 import org.w3c.dom.ROUND
@@ -32,7 +32,7 @@ private fun BoxScope.Clock() {
         val r = 200.0
 
         // Just choose various colors from the palette for quick color-mode aware visual difference
-        val palette = colorMode.toSilkPalette()
+        val palette = colorMode.toPalette()
         val colorBorder = palette.button.pressed
         val colorTicks = palette.color
         val colorHourHand = palette.link.default

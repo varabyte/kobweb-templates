@@ -7,7 +7,8 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.silk.components.graphics.CanvasGl
 import com.varabyte.kobweb.silk.components.graphics.ONE_FRAME_MS_60_FPS
-import com.varabyte.kobweb.silk.theme.toSilkPalette
+import com.varabyte.kobweb.silk.theme.colors.palette.background
+import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import opengl.bindings.glMatrix.mat4
 import opengl.bindings.toReadonlyVec3
 import opengl.components.layouts.PageLayout
@@ -360,7 +361,7 @@ private fun BoxScope.OpenGlScene() {
             sceneState.rotateRad += (elapsedMs / 1000.0)
             val rotateRad = sceneState.rotateRad
 
-            val clearColor = colorMode.toSilkPalette().background.toRgb()
+            val clearColor = colorMode.toPalette().background.toRgb()
             gl.clearColor(clearColor.redf, clearColor.greenf, clearColor.bluef, 1.0f)
             gl.clearDepth(1.0f)
             gl.enable(GL.DEPTH_TEST)

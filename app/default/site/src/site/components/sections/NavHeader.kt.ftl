@@ -18,7 +18,9 @@ import com.varabyte.kobweb.silk.components.overlay.Tooltip
 import com.varabyte.kobweb.silk.components.style.*
 import com.varabyte.kobweb.silk.components.style.common.SmoothColorStyle
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
-import com.varabyte.kobweb.silk.theme.toSilkPalette
+import com.varabyte.kobweb.silk.theme.colors.palette.background
+import com.varabyte.kobweb.silk.theme.colors.palette.color
+import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
@@ -27,12 +29,12 @@ val NavHeaderStyle by ComponentStyle.base(extraModifiers = { SmoothColorStyle.to
         .fillMaxWidth()
         .height(50.px)
         // Intentionally invert the header colors from the rest of the page
-        .backgroundColor(colorMode.toSilkPalette().color)
+        .backgroundColor(colorMode.toPalette().color)
 }
 
 val NavItemStyle by ComponentStyle {
     // Intentionally invert the header colors from the rest of the page
-    val linkColor = colorMode.toSilkPalette().background
+    val linkColor = colorMode.toPalette().background
 
     base { Modifier.margin(leftRight = 15.px) }
 

@@ -24,7 +24,7 @@ kotlin {
             dependencies {
                 implementation(compose.html.core)
                 implementation(libs.kobweb.core)
-                <#if !useSilk?boolean>// </#if>implementation(libs.kobweb.silk.core)
+                <#if !useSilk?boolean>// </#if>implementation(libs.kobweb.silk)
                 <#if !useMarkdown?boolean>// </#if>implementation(libs.kobwebx.markdown)
             }
         }
