@@ -8,13 +8,13 @@ import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.SilkApp
 import com.varabyte.kobweb.silk.components.layout.Surface
-import com.varabyte.kobweb.silk.init.registerBaseStyle
+import com.varabyte.kobweb.silk.init.registerStyleBase
 import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.css.vw
 
 @InitSilk
 fun registerGlobalStyles(ctx: InitSilkContext) = ctx.stylesheet.apply {
-    registerBaseStyle("body") {
+    registerStyleBase("body") {
         Modifier
             .fontFamily(
                 "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",

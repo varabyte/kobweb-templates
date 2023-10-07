@@ -11,7 +11,7 @@ import com.varabyte.kobweb.silk.components.layout.Surface
 import com.varabyte.kobweb.silk.components.style.common.SmoothColorStyle
 import com.varabyte.kobweb.silk.components.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
-import com.varabyte.kobweb.silk.init.registerBaseStyle
+import com.varabyte.kobweb.silk.init.registerStyleBase
 import kotlinx.browser.localStorage
 import org.jetbrains.compose.web.css.vh
 
@@ -24,7 +24,7 @@ fun updateTheme(ctx: InitSilkContext) {
 
 @InitSilk
 fun registerGlobalStyles(ctx: InitSilkContext) = ctx.stylesheet.apply {
-    registerBaseStyle("body") {
+    registerStyleBase("body") {
         Modifier
             .fontFamily(
                 "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",

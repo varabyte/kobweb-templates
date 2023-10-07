@@ -10,14 +10,14 @@ import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.SilkApp
 import com.varabyte.kobweb.silk.components.layout.Surface
-import com.varabyte.kobweb.silk.init.registerBaseStyle
+import com.varabyte.kobweb.silk.init.registerStyleBase
 import org.jetbrains.compose.web.css.*
 
 val BORDER_COLOR = Color.rgb(0xea, 0xea, 0xea)
 
 @InitSilk
 fun initSiteStyles(ctx: InitSilkContext) = ctx.stylesheet.apply {
-    registerBaseStyle("body") {
+    registerStyleBase("body") {
         Modifier
             .fontFamily(
                 "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
@@ -25,7 +25,7 @@ fun initSiteStyles(ctx: InitSilkContext) = ctx.stylesheet.apply {
             )
     }
 
-    registerBaseStyle("footer") {
+    registerStyleBase("footer") {
         Modifier
             .width(100.percent)
             .height(100.px)
