@@ -101,7 +101,8 @@ enum class SideMenuState {
 fun NavHeader() {
     Row(NavHeaderStyle.toModifier(), verticalAlignment = Alignment.CenterVertically) {
         Link("https://kobweb.varabyte.com") {
-            Image("/kobweb-logo.png", "Kobweb Logo", Modifier.height(2.cssRem))
+            // Block display overrides inline display of the <img> tag, so it calculates centering better
+            Image("/kobweb-logo.png", "Kobweb Logo", Modifier.height(2.cssRem).display(DisplayStyle.Block))
         }
 
         Spacer()
@@ -166,7 +167,7 @@ private fun SideMenu(menuState: SideMenuState, close: () -> Unit, onAnimationEnd
                 horizontalAlignment = Alignment.End
             ) {
                 CloseButton(onClick = { close() })
-                Column(Modifier.padding(right = 0.75.cssRem).gap(1.5.cssRem).fontSize(1.5.cssRem), horizontalAlignment = Alignment.End) {
+                Column(Modifier.padding(right = 0.75.cssRem).gap(1.5.cssRem).fontSize(1.4.cssRem), horizontalAlignment = Alignment.End) {
                     MenuItems()
                 }
             }

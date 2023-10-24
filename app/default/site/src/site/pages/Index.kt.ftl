@@ -1,15 +1,10 @@
 package ${package}.pages
 
 import androidx.compose.runtime.Composable
-import com.varabyte.kobweb.compose.css.Isolation
 import com.varabyte.kobweb.compose.css.StyleVariable
-import com.varabyte.kobweb.compose.css.functions.blur
-import com.varabyte.kobweb.compose.dom.svg.Ellipse
-import com.varabyte.kobweb.compose.dom.svg.Svg
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
-import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Color
 import com.varabyte.kobweb.compose.ui.graphics.Colors
@@ -72,21 +67,6 @@ private fun GridCell(color: Color, row: Int, column: Int, width: Int? = null, he
     )
 }
 
-@Composable
-private fun SvgBlurredEllipse(color: Color, modifier: Modifier) {
-    // Set max width to 100% so that on really small mobile screens, the ellipse will start to shrink and
-    // avoid causing a horizontal scrollbar to appear
-    Svg(attrs = modifier.filter(blur(100.px)).maxWidth(100.percent).toAttrs()) {
-        Ellipse {
-            cx(50.percent)
-            cy(50.percent)
-            rx(50.percent)
-            ry(50.percent)
-            fill(color)
-        }
-    }
-}
-
 @Page
 @Composable
 fun HomePage() {
@@ -95,12 +75,7 @@ fun HomePage() {
             Box {
                 val sitePalette = ColorMode.current.toSitePalette()
 
-                SvgBlurredEllipse(sitePalette.brand.accent, Modifier.align(Alignment.TopEnd))
-                SvgBlurredEllipse(sitePalette.brand.primary, Modifier.align(Alignment.BottomStart))
-
-                // The Isolate modifier is used to prevent the blurred ellipses from affecting these elements
-                // It's weird, but that's CSS! Read up on stacking contexts for more information.
-                Column(Modifier.gap(2.cssRem).isolation(Isolation.Isolate)) {
+                Column(Modifier.gap(2.cssRem)) {
                     Div(HeadlineTextStyle.toAttrs()) {
                         SpanText(
                             "Use this template as your starting point for ", Modifier.color(
