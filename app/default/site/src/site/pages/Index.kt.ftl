@@ -38,12 +38,8 @@ val HeroContainerStyle by ComponentStyle {
 }
 
 // A demo grid that appears on the homepage because it looks good
-val HomeGridStyle by ComponentStyle.base(extraModifiers = Modifier.displayIfAtLeast(Breakpoint.MD)) {
+val HomeGridStyle by ComponentStyle.base {
     Modifier
-        .grid {
-            rows { repeat(3) { size(1.fr) } }
-            columns { repeat(5) { size(1.fr) } }
-        }
         .gap(0.5.cssRem)
         .width(70.cssRem)
         .height(18.cssRem)
@@ -112,7 +108,15 @@ fun HomePage() {
                 }
             }
 
-            Div(HomeGridStyle.toAttrs()) {
+            Div(HomeGridStyle
+                .toModifier()
+                .displayIfAtLeast(Breakpoint.MD)
+                .grid {
+                    rows { repeat(3) { size(1.fr) } }
+                    columns { repeat(5) {size(1.fr) } }
+                }
+                .toAttrs()
+            ) {
                 val sitePalette = ColorMode.current.toSitePalette()
                 GridCell(sitePalette.brand.primary, 1, 1, 2, 2)
                 GridCell(ColorSchemes.Monochrome._600, 1, 3)

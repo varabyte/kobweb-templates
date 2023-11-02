@@ -6,7 +6,7 @@ import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.components.forms.ButtonStyle
 import com.varabyte.kobweb.silk.components.forms.ButtonVars
-import com.varabyte.kobweb.silk.components.layout.DividerStyle
+import com.varabyte.kobweb.silk.components.layout.HorizontalDividerStyle
 import com.varabyte.kobweb.silk.components.style.ComponentStyle
 import com.varabyte.kobweb.silk.components.style.addVariantBase
 import com.varabyte.kobweb.silk.components.style.base
@@ -33,7 +33,7 @@ fun initSiteStyles(ctx: InitSilkContext) {
     }
 
     // Silk dividers only extend 90% by default; we want full width dividers in our site
-    ctx.theme.modifyComponentStyleBase(DividerStyle) {
+    ctx.theme.modifyComponentStyleBase(HorizontalDividerStyle) {
         Modifier.fillMaxWidth()
     }
 }
