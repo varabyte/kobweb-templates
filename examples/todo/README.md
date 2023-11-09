@@ -10,10 +10,11 @@ I'd like to give credit to https://blog.upstash.com/nextjs-todo for sharing the 
 
 ---
 
-To run the sample, simply enter the following command in the terminal:
+To run the sample, simply enter the following commands in the terminal:
 
 ```bash
-kobweb run
+$ cd site
+$ kobweb run
 ```
 
 and open [http://localhost:8080](http://localhost:8080) with your browser to see the result.

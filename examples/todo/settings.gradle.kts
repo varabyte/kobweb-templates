@@ -8,3 +8,5 @@ pluginManagement {
 
 rootProject.name = "todo"
 
+include(":site")
+
