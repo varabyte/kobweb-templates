@@ -39,7 +39,7 @@ kotlin {
 
         val jvmMain by getting {
             dependencies {
-                implementation(libs.kobweb.api)
+                compileOnly(libs.kobweb.api) // Provided by Kobweb backend at runtime
                 implementation(libs.okhttp)
             }
         }

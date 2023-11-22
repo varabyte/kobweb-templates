@@ -45,7 +45,7 @@ kotlin {
         // Uncomment the following if you pass `includeServer = true` into the `configAsKobwebApplication` call.
 //        val jvmMain by getting {
 //            dependencies {
-//                implementation(libs.kobweb.api)
+//                compileOnly(libs.kobweb.api) // Provided by Kobweb backend at runtime
 //            }
 //        }
     }

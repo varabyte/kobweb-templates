@@ -31,7 +31,7 @@ kotlin {
         <#if useServer?boolean>
         val jvmMain by getting {
             dependencies {
-                implementation(libs.kobweb.api)
+                compileOnly(libs.kobweb.api) // Provided by Kobweb backend at runtime
             }
         }
         </#if>
