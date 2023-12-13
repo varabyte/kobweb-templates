@@ -9,4 +9,7 @@ val JsonSerializer = Json {
     @ExperimentalSerializationApi
     @OptIn(ExperimentalSerializationApi::class)
     namingStrategy = JsonNamingStrategy.SnakeCase
+
+    // We don't want to fail if we get a response with extra fields
+    ignoreUnknownKeys = true
 }
