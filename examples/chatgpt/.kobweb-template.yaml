@@ -1,5 +1,5 @@
 metadata:
-  description: "A small example fullstack app, showcasing a simple chatgpt chat bot"
+  description: "An example fullstack app using API streams, showcasing a chatgpt chat bot"
 
 instructions:
   - !<Inform>
