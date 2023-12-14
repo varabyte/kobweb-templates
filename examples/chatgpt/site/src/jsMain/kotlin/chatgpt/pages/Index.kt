@@ -4,8 +4,8 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshots.Snapshot
 import chatgpt.G
 import chatgpt.components.widgets.LoadingSpinner
+import chatgpt.model.MessageChunkResponse
 import chatgpt.model.MessageRequest
-import chatgpt.model.MessageResponse
 import chatgpt.serialization.JsonSerializer
 import com.varabyte.kobweb.browser.api
 import com.varabyte.kobweb.compose.css.JustifyItems
@@ -25,10 +25,11 @@ import com.varabyte.kobweb.silk.components.icons.fa.IconStyle
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.components.text.SpanText
+import com.varabyte.kobweb.streams.ApiStream
+import com.varabyte.kobweb.streams.ApiStreamListener
 import kotlinx.browser.window
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import org.jetbrains.compose.web.css.CSSColorValue
 import org.jetbrains.compose.web.css.fr
@@ -53,7 +54,7 @@ private fun TextBubble(text: String, color: CSSColorValue, modifier: Modifier = 
 }
 
 @Composable
-private fun History(
+private fun ChatArea(
     entries: List<HistoryEntry>,
     onHistoryChanged: (HTMLElement) -> Unit,
     modifier: Modifier = Modifier
@@ -69,9 +70,9 @@ private fun History(
             }
 
             entry.response?.let { response ->
-                Row(Modifier.align(Alignment.End).gap(5.px)) {
-                    TextBubble(response, G.Ui.Color.Bot)
+                Row(Modifier.align(Alignment.Start).gap(5.px)) {
                     SpanText("\uD83E\uDD16", Modifier.padding(top = 5.px)) // Robot icon
+                    TextBubble(response, G.Ui.Color.Bot)
                 }
             } ?: run {
                 Box(Modifier.align(Alignment.CenterHorizontally)) {
@@ -86,28 +87,38 @@ private fun History(
 }
 
 @Composable
-private fun SendMessage(
+private fun MessageAndSendButton(
     coroutineScope: CoroutineScope,
     chatId: String,
     onRequest: (String) -> Unit,
-    onResponse: (String) -> Unit
+    onChunk: (String) -> Unit,
 ) {
     var userText by remember { mutableStateOf("") }
+    var isStreaming by remember { mutableStateOf(false) }
 
     fun sendMessage() {
         onRequest(userText)
-        val messageRequest = MessageRequest(chatId, userText)
-        userText = ""
 
+        // Create a one-off api stream to handle a single back and forth. Every new message that gets sent will open a
+        // new streaming connection
         coroutineScope.launch {
-            val response = window.api.post(
-                "chat",
-                body = JsonSerializer
-                    .encodeToString(messageRequest)
-                    .encodeToByteArray()
-            )
+            val chunkStream = ApiStream("chat")
+            chunkStream.connect(object : ApiStreamListener {
+                override fun onConnected(ctx: ApiStreamListener.ConnectedContext) {
+                    val messageRequest = MessageRequest(chatId, userText)
+                    userText = ""
+                    ctx.stream.send(JsonSerializer.encodeToString(messageRequest))
+                    isStreaming = true
+                }
 
-            onResponse(JsonSerializer.decodeFromString<MessageResponse>(response.decodeToString()).text)
+                override fun onTextReceived(ctx: ApiStreamListener.TextReceivedContext) {
+                    onChunk(JsonSerializer.decodeFromString<MessageChunkResponse>(ctx.text).text)
+                }
+
+                override fun onDisconnected(ctx: ApiStreamListener.DisconnectedContext) {
+                    isStreaming = false
+                }
+            })
         }
     }
 
@@ -126,7 +137,7 @@ private fun SendMessage(
         Button(
             onClick = { sendMessage() },
             Modifier.fillMaxHeight(),
-            enabled = chatId.isNotEmpty() && userText.isNotBlank()
+            enabled = chatId.isNotEmpty() && userText.isNotBlank() && !isStreaming
         ) {
             FaPaperPlane(style = IconStyle.FILLED)
         }
@@ -161,7 +172,7 @@ fun HomePage() {
         }
 
         val historyEntries = remember { mutableStateListOf<HistoryEntry>() }
-        History(
+        ChatArea(
             historyEntries,
             onHistoryChanged = { historyElement ->
                 historyElement.scrollTop = historyElement.scrollHeight.toDouble()
@@ -170,18 +181,18 @@ fun HomePage() {
         )
 
         if (chatId.isNotEmpty()) {
-            SendMessage(
+            MessageAndSendButton(
                 coroutineScope,
                 chatId,
                 onRequest = { request ->
                     historyEntries.add(HistoryEntry(request, null))
                 },
-                onResponse = { response ->
+                onChunk = { chunk ->
+                    // History entries are immutable, so remove the last one (which will only have user text
+                    // in it) and create a new one with the bot response included as well.
                     Snapshot.withMutableSnapshot {
-                        // History entries are immutable, so remove the last one (which will only have user text
-                        // in it) and create a new one with the bot response included as well.
                         val last = historyEntries.removeLast()
-                        historyEntries.add(last.copy(response = response))
+                        historyEntries.add(last.copy(response = last.response.orEmpty() + chunk))
                     }
                 }
             )

@@ -9,4 +9,4 @@ data class MessageRequest(
 )
 
 @Serializable
-data class MessageResponse(val text: String)
+data class MessageChunkResponse(val text: String)
