@@ -1,0 +1,6 @@
+# Kobweb ignores
+.kobweb/*
+!.kobweb/conf.yaml
+
+# OpenAI
+src/jvmMain/resources/openaikey.txt

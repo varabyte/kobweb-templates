@@ -1,7 +1,7 @@
 package chatgpt.model
 
-import chatgpt.model.openai.ApiKeyInterceptor
-import chatgpt.model.openai.Message
+import apis.openai.endpoints.chat.ApiKeyInterceptor
+import apis.openai.endpoints.chat.Message
 import chatgpt.serialization.JsonSerializer
 import com.varabyte.kobweb.api.data.add
 import com.varabyte.kobweb.api.init.InitApi

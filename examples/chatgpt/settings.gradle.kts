@@ -8,3 +8,5 @@ pluginManagement {
 
 rootProject.name = "chatgpt"
 
+include(":site")
+include(":apis:openai")

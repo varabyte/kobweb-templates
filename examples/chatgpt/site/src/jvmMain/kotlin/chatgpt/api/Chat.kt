@@ -3,17 +3,15 @@ package chatgpt.api
 import chatgpt.model.ChatHistories
 import chatgpt.model.MessageRequest
 import chatgpt.model.MessageResponse
-import chatgpt.model.openai.Message
-import chatgpt.model.openai.sendMessageToChatGpt
+import apis.openai.endpoints.chat.Message
+import apis.openai.endpoints.chat.sendMessageToChatGpt
 import com.varabyte.kobweb.api.Api
 import com.varabyte.kobweb.api.ApiContext
 import com.varabyte.kobweb.api.data.getValue
 import com.varabyte.kobweb.api.http.HttpMethod
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
-import java.io.File
 
 @Api
 suspend fun chat(ctx: ApiContext) {
