@@ -134,7 +134,7 @@ suspend fun sendMessageToChatGpt(
         .post(
             json.encodeToString(
                 ChatRequest(
-                    model = "gpt-3.5-turbo",
+                    model = "gpt-4-1106-preview",
                     recentHistory + Message(
                         role = "user",
                         content = message
