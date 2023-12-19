@@ -48,7 +48,7 @@ instructions:
   - !<QueryVar>
     name: "useServer"
     prompt: "Would you like to include support for defining server behavior via API routes?"
-    default: "yes"
+    default: "no"
     validation: "isYesNo"
     transform: "${yesNoToBool(value)}"
 
