@@ -1,6 +1,6 @@
 [versions]
 jetbrains-compose = "1.5.11"
-kobweb = "0.15.3"
+kobweb = "0.15.4-SNAPSHOT"
 kotlin = "1.9.21"
 kotlinx-serialization = "1.4.0"
 
