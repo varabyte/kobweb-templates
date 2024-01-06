@@ -14,25 +14,19 @@ kotlin {
     configAsKobwebLibrary(includeServer = true)
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                implementation(compose.runtime)
-                implementation(libs.kotlinx.serialization.json)
-                implementation(project(":core"))
-            }
+        commonMain.dependencies {
+            implementation(compose.runtime)
+            implementation(libs.kotlinx.serialization.json)
+            implementation(project(":core"))
         }
-        val jsMain by getting {
-            dependencies {
-                implementation(compose.html.core)
-                implementation(libs.kobweb.core)
-                implementation(libs.kobweb.silk)
-                implementation(libs.silk.icons.fa)
-            }
+        jsMain.dependencies {
+            implementation(compose.html.core)
+            implementation(libs.kobweb.core)
+            implementation(libs.kobweb.silk)
+            implementation(libs.silk.icons.fa)
         }
-        val jvmMain by getting {
-            dependencies {
-                compileOnly(libs.kobweb.api) // Provided by Kobweb backend at runtime
-            }
+        jvmMain.dependencies {
+            compileOnly(libs.kobweb.api) // Provided by Kobweb backend at runtime
         }
     }
 }
