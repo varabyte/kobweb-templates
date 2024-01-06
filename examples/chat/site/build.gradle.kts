@@ -13,25 +13,19 @@ kotlin {
     configAsKobwebApplication(includeServer = true)
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                implementation(compose.runtime)
-                implementation(project(":core"))
-                implementation(project(":auth"))
-                implementation(project(":chat"))
-            }
+        commonMain.dependencies {
+            implementation(compose.runtime)
+            implementation(project(":core"))
+            implementation(project(":auth"))
+            implementation(project(":chat"))
         }
-        val jsMain by getting {
-            dependencies {
-                implementation(compose.html.core)
-                implementation(libs.kobweb.core)
-                implementation(libs.kobweb.silk)
-            }
+        jsMain.dependencies {
+            implementation(compose.html.core)
+            implementation(libs.kobweb.core)
+            implementation(libs.kobweb.silk)
         }
-        val jvmMain by getting {
-            dependencies {
-                compileOnly(libs.kobweb.api) // Provided by Kobweb backend at runtime
-            }
+        jvmMain.dependencies {
+            compileOnly(libs.kobweb.api) // Provided by Kobweb backend at runtime
         }
     }
 }
