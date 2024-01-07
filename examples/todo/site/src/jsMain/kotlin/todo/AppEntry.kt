@@ -1,9 +1,8 @@
-package chatgpt
+package todo
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Color
-import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.core.App
 import com.varabyte.kobweb.silk.init.InitSilk
@@ -18,11 +17,10 @@ val BORDER_COLOR = Color.rgb(0xea, 0xea, 0xea)
 @InitSilk
 fun initSiteStyles(ctx: InitSilkContext) = ctx.stylesheet.apply {
     registerStyleBase("body") {
-        Modifier
-            .fontFamily(
-                "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-                "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "sans-serif"
-            )
+        Modifier.fontFamily(
+            "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+            "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "sans-serif"
+        )
     }
 
     registerStyleBase("footer") {
@@ -39,9 +37,9 @@ fun initSiteStyles(ctx: InitSilkContext) = ctx.stylesheet.apply {
 
 @App
 @Composable
-fun MyApp(content: @Composable () -> Unit) {
+fun AppEntry(content: @Composable () -> Unit) {
     SilkApp {
-        Surface(Modifier.fillMaxWidth().height(100.vh).id("root-surface")) {
+        Surface(Modifier.minWidth(100.vw).minHeight(100.vh)) {
             content()
         }
     }

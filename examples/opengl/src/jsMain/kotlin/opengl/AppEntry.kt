@@ -1,4 +1,4 @@
-package clock
+package opengl
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -27,9 +27,9 @@ fun registerGlobalStyles(ctx: InitSilkContext) = ctx.stylesheet.apply {
 
 @App
 @Composable
-fun MyApp(content: @Composable () -> Unit) {
+fun AppEntry(content: @Composable () -> Unit) {
     SilkApp {
-        Surface(SmoothColorStyle.toModifier().minWidth(100.vw).minHeight(100.vh)) {
+        Surface(SmoothColorStyle.toModifier().width(100.vw).height(100.vh)) {
             content()
         }
     }
