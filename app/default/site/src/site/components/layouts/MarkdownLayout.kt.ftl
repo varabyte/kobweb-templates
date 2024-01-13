@@ -23,7 +23,7 @@ val MarkdownStyle by ComponentStyle {
     // When you use `cssRule`, the name of this style is prefixed in front of it.
     // See also: https://developer.mozilla.org/en-US/docs/Web/CSS/Descendant_combinator
 
-    cssRule(" h1") {
+    cssRule("h1") {
         Modifier
             .fontSize(3.cssRem)
             .fontWeight(400)
@@ -31,51 +31,51 @@ val MarkdownStyle by ComponentStyle {
             .lineHeight(1.2) //1.5x doesn't look as good on very large text
     }
 
-    cssRule(" h2") {
+    cssRule("h2") {
         Modifier
             .fontSize(3.cssRem)
             .fontWeight(300)
             .margin(topBottom = 2.cssRem)
     }
 
-    cssRule(" h3") {
+    cssRule("h3") {
         Modifier
             .fontSize(2.4.cssRem)
             .fontWeight(300)
             .margin(topBottom = 1.5.cssRem)
     }
 
-    cssRule(" h4") {
+    cssRule("h4") {
         Modifier
             .fontSize(1.2.cssRem)
             .fontWeight(FontWeight.Bolder)
             .margin(top = 1.cssRem, bottom = 0.5.cssRem)
     }
 
-    cssRule(" p") {
+    cssRule("p") {
         Modifier.margin(bottom = 0.8.cssRem)
     }
 
-    cssRule(" ul") {
+    cssRule("ul") {
         Modifier.fillMaxWidth().overflowWrap(OverflowWrap.BreakWord)
     }
 
-    cssRule(" li,ol,ul") {
+    cssRule("li,ol,ul") {
         Modifier.margin(bottom = 0.25.cssRem)
     }
 
-    cssRule(" code") {
+    cssRule("code") {
         Modifier
             .color(colorMode.toPalette().color.toRgb().copyf(alpha = 0.8f))
             .fontWeight(FontWeight.Bolder)
     }
 
-    cssRule(" pre") {
+    cssRule("pre") {
         Modifier
             .margin(top = 0.5.cssRem, bottom = 2.cssRem)
             .fillMaxWidth()
     }
-    cssRule(" pre > code") {
+    cssRule("pre > code") {
         Modifier
             .display(DisplayStyle.Block)
             .fillMaxWidth()
