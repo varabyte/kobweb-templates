@@ -8,3 +8,4 @@ pluginManagement {
 
 rootProject.name = "clock"
 
+include(":site")
