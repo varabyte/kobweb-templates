@@ -35,7 +35,7 @@ instructions:
     value: "${groupId}"
 
   - !<Inform>
-    message: "To learn more: https://github.com/varabyte/kobweb#silk"
+    message: "🪡 To learn more: https://github.com/varabyte/kobweb#silk"
   - !<QueryVar>
     name: "useSilk"
     prompt: "Would you like to use Silk, Kobweb's powerful UI layer built on top of Compose for Web?"
@@ -44,20 +44,29 @@ instructions:
     transform: "${yesNoToBool(value)}"
 
   - !<Inform>
-    message: "To learn more: https://github.com/varabyte/kobweb#define-api-routes"
+    message: "🌐 To learn more: https://github.com/varabyte/kobweb#server"
   - !<QueryVar>
     name: "useServer"
-    prompt: "Would you like to include support for defining server behavior via API routes?"
+    prompt: "Would you like to include support for defining server behavior via API routes and API streams?"
     default: "no"
     validation: "isYesNo"
     transform: "${yesNoToBool(value)}"
 
   - !<Inform>
-    message: "To learn more: https://github.com/varabyte/kobweb#markdown"
+    message: "📝 To learn more: https://github.com/varabyte/kobweb#markdown"
   - !<QueryVar>
     name: "useMarkdown"
     prompt: "Would you like to include support for handling Markdown files?"
     default: "yes"
+    validation: "isYesNo"
+    transform: "${yesNoToBool(value)}"
+
+  - !<Inform>
+    message: "⚙️ To learn more: https://github.com/varabyte/kobweb#worker"
+  - !<QueryVar>
+    name: "useWorker"
+    prompt: "Would you like to include support for a Kobweb worker?"
+    default: "no"
     validation: "isYesNo"
     transform: "${yesNoToBool(value)}"
 
@@ -78,6 +87,24 @@ instructions:
   - !<Delete>
     files: "site/src/api/*"
     description: "Removing unused server files (if any)"
+  - !<Move>
+    condition: "${useWorker}"
+    from: "worker/src/worker/*"
+    to: "worker/src/jsMain/kotlin/${packagePath}/worker"
+    description: "Rearranging worker source to conform to the user's package"
+  - !<Move>
+    condition: "${useWorker}"
+    from: "worker/*"
+    to: "donotdeleteworker"
+    description: "Moving worker files to a safe location before cleanup"
+  - !<Delete>
+    files: "worker/*"
+    description: "Removing unused worker files (if any)"
+  - !<Move>
+    condition: "${useWorker}"
+    from: "donotdeleteworker/*"
+    to: "worker"
+    description: "Finalizing worker files"
   - !<Move>
     from: "site/resources/*"
     to: "site/src/jsMain/resources"

@@ -32,6 +32,7 @@ kotlin {
             <#if !useSilk?boolean>// </#if>implementation(libs.kobweb.silk)
             <#if !useSilk?boolean>// </#if>implementation(libs.silk.icons.fa)
             <#if !useMarkdown?boolean>// </#if>implementation(libs.kobwebx.markdown)
+            <#if useWorker?boolean>implementation(project(":worker"))</#if>
         }
         <#if useServer?boolean>
         jvmMain.dependencies {

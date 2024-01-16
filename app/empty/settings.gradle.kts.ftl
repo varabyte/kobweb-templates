@@ -9,3 +9,4 @@ pluginManagement {
 rootProject.name = "${projectName}"
 
 include(":site")
+<#if useWorker?boolean>include(":worker")</#if>
