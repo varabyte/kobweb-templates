@@ -1,6 +1,7 @@
 package clock.components.layouts
 
 import androidx.compose.runtime.*
+import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.WhiteSpace
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -11,6 +12,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Spacer
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.icons.fa.FaMoon
 import com.varabyte.kobweb.silk.components.icons.fa.FaSun
@@ -20,6 +22,8 @@ import com.varabyte.kobweb.silk.theme.SilkTheme
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.palette.color
 import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.dom.Span
+import org.jetbrains.compose.web.dom.Text
 
 @Composable
 fun PageLayout(content: @Composable BoxScope.() -> Unit) {
@@ -52,13 +56,13 @@ fun PageLayout(content: @Composable BoxScope.() -> Unit) {
             Alignment.Center
         ) {
             // Use PreWrap to preserve trailing space in text
-            Row(Modifier.margin(topBottom = 1.cssRem, leftRight = 0.cssRem).whiteSpace(WhiteSpace.PreWrap)) {
-                SpanText("This project is built using ")
+            Span(Modifier.margin(topBottom = 1.cssRem).whiteSpace(WhiteSpace.PreWrap).textAlign(TextAlign.Center).toAttrs()) {
+                Text("This project is built using ")
                 Link(
                     "https://github.com/varabyte/kobweb",
                     "Kobweb",
                 )
-                SpanText(", a full-stack Kotlin web framework.")
+                Text(", a full-stack Kotlin web framework.")
             }
         }
     }

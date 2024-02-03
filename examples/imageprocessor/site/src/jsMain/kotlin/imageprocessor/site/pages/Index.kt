@@ -191,7 +191,7 @@ fun HomePage() {
 
         Spacer()
         Footer {
-            Span(Modifier.whiteSpace(WhiteSpace.PreWrap).textAlign(TextAlign.Center).toAttrs()) {
+            Span(Modifier.margin(topBottom = 1.cssRem).whiteSpace(WhiteSpace.PreWrap).textAlign(TextAlign.Center).toAttrs()) {
                 SpanText("This project is built using ")
                 Link(
                     "https://github.com/varabyte/kobweb",

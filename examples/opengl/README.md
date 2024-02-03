@@ -1,6 +1,6 @@
 This is a [Kobweb](https://github.com/varabyte/kobweb) project instantiated from the `examples/opengl` template.
 
-The purpose of this project is to demonstrate the `Canvas` composable to drive 3D, OpenGL content.
+The purpose of this project is to demonstrate the `CanvasGl` composable to drive 3D, OpenGL content.
 
 This sample was built starting from the tutorials at
 https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/

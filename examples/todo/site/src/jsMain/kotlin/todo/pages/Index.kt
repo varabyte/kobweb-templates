@@ -4,6 +4,8 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshots.*
 import com.varabyte.kobweb.browser.api
 import com.varabyte.kobweb.compose.css.FontWeight
+import com.varabyte.kobweb.compose.css.TextAlign
+import com.varabyte.kobweb.compose.css.WhiteSpace
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -12,6 +14,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Spacer
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.style.ComponentStyle
@@ -26,6 +29,7 @@ import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.em
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Footer
+import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text
 import todo.components.widgets.LoadingSpinner
 import todo.components.widgets.TodoCard
@@ -83,8 +87,8 @@ fun HomePage() {
             return@Column
         }
 
-        Row(TitleStyle.toModifier(), horizontalArrangement = Arrangement.Center) {
-            SpanText("TODO App with ")
+        Span(TitleStyle.toModifier().whiteSpace(WhiteSpace.PreWrap).textAlign(TextAlign.Center).toAttrs()) {
+            Text("TODO App with ")
             Link("https://github.com/varabyte/kobweb", "Kobweb!")
         }
 
