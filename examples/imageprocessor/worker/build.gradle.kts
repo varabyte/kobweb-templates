@@ -10,7 +10,7 @@ group = "imageprocessor.worker"
 version = "1.0-SNAPSHOT"
 
 kotlin {
-    configAsKobwebWorker()
+    configAsKobwebWorker("imageprocessor")
 
     sourceSets {
         jsMain.dependencies {
@@ -19,6 +19,5 @@ kotlin {
             implementation(libs.kobwebx.serialization.kotlinx)
             implementation(project(":util"))
         }
-
     }
 }

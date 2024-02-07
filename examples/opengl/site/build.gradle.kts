@@ -1,3 +1,4 @@
+import com.varabyte.kobweb.gradle.application.extensions.AppBlock.LegacyRouteRedirectStrategy
 import com.varabyte.kobweb.gradle.application.extensions.index
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 import kotlinx.html.script
@@ -18,9 +19,19 @@ repositories {
 group = "opengl"
 version = "1.0-SNAPSHOT"
 
-kobweb.app.index.head.add {
-    script {
-        src = "https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/3.4.2/gl-matrix-min.js"
+kobweb {
+    app {
+        index {
+            head.add {
+                script {
+                    src = "https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/3.4.2/gl-matrix-min.js"
+                }
+            }
+        }
+
+        // Only legacy sites need this set. Sites built after 0.16.0 should default to DISALLOW.
+        // See https://github.com/varabyte/kobweb#legacy-routes for more information.
+        legacyRouteRedirectStrategy.set(LegacyRouteRedirectStrategy.DISALLOW)
     }
 }
 
