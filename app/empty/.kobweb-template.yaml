@@ -1,6 +1,7 @@
 metadata:
   description: "A template for building a Kobweb app from an empty skeleton"
   shouldHighlight: true
+  minimumVersion: "0.9.14"
 
 instructions:
   # Note: Kobweb provides a "projectFolder" variable for us already
@@ -87,24 +88,17 @@ instructions:
   - !<Delete>
     files: "site/src/api/*"
     description: "Removing unused server files (if any)"
+
   - !<Move>
     condition: "${useWorker}"
     from: "worker/src/worker/*"
     to: "worker/src/jsMain/kotlin/${packagePath}/worker"
     description: "Rearranging worker source to conform to the user's package"
-  - !<Move>
-    condition: "${useWorker}"
-    from: "worker/*"
-    to: "donotdeleteworker"
-    description: "Moving worker files to a safe location before cleanup"
   - !<Delete>
+    condition: "${not(useWorker)}"
     files: "worker/*"
     description: "Removing unused worker files (if any)"
-  - !<Move>
-    condition: "${useWorker}"
-    from: "donotdeleteworker/*"
-    to: "worker"
-    description: "Finalizing worker files"
+
   - !<Move>
     from: "site/resources/*"
     to: "site/src/jsMain/resources"
