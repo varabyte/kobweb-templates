@@ -1,0 +1,7 @@
+metadata:
+  description: "A canvas demo using the Mozilla animated clock canvas tutorial (0.9.15)"
+  minimumVersion: "0.9.15"
+  name: "examples/clock"
+
+# No need for any instructions - we just copy the demo as is
+
