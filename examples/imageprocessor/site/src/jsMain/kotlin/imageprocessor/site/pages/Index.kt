@@ -23,6 +23,7 @@ import com.varabyte.kobweb.silk.components.style.ComponentStyle
 import com.varabyte.kobweb.silk.components.style.base
 import com.varabyte.kobweb.silk.components.style.toModifier
 import com.varabyte.kobweb.silk.components.text.SpanText
+import com.varabyte.kobweb.worker.Transferables
 import imageprocessor.site.components.widgets.Modal
 import imageprocessor.site.components.widgets.Spinner
 import imageprocessor.worker.ImageProcessorCommand
@@ -145,7 +146,8 @@ fun HomePage() {
                     commands.clear()
 
                     if (response is ProcessImageResponse.Finished) {
-                        ctx.putImageData(response.imageData, 0.0, 0.0)
+                        val processedImageData = transferables.getImageData("imageData")!!
+                        ctx.putImageData(processedImageData, 0.0, 0.0)
                     } else if (response is ProcessImageResponse.Error) {
                         console.error("Error: ${response.message}")
                     }
@@ -154,7 +156,10 @@ fun HomePage() {
                     discardActiveWorker()
                 }.also { activeWorker = it }
 
-                worker.postInput(ProcessImageRequest(imageData, commands))
+                worker.postInput(
+                    ProcessImageRequest(commands),
+                    Transferables { add("imageData", imageData) }
+                )
             }, enabled = (_canvas != null && activeWorker == null && (commands.isNotEmpty()))) {
                 Text("Process!")
             }

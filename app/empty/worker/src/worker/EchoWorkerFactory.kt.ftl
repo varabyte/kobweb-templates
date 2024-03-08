@@ -1,5 +1,6 @@
 package ${package}.worker
 
+import com.varabyte.kobweb.worker.OutputDispatcher
 import com.varabyte.kobweb.worker.WorkerFactory
 import com.varabyte.kobweb.worker.WorkerStrategy
 import com.varabyte.kobweb.worker.createPassThroughSerializer
@@ -14,7 +15,7 @@ import com.varabyte.kobweb.worker.createPassThroughSerializer
 // - Delete this checklist!
 
 internal class EchoWorkerFactory : WorkerFactory<String, String> {
-    override fun createStrategy(postOutput: (String) -> Unit) = WorkerStrategy<String> { input ->
+    override fun createStrategy(postOutput: OutputDispatcher<String>) = WorkerStrategy<String> { input ->
         postOutput(input) // Add real worker logic here
     }
 

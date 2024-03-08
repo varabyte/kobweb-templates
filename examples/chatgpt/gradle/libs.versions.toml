@@ -1,7 +1,7 @@
 [versions]
-jetbrains-compose = "1.6.0"
-kobweb = "0.17.0"
-kotlin = "1.9.22"
+jetbrains-compose = "1.6.1"
+kobweb = "0.17.1"
+kotlin = "1.9.23"
 kotlinx-coroutines = "1.7.3"
 kotlinx-serialization = "1.6.2"
 okhttp = "4.9.3"

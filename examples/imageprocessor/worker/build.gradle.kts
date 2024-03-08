@@ -10,7 +10,7 @@ group = "imageprocessor.worker"
 version = "1.0-SNAPSHOT"
 
 kotlin {
-    configAsKobwebWorker("imageprocessor")
+    configAsKobwebWorker("imageprocessor-worker")
 
     sourceSets {
         jsMain.dependencies {
