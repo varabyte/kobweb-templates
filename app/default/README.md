@@ -50,7 +50,7 @@ help you get started finding your way around this relatively small example proje
 
 ### Live Reload
 
-While Kobweb is running, fuel free to modify the code! When you make any changes, Kobweb will notice this
+While Kobweb is running, feel free to modify the code! When you make any changes, Kobweb will notice this
 automatically, and the site will indicate the status of the build and automatically reload when ready.
 
 ## Exporting the Project
