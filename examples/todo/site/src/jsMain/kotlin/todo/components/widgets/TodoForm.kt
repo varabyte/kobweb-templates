@@ -1,7 +1,7 @@
 package todo.components.widgets
 
 import androidx.compose.runtime.*
-import com.varabyte.kobweb.silk.components.style.toAttrs
+import com.varabyte.kobweb.silk.style.toAttrs
 import org.jetbrains.compose.web.attributes.InputType
 import org.jetbrains.compose.web.attributes.name
 import org.jetbrains.compose.web.attributes.onSubmit

@@ -15,21 +15,21 @@ import com.varabyte.kobweb.compose.ui.modifiers.rotate
 import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.compose.ui.toAttrs
-import com.varabyte.kobweb.silk.components.animation.Keyframes
-import com.varabyte.kobweb.silk.components.animation.toAnimation
-import com.varabyte.kobweb.silk.components.style.ComponentStyle
-import com.varabyte.kobweb.silk.components.style.base
-import com.varabyte.kobweb.silk.components.style.toAttrs
-import com.varabyte.kobweb.silk.components.style.toModifier
+import com.varabyte.kobweb.silk.style.animation.Keyframes
+import com.varabyte.kobweb.silk.style.animation.toAnimation
+import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.base
+import com.varabyte.kobweb.silk.style.toAttrs
+import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.*
 
 // Source: https://codepen.io/supah/pen/BjYLdW
 
-val SpinnerRotate by Keyframes {
+val SpinnerRotate = Keyframes {
     100.percent { Modifier.rotate(360.deg) }
 }
 
-val SpinnerDash by Keyframes {
+val SpinnerDash = Keyframes {
     0.percent {
         Modifier.styleModifier {
             property("stroke-dasharray", "1, 150")
@@ -53,7 +53,7 @@ val SpinnerDash by Keyframes {
 }
 
 
-val SpinnerContainerStyle by ComponentStyle.base {
+val SpinnerContainerStyle = CssStyle.base {
     // We put some margin inside the container so that the spinner SVG element doesn't keep messing with the width /
     // height of the current layout as it rotates. Even though the spinner itself is technically a circle, the SVG
     // element is a square, so as it rotates, its sharp corners keep escaping the current layout bounds. A parent
@@ -61,7 +61,7 @@ val SpinnerContainerStyle by ComponentStyle.base {
     Modifier.size(70.px).padding(10.px)
 }
 
-val SpinnerStyle by ComponentStyle.base {
+val SpinnerStyle = CssStyle.base {
     Modifier.animation(
         SpinnerRotate.toAnimation(
             colorMode,
@@ -72,7 +72,7 @@ val SpinnerStyle by ComponentStyle.base {
     )
 }
 
-val SpinnerPathStyle by ComponentStyle.base {
+val SpinnerPathStyle = CssStyle.base {
     Modifier.animation(
         SpinnerDash.toAnimation(
             colorMode,

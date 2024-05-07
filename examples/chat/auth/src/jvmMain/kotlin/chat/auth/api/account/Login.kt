@@ -1,5 +1,8 @@
 package chat.auth.api.account
 
+import chat.auth.model.Accounts
+import chat.auth.model.auth.Account
+import chat.auth.model.auth.LoginResponse
 import com.varabyte.kobweb.api.Api
 import com.varabyte.kobweb.api.ApiContext
 import com.varabyte.kobweb.api.data.getValue
@@ -8,9 +11,6 @@ import com.varabyte.kobweb.api.http.readBodyText
 import com.varabyte.kobweb.api.http.setBodyText
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import chat.auth.model.Accounts
-import chat.auth.model.auth.LoginResponse
-import chat.auth.model.auth.Account
 
 @Api
 fun login(ctx: ApiContext) {

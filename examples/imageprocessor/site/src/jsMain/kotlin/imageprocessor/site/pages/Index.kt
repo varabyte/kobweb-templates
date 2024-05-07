@@ -19,9 +19,9 @@ import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.forms.Checkbox
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.overlay.Tooltip
-import com.varabyte.kobweb.silk.components.style.ComponentStyle
-import com.varabyte.kobweb.silk.components.style.base
-import com.varabyte.kobweb.silk.components.style.toModifier
+import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.base
+import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.worker.Transferables
 import imageprocessor.site.components.widgets.Modal
@@ -47,7 +47,7 @@ private val contextArgument = js("{ willReadFrequently: true }")
 private fun HTMLCanvasElement.get2dContext() = getContext("2d", contextArgument) as CanvasRenderingContext2D
 private fun CanvasRenderingContext2D.getImageData() = getImageData(0.0, 0.0, canvas.width.toDouble(), canvas.height.toDouble())
 
-val ImageCanvasStyle by ComponentStyle.base {
+val ImageCanvasStyle = CssStyle.base {
     Modifier.border(1.px, LineStyle.Solid, Colors.Black).borderRadius(5.px).cursor(Cursor.Pointer)
 }
 

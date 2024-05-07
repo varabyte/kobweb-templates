@@ -17,9 +17,9 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.silk.components.forms.TextInput
-import com.varabyte.kobweb.silk.components.style.ComponentStyle
-import com.varabyte.kobweb.silk.components.style.base
-import com.varabyte.kobweb.silk.components.style.toModifier
+import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.base
+import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.streams.ApiStream
 import com.varabyte.kobweb.streams.connect
 import kotlinx.serialization.decodeFromString
@@ -31,7 +31,7 @@ import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Br
 import org.jetbrains.compose.web.dom.Text
 
-val ChatBoxStyle by ComponentStyle.base {
+val ChatBoxStyle = CssStyle.base {
     Modifier
         .padding(5.px)
         .borderRadius(5.px)

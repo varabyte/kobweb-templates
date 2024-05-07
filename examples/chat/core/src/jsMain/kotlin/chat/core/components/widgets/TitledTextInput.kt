@@ -11,20 +11,20 @@ import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.silk.components.forms.TextInput
-import com.varabyte.kobweb.silk.components.style.ComponentStyle
-import com.varabyte.kobweb.silk.components.style.base
-import com.varabyte.kobweb.silk.components.style.toModifier
 import com.varabyte.kobweb.silk.components.text.SpanText
+import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.base
+import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.px
 import org.w3c.dom.HTMLInputElement
 
-val TitledTextInputLabelStyle by ComponentStyle.base {
+val TitledTextInputLabelStyle = CssStyle.base {
     Modifier
         .fontSize(G.Ui.Text.Small)
         .color(Colors.Grey)
 }
 
-val TitledTextInputStyle by ComponentStyle.base {
+val TitledTextInputStyle = CssStyle.base {
     Modifier
         .width(G.Ui.Width.Medium)
         .margin(bottom = 10.px)

@@ -6,17 +6,17 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Color
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.silk.components.style.ComponentStyle
-import com.varabyte.kobweb.silk.components.style.base
-import com.varabyte.kobweb.silk.components.style.hover
-import com.varabyte.kobweb.silk.components.style.placeholderShown
+import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.base
+import com.varabyte.kobweb.silk.style.selectors.hover
+import com.varabyte.kobweb.silk.style.selectors.placeholderShown
 import org.jetbrains.compose.web.css.*
 import todo.BORDER_COLOR
 
 private val INTERACT_COLOR = Color.rgb(0x00, 0x70, 0xf3)
 
 /** Common styles for all todo widgets */
-val TodoStyle by ComponentStyle.base {
+val TodoStyle = CssStyle.base {
     Modifier
         .width(85.percent)
         .height(5.cssRem)
@@ -27,7 +27,7 @@ val TodoStyle by ComponentStyle.base {
 }
 
 /** Styles for the bordered, outer container (the form component has an inner and outer layer) */
-val TodoContainerStyle by ComponentStyle.base {
+val TodoContainerStyle = CssStyle.base {
     Modifier
         .margin(0.5.cssRem)
         .border(1.px, LineStyle.Solid, BORDER_COLOR)
@@ -37,7 +37,7 @@ val TodoContainerStyle by ComponentStyle.base {
 }
 
 /** Styles for the text parts of todo widgets */
-val TodoTextStyle by ComponentStyle.base {
+val TodoTextStyle = CssStyle.base {
     Modifier
         .padding(1.5.cssRem)
         .fontSize(1.25.cssRem)
@@ -46,7 +46,7 @@ val TodoTextStyle by ComponentStyle.base {
 }
 
 /** Styles for the input element which handles user input */
-val TodoInputStyle by ComponentStyle {
+val TodoInputStyle = CssStyle {
     base {
         Modifier
             .fillMaxWidth()
@@ -60,7 +60,7 @@ val TodoInputStyle by ComponentStyle {
 }
 
 /** Styles for mouse interaction with todo widgets */
-val TodoClickableStyle by ComponentStyle {
+val TodoClickableStyle = CssStyle {
     hover {
         Modifier
             .color(INTERACT_COLOR)

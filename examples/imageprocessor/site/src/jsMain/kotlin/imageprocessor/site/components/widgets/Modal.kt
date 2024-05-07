@@ -6,9 +6,9 @@ import com.varabyte.kobweb.compose.foundation.layout.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.components.overlay.Overlay
-import com.varabyte.kobweb.silk.components.style.ComponentStyle
-import com.varabyte.kobweb.silk.components.style.base
-import com.varabyte.kobweb.silk.components.style.toModifier
+import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.base
+import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.palette.background
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import org.jetbrains.compose.web.css.cssRem
@@ -16,7 +16,7 @@ import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.vh
 
-val ModalStyle by ComponentStyle.base {
+val ModalStyle = CssStyle.base {
     Modifier
         .minWidth(300.px)
         .maxWidth(500.px)
@@ -27,7 +27,7 @@ val ModalStyle by ComponentStyle.base {
         .borderRadius(2.percent)
 }
 
-val ModalContentStyle by ComponentStyle {
+val ModalContentStyle = CssStyle {
     base {
         Modifier
             .fillMaxWidth()
@@ -38,7 +38,7 @@ val ModalContentStyle by ComponentStyle {
     }
 }
 
-val ModalButtonRowStyle by ComponentStyle {
+val ModalButtonRowStyle = CssStyle {
     base { Modifier.fillMaxWidth().margin(top = 1.cssRem).gap(1.cssRem) }
     cssRule(" *") { Modifier.flexGrow(1) }
 }
