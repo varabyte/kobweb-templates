@@ -1,6 +1,9 @@
 package chat.core.components.sections
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Row
@@ -15,16 +18,19 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaHouse
 import com.varabyte.kobweb.silk.components.icons.fa.FaMoon
 import com.varabyte.kobweb.silk.components.icons.fa.FaQuestion
 import com.varabyte.kobweb.silk.components.icons.fa.FaSun
-import com.varabyte.kobweb.silk.components.style.*
-import com.varabyte.kobweb.silk.components.style.common.SmoothColorStyle
+import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.base
+import com.varabyte.kobweb.silk.style.common.SmoothColorStyle
+import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.palette.background
 import com.varabyte.kobweb.silk.theme.colors.palette.color
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
-import org.jetbrains.compose.web.css.*
-import org.jetbrains.compose.web.dom.*
+import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.dom.Text
 
-val NavHeaderStyle by ComponentStyle.base(extraModifiers = { SmoothColorStyle.toModifier() }) {
+val NavHeaderStyle = CssStyle.base(extraModifier = { SmoothColorStyle.toModifier() }) {
     Modifier
         .fillMaxWidth()
         .height(60.px)
@@ -33,7 +39,7 @@ val NavHeaderStyle by ComponentStyle.base(extraModifiers = { SmoothColorStyle.to
         .backgroundColor(colorMode.toPalette().color)
 }
 
-val TitleStyle by ComponentStyle.base {
+val TitleStyle = CssStyle.base {
     Modifier
         .fontSize(26.px)
         .fontWeight(FontWeight.Bold)
@@ -41,7 +47,7 @@ val TitleStyle by ComponentStyle.base {
         .color(colorMode.toPalette().background)
 }
 
-val NavButtonStyle by ComponentStyle.base {
+val NavButtonStyle = CssStyle.base {
     Modifier
         .margin(leftRight = 5.px)
         .padding(0.px)

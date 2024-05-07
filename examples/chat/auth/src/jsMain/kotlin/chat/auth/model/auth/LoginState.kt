@@ -1,10 +1,11 @@
 package chat.auth.model.auth
 
-import androidx.compose.runtime.*
-import com.varabyte.kobweb.navigation.Router
-import com.varabyte.kobweb.silk.components.icons.fa.FaRightFromBracket
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import chat.core.components.sections.ExtraNavHeaderAction
 import chat.core.components.sections.NavHeaderAction
+import com.varabyte.kobweb.navigation.Router
+import com.varabyte.kobweb.silk.components.icons.fa.FaRightFromBracket
 
 sealed class LoginState {
     companion object {

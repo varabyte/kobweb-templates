@@ -1,11 +1,11 @@
 package chat.auth.components.sections
 
-import androidx.compose.runtime.*
-import com.varabyte.kobweb.core.rememberPageContext
-import com.varabyte.kobweb.navigation.UpdateHistoryMode
+import androidx.compose.runtime.Composable
 import chat.core.components.sections.CenteredColumnContent
 import chat.core.components.widgets.TextButton
-import org.jetbrains.compose.web.dom.*
+import com.varabyte.kobweb.core.rememberPageContext
+import com.varabyte.kobweb.navigation.UpdateHistoryMode
+import org.jetbrains.compose.web.dom.Text
 
 @Composable
 fun LoggedOutMessage() {

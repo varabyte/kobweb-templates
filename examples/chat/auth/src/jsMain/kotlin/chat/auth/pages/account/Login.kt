@@ -1,16 +1,6 @@
 package chat.auth.pages.account
 
 import androidx.compose.runtime.*
-import com.varabyte.kobweb.browser.api
-import com.varabyte.kobweb.core.Page
-import com.varabyte.kobweb.core.rememberPageContext
-import com.varabyte.kobweb.navigation.UpdateHistoryMode
-import com.varabyte.kobweb.silk.components.style.*
-import com.varabyte.kobweb.silk.components.text.SpanText
-import kotlinx.browser.window
-import kotlinx.coroutines.launch
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import chat.auth.model.auth.Account
 import chat.auth.model.auth.LoginResponse
 import chat.auth.model.auth.LoginState
@@ -19,7 +9,17 @@ import chat.core.components.sections.CenteredColumnContent
 import chat.core.components.widgets.TextButton
 import chat.core.components.widgets.TitledTextInput
 import chat.core.styles.ErrorTextStyle
+import com.varabyte.kobweb.browser.api
 import com.varabyte.kobweb.compose.dom.ref
+import com.varabyte.kobweb.core.Page
+import com.varabyte.kobweb.core.rememberPageContext
+import com.varabyte.kobweb.navigation.UpdateHistoryMode
+import com.varabyte.kobweb.silk.components.text.SpanText
+import com.varabyte.kobweb.silk.style.toModifier
+import kotlinx.browser.window
+import kotlinx.coroutines.launch
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 @Page
 @Composable

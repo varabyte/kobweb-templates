@@ -13,17 +13,20 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.forms.Button
-import com.varabyte.kobweb.silk.components.layout.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.components.navigation.Link
-import com.varabyte.kobweb.silk.components.style.ComponentStyle
-import com.varabyte.kobweb.silk.components.style.base
-import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
-import com.varabyte.kobweb.silk.components.style.toAttrs
-import com.varabyte.kobweb.silk.components.style.toModifier
 import com.varabyte.kobweb.silk.components.text.SpanText
+import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.base
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
+import com.varabyte.kobweb.silk.style.toAttrs
+import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.ColorSchemes
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.css.fr
+import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Text
 import ${package}.HeadlineTextStyle
@@ -32,13 +35,13 @@ import ${package}.components.layouts.PageLayout
 import ${package}.toSitePalette
 
 // Container that has a tagline and grid on desktop, and just the tagline on mobile
-val HeroContainerStyle by ComponentStyle {
+val HeroContainerStyle = CssStyle {
     base { Modifier.fillMaxWidth().gap(2.cssRem) }
     Breakpoint.MD { Modifier.margin { top(20.vh) } }
 }
 
 // A demo grid that appears on the homepage because it looks good
-val HomeGridStyle by ComponentStyle.base {
+val HomeGridStyle = CssStyle.base {
     Modifier
         .gap(0.5.cssRem)
         .width(70.cssRem)
@@ -46,7 +49,7 @@ val HomeGridStyle by ComponentStyle.base {
 }
 
 private val GridCellColorVar by StyleVariable<Color>()
-val HomeGridCellStyle by ComponentStyle.base {
+val HomeGridCellStyle = CssStyle.base {
     Modifier
         .backgroundColor(GridCellColorVar.value())
         .boxShadow(blurRadius = 0.6.cssRem, color = GridCellColorVar.value())

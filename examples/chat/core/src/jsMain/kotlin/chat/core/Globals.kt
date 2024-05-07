@@ -1,6 +1,6 @@
 package chat.core
 
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.px
 
 object G {
     object Ui {
