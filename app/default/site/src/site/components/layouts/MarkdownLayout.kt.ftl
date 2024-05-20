@@ -60,7 +60,7 @@ val MarkdownStyle = CssStyle {
         Modifier.fillMaxWidth().overflowWrap(OverflowWrap.BreakWord)
     }
 
-    cssRule("li,ol,ul") {
+    cssRule(" :is(li,ol,ul)") {
         Modifier.margin(bottom = 0.25.cssRem)
     }
 
