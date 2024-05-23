@@ -65,18 +65,16 @@ which you can find used throughout this template.
 Kobweb introduces the `Modifier` keyword that Android developers will recognize from the Jetpack Compose API. In a
 webdev context, this is used for setting CSS styles and html attributes on elements in the page.
 
-#### ComponentStyle
+#### CssStyle
 
-Traditional HTML pages use CSS to style their UI. In Kobweb, these styles can be declared using the `ComponentStyle`
-class in a Kotlin-idiomatic way. You can find examples of component styles used throughout the template.
-
-#### ComponentVariant
-
-You can generate variants from component styles, which are ways to take base component styles and tweak them further.
+Traditional HTML pages use CSS to style their UI. In Kobweb, these styles can be declared using the `CssStyle`
+class in a Kotlin-idiomatic way. You can find examples of style blocks used throughout the template.
 
 #### Keyframes
 
-You can create animations by declaring keyframes for them.
+You can create animations by declaring keyframes for them, using `Keyframes` blocks to define them (similar to
+declaring `CssStyle` style blocks). Once defined, call `Modifier.animation(YourKeyframes.toAnimation(...))` to
+reference them.
 
 ## Starting Point
 
