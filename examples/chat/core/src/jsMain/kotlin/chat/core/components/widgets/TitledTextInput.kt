@@ -36,13 +36,13 @@ val TitledTextInputStyle = CssStyle.base {
 fun TitledTextInput(
     title: String,
     text: String,
-    onTextChanged: (String) -> Unit,
+    onTextChange: (String) -> Unit,
     masked: Boolean = false,
     onCommit: () -> Unit = {},
     ref: ElementRefScope<HTMLInputElement>? = null,
 ) {
     Column {
         SpanText(title, TitledTextInputLabelStyle.toModifier())
-        TextInput(text, onTextChanged, TitledTextInputStyle.toModifier(), password = masked, onCommit = onCommit, ref = ref)
+        TextInput(text, onTextChange, TitledTextInputStyle.toModifier(), password = masked, onCommit = onCommit, ref = ref)
     }
 }
