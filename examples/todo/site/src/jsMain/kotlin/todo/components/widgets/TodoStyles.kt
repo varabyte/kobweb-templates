@@ -2,6 +2,7 @@ package todo.components.widgets
 
 import com.varabyte.kobweb.compose.css.*
 import com.varabyte.kobweb.compose.css.AlignItems
+import com.varabyte.kobweb.compose.css.Transition
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Color
 import com.varabyte.kobweb.compose.ui.graphics.Colors
