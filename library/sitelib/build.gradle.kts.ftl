@@ -2,7 +2,7 @@ import com.varabyte.kobweb.gradle.library.util.configAsKobwebLibrary
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.jetbrains.compose)
+    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kobweb.library)
     <#if !useMarkdown?boolean>// </#if>alias(libs.plugins.kobwebx.markdown)
 }
@@ -15,11 +15,11 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(compose.runtime)
+            implementation(libs.compose.runtime)
         }
 
         jsMain.dependencies {
-            implementation(compose.html.core)
+            implementation(libs.compose.html.core)
             implementation(libs.kobweb.core)
             <#if !useSilk?boolean>// </#if>implementation(libs.kobweb.silk)
             <#if !useMarkdown?boolean>// </#if>implementation(libs.kobwebx.markdown)
