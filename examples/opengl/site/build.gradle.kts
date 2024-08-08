@@ -4,7 +4,7 @@ import kotlinx.html.script
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.jetbrains.compose)
+    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kobweb.application)
 }
 
@@ -35,8 +35,8 @@ kotlin {
 
     sourceSets {
         jsMain.dependencies {
-            implementation(compose.runtime)
-            implementation(compose.html.core)
+            implementation(libs.compose.runtime)
+            implementation(libs.compose.html.core)
             implementation(libs.kobweb.core)
             implementation(libs.kobweb.silk)
             implementation(libs.silk.icons.fa)

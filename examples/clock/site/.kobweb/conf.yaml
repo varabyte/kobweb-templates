@@ -5,10 +5,10 @@ server:
   files:
     dev:
       contentRoot: "build/processedResources/js/main/public"
-      script: "build/dist/js/developmentExecutable/clock.js"
+      script: "build/kotlin-webpack/js/developmentExecutable/clock.js"
       api: "build/libs/clock.jar"
     prod:
-      script: "build/dist/js/productionExecutable/clock.js"
+      script: "build/kotlin-webpack/js/productionExecutable/clock.js"
       siteRoot: ".kobweb/site"
 
   port: 8080
