@@ -12,12 +12,13 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
-import com.varabyte.kobweb.silk.style.toModifier
+import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import kotlinx.browser.document
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.fr
 import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.dom.Div
 import ${package}.components.sections.Footer
 import ${package}.components.sections.NavHeader
 import ${package}.toSitePalette
@@ -91,10 +92,7 @@ fun PageLayout(title: String, content: @Composable ColumnScope.() -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             NavHeader()
-            Column(
-                PageContentStyle.toModifier(),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
+            Div(PageContentStyle.toAttrs()) {
                 content()
             }
         }

@@ -4,24 +4,21 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.OverflowWrap
-import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.toModifier
+import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.theme.colors.palette.color
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.dom.Div
 import ${package}.toSitePalette
 
 val MarkdownStyle = CssStyle {
-    // The following rules apply to all descendant elements, indicated by the leading space.
-    // When you use `cssRule`, the name of this style is prefixed in front of it.
-    // See also: https://developer.mozilla.org/en-US/docs/Web/CSS/Descendant_combinator
+    base { Modifier.fillMaxSize() }
 
     cssRule("h1") {
         Modifier
@@ -50,10 +47,6 @@ val MarkdownStyle = CssStyle {
             .fontSize(1.2.cssRem)
             .fontWeight(FontWeight.Bolder)
             .margin(top = 1.cssRem, bottom = 0.5.cssRem)
-    }
-
-    cssRule("p") {
-        Modifier.margin(bottom = 0.8.cssRem)
     }
 
     cssRule("ul") {
@@ -91,7 +84,7 @@ val MarkdownStyle = CssStyle {
 @Composable
 fun MarkdownLayout(title: String, content: @Composable () -> Unit) {
     PageLayout(title) {
-        Column(MarkdownStyle.toModifier().fillMaxSize(), horizontalAlignment = Alignment.Start) {
+        Div(MarkdownStyle.toAttrs()) {
             content()
         }
     }
