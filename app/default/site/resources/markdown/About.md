@@ -34,7 +34,7 @@ An example of how to define some site-specific colors, effectively extending the
 
 By convention, Kobweb codebases organize reusable site components under this folder. Within it, you have:
 
-* `layout/`<br>
+* `layouts/`<br>
   Represents top-level organization for pages
 * `sections/`<br>
   Areas of content that appear across multiple pages (such as nav bars and footers)
