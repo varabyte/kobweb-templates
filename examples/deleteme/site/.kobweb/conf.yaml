@@ -1,0 +1,14 @@
+site:
+  title: "Clock"
+
+server:
+  files:
+    dev:
+      contentRoot: "build/processedResources/js/main/public"
+      script: "build/kotlin-webpack/js/developmentExecutable/clock.js"
+      api: "build/libs/clock.jar"
+    prod:
+      script: "build/kotlin-webpack/js/productionExecutable/clock.js"
+      siteRoot: ".kobweb/site"
+
+  port: 8080
