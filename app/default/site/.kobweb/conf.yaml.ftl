@@ -1,5 +1,5 @@
 site:
-  title: "${projectTitle}"
+  title: "${escapeYamlString(projectTitle)}"
 
 server:
   files:
