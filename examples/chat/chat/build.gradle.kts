@@ -15,12 +15,12 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(libs.compose.runtime)
             implementation(libs.kotlinx.serialization.json)
             implementation(project(":core"))
             implementation(project(":auth"))
         }
         jsMain.dependencies {
+            implementation(libs.compose.runtime)
             implementation(libs.compose.html.core)
             implementation(libs.kobweb.core)
             implementation(libs.kobweb.silk)

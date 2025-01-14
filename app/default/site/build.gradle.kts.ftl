@@ -24,11 +24,12 @@ kotlin {
     configAsKobwebApplication("${projectName}" /*, includeServer = true*/)
 
     sourceSets {
-        commonMain.dependencies {
-            implementation(libs.compose.runtime)
-        }
+//        commonMain.dependencies {
+//          // Uncomment and add shared dependencies between JS and JVM here if building a fullstack app
+//        }
 
         jsMain.dependencies {
+            implementation(libs.compose.runtime)
             implementation(libs.compose.html.core)
             implementation(libs.kobweb.core)
             implementation(libs.kobweb.silk)
