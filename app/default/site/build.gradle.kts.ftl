@@ -25,7 +25,7 @@ kotlin {
 
     sourceSets {
 //        commonMain.dependencies {
-//          // Uncomment and add shared dependencies between JS and JVM here if building a fullstack app
+//          // Add shared dependencies between JS and JVM here if building a fullstack app
 //        }
 
         jsMain.dependencies {

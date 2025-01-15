@@ -15,9 +15,9 @@ kotlin {
 
     sourceSets {
         <#if useServer?boolean>
-        commonMain.dependencies {
-            // Add shared dependencies between JS and JVM here
-        }
+//        commonMain.dependencies {
+//          // Add shared dependencies between JS and JVM here
+//        }
         </#if>
         jsMain.dependencies {
             implementation(libs.compose.runtime)
