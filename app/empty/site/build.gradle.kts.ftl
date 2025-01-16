@@ -22,11 +22,13 @@ kotlin {
     configAsKobwebApplication("${projectName}"<#if useServer?boolean>, includeServer = true</#if>)
 
     sourceSets {
-        commonMain.dependencies {
-            implementation(libs.compose.runtime)
-        }
-
+        <#if useServer?boolean>
+//        commonMain.dependencies {
+//          // Add shared dependencies between JS and JVM here
+//        }
+        </#if>
         jsMain.dependencies {
+            implementation(libs.compose.runtime)
             implementation(libs.compose.html.core)
             implementation(libs.kobweb.core)
             <#if !useSilk?boolean>// </#if>implementation(libs.kobweb.silk)

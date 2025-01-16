@@ -11,6 +11,5 @@ kotlin {
     sourceSets {
         jsMain.dependencies {
         }
-
     }
 }
