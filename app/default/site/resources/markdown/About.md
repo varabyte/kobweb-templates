@@ -96,7 +96,7 @@ When you are ready to share your site with the world, you'll want to export it f
 snapshot of your site.
 
 There are two flavors of Kobweb sites: *static layout* and *full stack*. You
-can [read more about these choices here](https://github.com/varabyte/kobweb#static-layout-vs-full-stack-sites).
+can [read more about these choices here](https://kobweb.varabyte.com/docs/concepts/foundation/exporting#static-layout-vs-full-stack-sites).
 
 For most sites, a static layout site is what you want, so to do that, return to the command line and run:
 

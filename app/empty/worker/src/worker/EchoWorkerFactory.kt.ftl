@@ -6,7 +6,7 @@ import com.varabyte.kobweb.worker.WorkerStrategy
 import com.varabyte.kobweb.worker.createPassThroughSerializer
 
 // TODO: Worker checklist
-// - Review https://github.com/varabyte/kobweb#worker
+// - Review https://kobweb.varabyte.com/docs/concepts/foundation/workers
 // - Rename this class to a more appropriate worker for your project
 // - Choose appropriate input/output generic types for WorkerFactory<I, O>
 //   - Consider using Kotlinx serialization for rich I/O types

@@ -30,7 +30,7 @@ instructions:
     value: "${groupId}"
 
   - !<Inform>
-    message: "To learn more: https://github.com/varabyte/kobweb#silk"
+    message: "To learn more: https://kobweb.varabyte.com/docs/concepts/presentation/silk"
   - !<QueryVar>
     name: "useSilk"
     prompt: "Would you like to use Silk, Kobweb's powerful UI layer built on top of Compose for Web?"
@@ -39,7 +39,7 @@ instructions:
     transform: "${yesNoToBool(value)}"
 
   - !<Inform>
-    message: "To learn more: https://github.com/varabyte/kobweb#define-api-routes"
+    message: "To learn more: https://kobweb.varabyte.com/docs/concepts/server/fullstack"
   - !<QueryVar>
     name: "useServer"
     prompt: "Would you like to include support for defining backend logic, such as API routes and API streams?"
@@ -48,7 +48,7 @@ instructions:
     transform: "${yesNoToBool(value)}"
 
   - !<Inform>
-    message: "To learn more: https://github.com/varabyte/kobweb#markdown"
+    message: "To learn more: https://kobweb.varabyte.com/docs/concepts/foundation/markdown"
   - !<QueryVar>
     name: "useMarkdown"
     prompt: "Would you like to include support for Markdown files?"

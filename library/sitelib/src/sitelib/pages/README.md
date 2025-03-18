@@ -1,3 +1,3 @@
 Define pages in here.
 
-See also: https://github.com/varabyte/kobweb#create-a-page
+See also: https://kobweb.varabyte.com/docs/concepts/foundation/routing#page
