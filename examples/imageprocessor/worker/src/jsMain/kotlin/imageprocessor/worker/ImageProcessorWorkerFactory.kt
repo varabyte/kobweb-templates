@@ -2,11 +2,11 @@
 
 package imageprocessor.worker
 
+import com.varabyte.kobweb.serialization.createIOSerializer
 import com.varabyte.kobweb.worker.OutputDispatcher
 import com.varabyte.kobweb.worker.Transferables
 import com.varabyte.kobweb.worker.WorkerFactory
 import com.varabyte.kobweb.worker.WorkerStrategy
-import com.varabyte.kobwebx.worker.kotlinx.serialization.util.createIOSerializer
 import imageprocessor.util.ImageProcessor
 import imageprocessor.util.Image
 import imageprocessor.util.MutableImage
