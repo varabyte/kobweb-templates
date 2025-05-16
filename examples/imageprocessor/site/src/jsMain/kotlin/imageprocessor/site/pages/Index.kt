@@ -35,6 +35,7 @@ import kotlinx.coroutines.delay
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.dom.Canvas
 import org.jetbrains.compose.web.dom.Footer
 import org.jetbrains.compose.web.dom.Span

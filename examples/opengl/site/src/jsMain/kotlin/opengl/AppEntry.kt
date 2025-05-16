@@ -16,6 +16,7 @@ import org.jetbrains.compose.web.css.vw
 
 @InitSilk
 fun registerGlobalStyles(ctx: InitSilkContext) = ctx.stylesheet.apply {
+    registerStyleBase("html, body") { Modifier.fillMaxHeight() }
     registerStyleBase("body") {
         Modifier
             .fontFamily(
@@ -29,7 +30,7 @@ fun registerGlobalStyles(ctx: InitSilkContext) = ctx.stylesheet.apply {
 @Composable
 fun AppEntry(content: @Composable () -> Unit) {
     SilkApp {
-        Surface(SmoothColorStyle.toModifier().width(100.vw).height(100.vh)) {
+        Surface(SmoothColorStyle.toModifier().fillMaxHeight()) {
             content()
         }
     }

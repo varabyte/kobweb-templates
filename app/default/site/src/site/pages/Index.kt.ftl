@@ -11,6 +11,10 @@ import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.Page
+import com.varabyte.kobweb.core.data.add
+import com.varabyte.kobweb.core.init.InitRoute
+import com.varabyte.kobweb.core.init.InitRouteContext
+import com.varabyte.kobweb.core.layout.Layout
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.navigation.Link
@@ -31,7 +35,7 @@ import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Text
 import ${package}.HeadlineTextStyle
 import ${package}.SubheadlineTextStyle
-import ${package}.components.layouts.PageLayout
+import ${package}.components.layouts.PageLayoutData
 import ${package}.toSitePalette
 
 // Container that has a tagline and grid on desktop, and just the tagline on mobile
@@ -66,68 +70,74 @@ private fun GridCell(color: Color, row: Int, column: Int, width: Int? = null, he
     )
 }
 
+
+@InitRoute
+fun initHomePage(ctx: InitRouteContext) {
+    ctx.data.add(PageLayoutData("Home"))
+}
+
 @Page
+@Layout(".components.layouts.PageLayout")
 @Composable
 fun HomePage() {
-    PageLayout("Home") {
-        Row(HeroContainerStyle.toModifier()) {
-            Box {
-                val sitePalette = ColorMode.current.toSitePalette()
+    Row(HeroContainerStyle.toModifier()) {
+        Box {
+            val sitePalette = ColorMode.current.toSitePalette()
 
-                Column(Modifier.gap(2.cssRem)) {
-                    Div(HeadlineTextStyle.toAttrs()) {
-                        SpanText(
-                            "Use this template as your starting point for ", Modifier.color(
-                                when (ColorMode.current) {
-                                    ColorMode.LIGHT -> Colors.Black
-                                    ColorMode.DARK -> Colors.White
-                                }
-                            )
+            Column(Modifier.gap(2.cssRem)) {
+                Div(HeadlineTextStyle.toAttrs()) {
+                    SpanText(
+                        "Use this template as your starting point for ", Modifier.color(
+                            when (ColorMode.current) {
+                                ColorMode.LIGHT -> Colors.Black
+                                ColorMode.DARK -> Colors.White
+                            }
                         )
-                        SpanText(
-                            "Kobweb",
-                            Modifier
-                                .color(sitePalette.brand.accent)
-                                // Use a shadow so this light-colored word is more visible in light mode
-                                .textShadow(0.px, 0.px, blurRadius = 0.5.cssRem, color = Colors.Gray)
-                        )
-                    }
+                    )
+                    SpanText(
+                        "Kobweb",
+                        Modifier
+                            .color(sitePalette.brand.accent)
+                            // Use a shadow so this light-colored word is more visible in light mode
+                            .textShadow(0.px, 0.px, blurRadius = 0.5.cssRem, color = Colors.Gray)
+                    )
+                }
 
-                    Div(SubheadlineTextStyle.toAttrs()) {
-                        SpanText("You can read the ")
-                        Link("/about", "About")
-                        SpanText(" page for more information.")
-                    }
+                Div(SubheadlineTextStyle.toAttrs()) {
+                    SpanText("You can read the ")
+                    Link("/about", "About")
+                    SpanText(" page for more information.")
+                }
 
-                    val ctx = rememberPageContext()
-                    Button(onClick = {
-                        // Change this click handler with your call-to-action behavior
-                        // here. Link to an order page? Open a calendar UI? Play a movie?
-                        // Up to you!
-                        ctx.router.tryRoutingTo("/about")
-                    }, colorPalette = ColorPalettes.Blue) {
-                        Text("This could be your CTA")
-                    }
+                val ctx = rememberPageContext()
+                Button(onClick = {
+                    // Change this click handler with your call-to-action behavior
+                    // here. Link to an order page? Open a calendar UI? Play a movie?
+                    // Up to you!
+                    ctx.router.tryRoutingTo("/about")
+                }, colorPalette = ColorPalettes.Blue) {
+                    Text("This could be your CTA")
                 }
             }
+        }
 
-            Div(HomeGridStyle
-                .toModifier()
-                .displayIfAtLeast(Breakpoint.MD)
-                .grid {
-                    rows { repeat(3) { size(1.fr) } }
-                    columns { repeat(5) {size(1.fr) } }
-                }
-                .toAttrs()
-            ) {
-                val sitePalette = ColorMode.current.toSitePalette()
-                GridCell(sitePalette.brand.primary, 1, 1, 2, 2)
-                GridCell(ColorPalettes.Monochrome._600, 1, 3)
-                GridCell(ColorPalettes.Monochrome._100, 1, 4, width = 2)
-                GridCell(sitePalette.brand.accent, 2, 3, width = 2)
-                GridCell(ColorPalettes.Monochrome._300, 2, 5)
-                GridCell(ColorPalettes.Monochrome._800, 3, 1, width = 5)
+        Div(
+            HomeGridStyle
+            .toModifier()
+            .displayIfAtLeast(Breakpoint.MD)
+            .grid {
+                rows { repeat(3) { size(1.fr) } }
+                columns { repeat(5) { size(1.fr) } }
             }
+            .toAttrs()
+        ) {
+            val sitePalette = ColorMode.current.toSitePalette()
+            GridCell(sitePalette.brand.primary, 1, 1, 2, 2)
+            GridCell(ColorPalettes.Monochrome._600, 1, 3)
+            GridCell(ColorPalettes.Monochrome._100, 1, 4, width = 2)
+            GridCell(sitePalette.brand.accent, 2, 3, width = 2)
+            GridCell(ColorPalettes.Monochrome._300, 2, 5)
+            GridCell(ColorPalettes.Monochrome._800, 3, 1, width = 5)
         }
     }
 }

@@ -9,39 +9,25 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.core.PageContext
+import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.data.addIfAbsent
 import com.varabyte.kobweb.core.data.getValue
 import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
+import com.varabyte.kobwebx.markdown.markdown
 import kotlinx.browser.document
 import org.jetbrains.compose.web.css.px
 
-class PageLayoutData(val title: String)
-
 @InitRoute
-fun initPageLayout(ctx: InitRouteContext) {
-    ctx.data.addIfAbsent { PageLayoutData("Chat") }
+fun initMarkdownLayout(ctx: InitRouteContext) {
+    ctx.markdown!!.frontMatter["title"]?.singleOrNull()?.let { title ->
+        ctx.data.add(PageLayoutData(title))
+    }
 }
 
 @Composable
-@Layout
-fun PageLayout(ctx: PageContext, content: @Composable () -> Unit) {
-    val data = ctx.data.getValue<PageLayoutData>()
-    LaunchedEffect(data.title) {
-        document.title = data.title
-    }
-
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        NavHeader()
-        Column(
-            modifier = Modifier.fillMaxSize().padding(top = 10.px, left = 50.px, right = 50.px),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            content()
-        }
-    }
+@Layout(".components.layouts.PageLayout")
+fun MarkdownLayout(content: @Composable () -> Unit) {
+    content()
 }

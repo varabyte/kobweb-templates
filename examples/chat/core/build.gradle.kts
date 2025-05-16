@@ -21,6 +21,7 @@ kotlin {
             implementation(libs.compose.html.core)
             implementation(libs.kobweb.core)
             implementation(libs.kobweb.silk)
+            implementation(libs.kobwebx.markdown)
             implementation(libs.silk.icons.fa)
         }
     }

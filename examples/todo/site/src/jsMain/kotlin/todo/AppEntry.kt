@@ -16,6 +16,7 @@ val BORDER_COLOR = Color.rgb(0xea, 0xea, 0xea)
 
 @InitSilk
 fun initSiteStyles(ctx: InitSilkContext) = ctx.stylesheet.apply {
+    registerStyleBase("html, body") { Modifier.fillMaxHeight() }
     registerStyleBase("body") {
         Modifier.fontFamily(
             "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
@@ -39,7 +40,7 @@ fun initSiteStyles(ctx: InitSilkContext) = ctx.stylesheet.apply {
 @Composable
 fun AppEntry(content: @Composable () -> Unit) {
     SilkApp {
-        Surface(Modifier.minWidth(100.vw).minHeight(100.vh)) {
+        Surface(Modifier.fillMaxHeight()) {
             content()
         }
     }

@@ -28,7 +28,7 @@ import org.jetbrains.compose.web.dom.Text
 @Composable
 fun PageLayout(content: @Composable BoxScope.() -> Unit) {
     Column(
-        Modifier.fillMaxSize(),
+        Modifier.fillMaxWidth().minHeight(100.vh),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Column(Modifier.fillMaxSize()) {
