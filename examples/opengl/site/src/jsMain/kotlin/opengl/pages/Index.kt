@@ -5,6 +5,7 @@ import com.varabyte.kobweb.compose.foundation.layout.BoxScope
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.core.Page
+import com.varabyte.kobweb.core.layout.Layout
 import com.varabyte.kobweb.silk.components.graphics.CanvasGl
 import com.varabyte.kobweb.silk.components.graphics.ONE_FRAME_MS_60_FPS
 import com.varabyte.kobweb.silk.theme.colors.palette.background
@@ -443,9 +444,8 @@ private fun BoxScope.OpenGlScene() {
 }
 
 @Page
+@Layout(".components.layouts.PageLayout")
 @Composable
-fun OpenGlPage() {
-    PageLayout {
-        OpenGlScene()
-    }
+fun BoxScope.OpenGlPage() {
+    OpenGlScene()
 }

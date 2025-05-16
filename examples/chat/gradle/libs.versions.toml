@@ -1,8 +1,8 @@
 [versions]
-jetbrains-compose = "1.7.3"
-kobweb = "0.21.1"
-kotlin = "2.1.20"
-kotlinx-serialization-json = "1.4.1"
+jetbrains-compose = "1.8.0"
+kobweb = "0.22.0"
+kotlin = "2.1.21"
+kotlinx-serialization = "1.8.1"
 
 [libraries]
 compose-html-core = { module = "org.jetbrains.compose.html:html-core", version.ref = "jetbrains-compose" }
@@ -10,7 +10,8 @@ compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.re
 kobweb-api = { module = "com.varabyte.kobweb:kobweb-api", version.ref = "kobweb" }
 kobweb-core = { module = "com.varabyte.kobweb:kobweb-core", version.ref = "kobweb" }
 kobweb-silk = { module = "com.varabyte.kobweb:kobweb-silk", version.ref = "kobweb" }
-kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
+kobwebx-markdown = { module = "com.varabyte.kobwebx:kobwebx-markdown", version.ref = "kobweb" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 silk-icons-fa = { module = "com.varabyte.kobwebx:silk-icons-fa", version.ref = "kobweb" }
 
 [plugins]

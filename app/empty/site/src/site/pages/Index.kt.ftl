@@ -22,6 +22,7 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.core.Page
+import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.dom.Text
 <@worker_imports/>
 
@@ -51,7 +52,7 @@ fun HomePage() {
         style {
             display(DisplayStyle.Flex)
             width(100.percent)
-            height(100.vh)
+            minHeight(100.vh)
             alignItems(AlignItems.Center)
             justifyContent(JustifyContent.Center)
         }

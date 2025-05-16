@@ -1,5 +1,6 @@
 ---
-root: .components.layouts.PageLayout("ABOUT")
+layout: .components.layouts.PageLayout
+title: About
 ---
 
 This project is created with the [Kobweb](https://varabyte.com/kobweb) framework and used to demonstrate a way to

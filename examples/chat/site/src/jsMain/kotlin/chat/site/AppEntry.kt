@@ -3,9 +3,9 @@ package chat
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxHeight
 import com.varabyte.kobweb.compose.ui.modifiers.fontFamily
 import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
-import com.varabyte.kobweb.compose.ui.modifiers.minHeight
 import com.varabyte.kobweb.core.App
 import com.varabyte.kobweb.silk.SilkApp
 import com.varabyte.kobweb.silk.components.layout.Surface
@@ -19,9 +19,6 @@ import com.varabyte.kobweb.silk.theme.colors.loadFromLocalStorage
 import com.varabyte.kobweb.silk.theme.colors.saveToLocalStorage
 import com.varabyte.kobweb.silk.theme.colors.systemPreference
 
-import kotlinx.browser.localStorage
-import org.jetbrains.compose.web.css.vh
-
 private const val COLOR_MODE_KEY = "chat:app:colorMode"
 
 @InitSilk
@@ -31,6 +28,7 @@ fun updateTheme(ctx: InitSilkContext) {
 
 @InitSilk
 fun registerGlobalStyles(ctx: InitSilkContext) = ctx.stylesheet.apply {
+    registerStyleBase("html, body") { Modifier.fillMaxHeight() }
     registerStyleBase("body") {
         Modifier
             .fontFamily(
@@ -50,7 +48,7 @@ fun AppEntry(content: @Composable () -> Unit) {
             colorMode.saveToLocalStorage(COLOR_MODE_KEY)
         }
 
-        Surface(SmoothColorStyle.toModifier().minHeight(100.vh)) {
+        Surface(SmoothColorStyle.toModifier().fillMaxHeight()) {
             content()
         }
     }

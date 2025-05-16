@@ -10,6 +10,9 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.core.PageContext
+import com.varabyte.kobweb.core.data.getValue
+import com.varabyte.kobweb.core.layout.Layout
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toAttrs
@@ -19,6 +22,7 @@ import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.fr
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.dom.Div
+import org.jetbrains.compose.web.css.vh
 import ${package}.components.sections.Footer
 import ${package}.components.sections.NavHeader
 import ${package}.toSitePalette
@@ -62,16 +66,20 @@ private fun SvgCobweb(modifier: Modifier) {
     }
 }
 
+class PageLayoutData(val title: String)
+
 @Composable
-fun PageLayout(title: String, content: @Composable ColumnScope.() -> Unit) {
-    LaunchedEffect(title) {
-        document.title = "Kobweb - $title"
+@Layout
+fun PageLayout(ctx: PageContext, content: @Composable ColumnScope.() -> Unit) {
+    val data = ctx.data.getValue<PageLayoutData>()
+    LaunchedEffect(data.title) {
+        document.title = "Kobweb - ${r"${data.title}"}"
     }
 
     Box(
         Modifier
             .fillMaxWidth()
-            .minHeight(100.percent)
+            .minHeight(100.vh)
             // Create a box with two rows: the main content (fills as much space as it can) and the footer (which reserves
             // space at the bottom). "min-content" means the use the height of the row, which we use for the footer.
             // Since this box is set to *at least* 100%, the footer will always appear at least on the bottom but can be

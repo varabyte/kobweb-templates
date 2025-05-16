@@ -1,5 +1,6 @@
 ---
-root: .components.layouts.MarkdownLayout("About")
+layout: .components.layouts.MarkdownLayout
+title: About
 ---
 
 # About this template
