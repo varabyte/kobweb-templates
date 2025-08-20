@@ -3,12 +3,12 @@
 package imageprocessor.worker
 
 import com.varabyte.kobweb.serialization.createIOSerializer
+import com.varabyte.kobweb.worker.Attachments
 import com.varabyte.kobweb.worker.OutputDispatcher
-import com.varabyte.kobweb.worker.Transferables
 import com.varabyte.kobweb.worker.WorkerFactory
 import com.varabyte.kobweb.worker.WorkerStrategy
-import imageprocessor.util.ImageProcessor
 import imageprocessor.util.Image
+import imageprocessor.util.ImageProcessor
 import imageprocessor.util.MutableImage
 import imageprocessor.util.processors.*
 import imageprocessor.util.toUint8ClampedArray
@@ -68,13 +68,13 @@ internal class ImageProcessorWorkerFactory : WorkerFactory<ProcessImageRequest, 
             }
 
             try {
-                val imageData = transferables.getImageData("imageData")!!
+                val imageData = attachments.getImageData("imageData")!!
                 val image = MutableImage(imageData.width, imageData.height, imageData.data)
 
                 processors.forEach { it.process(image) }
                 postOutput(
                     ProcessImageResponse.Finished(),
-                    Transferables { add("imageData", image.toImageData()) }
+                    Attachments { add("imageData", image.toImageData()) }
                 )
             } catch (e: Exception) {
                 postOutput(ProcessImageResponse.Error(e.message ?: "Unknown error (${e::class.simpleName})"))

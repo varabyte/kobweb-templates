@@ -23,7 +23,7 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.components.text.SpanText
-import com.varabyte.kobweb.worker.Transferables
+import com.varabyte.kobweb.worker.Attachments
 import imageprocessor.site.components.widgets.Modal
 import imageprocessor.site.components.widgets.Spinner
 import imageprocessor.worker.ImageProcessorCommand
@@ -35,7 +35,6 @@ import kotlinx.coroutines.delay
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.dom.Canvas
 import org.jetbrains.compose.web.dom.Footer
 import org.jetbrains.compose.web.dom.Span
@@ -147,7 +146,7 @@ fun HomePage() {
                     commands.clear()
 
                     if (response is ProcessImageResponse.Finished) {
-                        val processedImageData = transferables.getImageData("imageData")!!
+                        val processedImageData = attachments.getImageData("imageData")!!
                         ctx.putImageData(processedImageData, 0.0, 0.0)
                     } else if (response is ProcessImageResponse.Error) {
                         console.error("Error: ${response.message}")
@@ -159,7 +158,7 @@ fun HomePage() {
 
                 worker.postInput(
                     ProcessImageRequest(commands),
-                    Transferables { add("imageData", imageData) }
+                    Attachments { add("imageData", imageData) }
                 )
             }, enabled = (_canvas != null && activeWorker == null && (commands.isNotEmpty()))) {
                 Text("Process!")
