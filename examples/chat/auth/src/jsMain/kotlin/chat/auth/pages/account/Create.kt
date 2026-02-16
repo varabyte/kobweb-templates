@@ -55,7 +55,7 @@ fun CreateAccountPage(ctx: PageContext) {
             val account = Account(username, password1)
             val accountBytes = Json.encodeToString(account).encodeToByteArray()
             coroutine.launch {
-                val response = window.api.post("/account/create", body = accountBytes)
+                val response = window.api.postBytes("/account/create", body = accountBytes)
                     .decodeToString().let { Json.decodeFromString(CreateAccountResponse.serializer(), it) }
 
                 if (response.succeeded) {

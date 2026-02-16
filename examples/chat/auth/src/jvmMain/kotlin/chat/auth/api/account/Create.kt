@@ -9,13 +9,14 @@ import com.varabyte.kobweb.api.data.getValue
 import com.varabyte.kobweb.api.http.HttpMethod
 import com.varabyte.kobweb.api.http.readBodyText
 import com.varabyte.kobweb.api.http.setBodyText
+import com.varabyte.kobweb.api.http.text
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 @Api
-fun create(ctx: ApiContext) {
+suspend fun create(ctx: ApiContext) {
     if (ctx.req.method != HttpMethod.POST) return
-    val account = Json.decodeFromString(Account.serializer(), ctx.req.readBodyText()!!)
+    val account = Json.decodeFromString(Account.serializer(), ctx.req.body!!.text())
     val accounts = ctx.data.getValue<Accounts>()
     val result = CreateAccountResponse(accounts.set.none { it.username == account.username })
     if (result.succeeded) {

@@ -20,7 +20,6 @@ import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.toModifier
 import kotlinx.browser.window
 import kotlinx.coroutines.launch
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.em
@@ -34,7 +33,7 @@ import todo.components.widgets.TodoForm
 import todo.model.TodoItem
 
 private suspend fun loadAndReplaceTodos(id: String, todos: SnapshotStateList<TodoItem>) {
-    return window.api.get("list?owner=$id").let { listBytes ->
+    return window.api.getBytes("list?owner=$id").let { listBytes ->
         Snapshot.withMutableSnapshot {
             todos.clear()
             todos.addAll(Json.decodeFromString(listBytes.decodeToString()))
@@ -62,7 +61,7 @@ fun HomePage() {
     LaunchedEffect(Unit) {
         check(!ready && loadingCount == 1)
         id = window.localStorage.getItem("id") ?: run {
-            window.api.get("id").decodeToString().also {
+            window.api.getBytes("id").decodeToString().also {
                 window.localStorage.setItem("id", it)
             }
         }
@@ -97,7 +96,7 @@ fun HomePage() {
                 TodoForm("Type a TODO and press ENTER", loadingCount > 0) { todo ->
                     coroutineScope.launch {
                         loadingCount++
-                        window.api.post("add?owner=$id&todo=$todo")
+                        window.api.postBytes("add?owner=$id&todo=$todo")
                         loadAndReplaceTodos(id, todos)
                         loadingCount--
                     }
@@ -108,7 +107,7 @@ fun HomePage() {
                         coroutineScope.launch {
                             loadingCount++
                             todos.removeAt(i)
-                            window.api.post("remove?owner=$id&todo=${todo.id}")
+                            window.api.postBytes("remove?owner=$id&todo=${todo.id}")
                             loadAndReplaceTodos(id, todos)
                             loadingCount--
                         }
