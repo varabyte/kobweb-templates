@@ -117,5 +117,5 @@ $ kobweb run --layout static --env prod
 If you're satisfied, you can upload your site files to the static website host provider of your choice. Each provider
 has its own instructions for how it discovers your files, so please refer to their documentation.
 
-You can [read this blog post](https://bitspittle.dev/blog/2022/staticdeploy) for some concrete examples of exporting a
+You can [read this blog post](https://bitspittle.dev/blog/2022/static-deploy) for some concrete examples of exporting a
 Kobweb site to two popular static website hosting providers.
