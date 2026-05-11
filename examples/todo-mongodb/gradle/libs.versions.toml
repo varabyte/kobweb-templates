@@ -4,6 +4,7 @@ compose-runtime = "1.10.2"
 kobweb = "0.24.0"
 kotlin = "2.3.10"
 kotlinx-serialization = "1.10.0"
+ktmongo = "0.29.1"
 
 [libraries]
 compose-html-core = { module = "org.jetbrains.compose.html:html-core", version.ref = "compose-html" }
@@ -13,6 +14,7 @@ kobweb-core = { module = "com.varabyte.kobweb:kobweb-core", version.ref = "kobwe
 kobweb-silk = { module = "com.varabyte.kobweb:kobweb-silk", version.ref = "kobweb" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 silk-icons-fa = { module = "com.varabyte.kobwebx:silk-icons-fa", version.ref = "kobweb" }
+ktmongo-coroutines = { module = "dev.opensavvy.ktmongo:driver-coroutines", version.ref = "ktmongo" }
 
 [plugins]
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

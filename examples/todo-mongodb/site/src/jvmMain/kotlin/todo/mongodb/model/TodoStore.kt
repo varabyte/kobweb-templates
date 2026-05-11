@@ -1,34 +1,61 @@
 package todo.mongodb.model
 
+import com.mongodb.kotlin.client.coroutine.MongoClient
+import com.mongodb.kotlin.client.coroutine.MongoDatabase
 import com.varabyte.kobweb.api.data.add
 import com.varabyte.kobweb.api.init.InitApi
 import com.varabyte.kobweb.api.init.InitApiContext
-import java.util.*
-import java.util.concurrent.locks.ReentrantLock
-import kotlin.concurrent.withLock
+import kotlinx.serialization.Serializable
+import opensavvy.ktmongo.bson.types.ObjectId
+import opensavvy.ktmongo.coroutines.asKtMongo
 
-// NOTE: This is a simple demo, so we create an in-memory store (which will get reset everytime server code is live
-// reloaded). However, in a production app, you should use a real database instead, maybe a redis backend, or possibly
-// even something that lives on a different server which you access via network calls.
+// NOTE: for this to work, it needs a MongoDB instance running locally.
+// You can start one with: docker run -d -p '27017:27017' 'mongo:8.0.6'
 
 @InitApi
 fun initTodoStore(ctx: InitApiContext) {
-    ctx.data.add(TodoStore())
+    val collection = MongoClient.create("mongodb://localhost:27017")
+        .getDatabase("kobweb-todo-example")
+
+    ctx.data.add(TodoStore(collection))
+    ctx.logger.info("Initialized MongoDB store")
 }
 
-class TodoStore {
-    private val lock = ReentrantLock()
-    private val todos = mutableMapOf<String, MutableList<TodoItem>>()
+@Serializable
+data class TodoItemDto(
+    @Suppress("PropertyName") // it's the standard naming in MongoDB
+    val _id: ObjectId,
+    val ownerId: String,
+    val text: String,
+)
 
-    fun add(ownerId: String, todo: String) {
-        lock.withLock {
-            todos.computeIfAbsent(ownerId) { mutableListOf() }.add(TodoItem(UUID.randomUUID().toString(), todo))
+class TodoStore(
+    database: MongoDatabase,
+) {
+    private val collection = database.getCollection<TodoItemDto>("todos").asKtMongo()
+
+    suspend fun add(ownerId: String, todo: String) {
+        val id = collection.newId()
+
+        collection.insertOne(
+            TodoItemDto(
+                _id = id,
+                ownerId = ownerId,
+                text = todo,
+            )
+        )
+    }
+
+    suspend fun remove(ownerId: String, id: String) {
+        collection.deleteOne {
+            TodoItemDto::_id eq ObjectId(id)
+            TodoItemDto::ownerId eq ownerId
         }
     }
 
-    fun remove(ownerId: String, id: String) {
-        lock.withLock { todos[ownerId]?.removeIf { it.id == id } }
-    }
-
-    operator fun get(ownerId: String): List<TodoItem> = lock.withLock { todos[ownerId] } ?: emptyList()
+    suspend operator fun get(ownerId: String): List<TodoItem> =
+        collection.find {
+            TodoItemDto::ownerId eq ownerId
+        }.toList()
+            .map { TodoItem(it._id.hex, it.text) }
 }
