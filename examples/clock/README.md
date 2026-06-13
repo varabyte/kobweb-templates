@@ -1,3 +1,7 @@
+# Clock
+
+![A screenshot of the application](screenshot.png)
+
 This is a [Kobweb](https://github.com/varabyte/kobweb) project instantiated from the `examples/clock` template.
 
 It is a Kotlin implementation of the tutorial

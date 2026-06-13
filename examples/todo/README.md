@@ -1,3 +1,7 @@
+# Todo
+
+![A screenshot of the application](screenshot.png)
+
 This is a [Kobweb](https://github.com/varabyte/kobweb) project instantiated from the `examples/todo` template.
 
 The purpose of this project is to showcase a minimal Todo app, demonstrating:
