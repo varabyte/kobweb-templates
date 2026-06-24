@@ -1,25 +1,11 @@
-package todo.mongodb.model
+package todo.model.datastore.impl
 
-import com.mongodb.kotlin.client.coroutine.MongoClient
 import com.mongodb.kotlin.client.coroutine.MongoDatabase
-import com.varabyte.kobweb.api.data.add
-import com.varabyte.kobweb.api.init.InitApi
-import com.varabyte.kobweb.api.init.InitApiContext
 import kotlinx.serialization.Serializable
 import opensavvy.ktmongo.bson.types.ObjectId
 import opensavvy.ktmongo.coroutines.asKtMongo
-
-// NOTE: for this to work, it needs a MongoDB instance running locally.
-// You can start one with: docker run -d -p '27017:27017' 'mongo:8.0.6'
-
-@InitApi
-fun initTodoStore(ctx: InitApiContext) {
-    val collection = MongoClient.create("mongodb://localhost:27017")
-        .getDatabase("kobweb-todo-example")
-
-    ctx.data.add(TodoStore(collection))
-    ctx.logger.info("Initialized MongoDB store")
-}
+import todo.model.TodoItem
+import todo.model.datastore.TodoDataStore
 
 @Serializable
 data class TodoItemDto(
@@ -29,12 +15,13 @@ data class TodoItemDto(
     val text: String,
 )
 
-class TodoStore(
-    database: MongoDatabase,
-) {
+/**
+ * Transient data store implementation that is wiped out every time the server is shutdown.
+ */
+class MongoDbDataStore(database: MongoDatabase) : TodoDataStore {
     private val collection = database.getCollection<TodoItemDto>("todos").asKtMongo()
 
-    suspend fun add(ownerId: String, todo: String) {
+    override suspend fun add(ownerId: String, todo: String) {
         val id = collection.newId()
 
         collection.insertOne(
@@ -46,14 +33,14 @@ class TodoStore(
         )
     }
 
-    suspend fun remove(ownerId: String, id: String) {
+    override suspend fun remove(ownerId: String, id: String) {
         collection.deleteOne {
             TodoItemDto::_id eq ObjectId(id)
             TodoItemDto::ownerId eq ownerId
         }
     }
 
-    suspend operator fun get(ownerId: String): List<TodoItem> =
+    override suspend operator fun get(ownerId: String): List<TodoItem> =
         collection.find {
             TodoItemDto::ownerId eq ownerId
         }.toList()
