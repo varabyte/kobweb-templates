@@ -27,3 +27,6 @@ kotlin-js-store
 
 # Kotlin ignores
 .kotlin
+
+# MongoDB/Docker ignores
+mongodb-data

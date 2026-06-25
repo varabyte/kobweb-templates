@@ -58,16 +58,18 @@ extra work.
 To run MongoDB, in your terminal, before calling `kobweb run`, enter the following command:
 
 ```bash
-$ docker run -d -p '27017:27017' 'mongo:8.0.6'
-# The above command will print the container ID once it's started
+$ docker compose up -d
+```
+
+To see the MongoDB logs, use the following command:
+```bash
+$ docker compose logs -f
 ```
 
 When you are done running the example, you should also remember to stop docker.
 
 ```bash
-$ docker stop <countainer-id> # replace <container-id> with your real ID
-# This is the ID that is printed out by `docker run` above.
-# You can also use `docker ps` to find it after the fact.
+$ docker compose down
 ```
 
 ## KtMongo
