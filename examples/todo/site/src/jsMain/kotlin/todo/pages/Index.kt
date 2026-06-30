@@ -4,6 +4,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshots.Snapshot
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import com.varabyte.kobweb.browser.api
+import com.varabyte.kobweb.browser.http.bodyAsBytes
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.WhiteSpace
@@ -33,7 +34,8 @@ import todo.components.widgets.TodoForm
 import todo.model.TodoItem
 
 private suspend fun loadAndReplaceTodos(id: String, todos: SnapshotStateList<TodoItem>) {
-    return window.api.getBytes("list?owner=$id").let { listBytes ->
+    return window.api.get("list?owner=$id").bodyAsBytes()
+        .let { listBytes ->
         Snapshot.withMutableSnapshot {
             todos.clear()
             todos.addAll(Json.decodeFromString(listBytes.decodeToString()))
@@ -61,7 +63,7 @@ fun HomePage() {
     LaunchedEffect(Unit) {
         check(!ready && loadingCount == 1)
         id = window.localStorage.getItem("id") ?: run {
-            window.api.getBytes("id").decodeToString().also {
+            window.api.get("id").bodyAsBytes().decodeToString().also {
                 window.localStorage.setItem("id", it)
             }
         }
@@ -96,7 +98,7 @@ fun HomePage() {
                 TodoForm("Type a TODO and press ENTER", loadingCount > 0) { todo ->
                     coroutineScope.launch {
                         loadingCount++
-                        window.api.postBytes("add?owner=$id&todo=$todo")
+                        window.api.post("add?owner=$id&todo=$todo")
                         loadAndReplaceTodos(id, todos)
                         loadingCount--
                     }
@@ -107,7 +109,7 @@ fun HomePage() {
                         coroutineScope.launch {
                             loadingCount++
                             todos.removeAt(i)
-                            window.api.postBytes("remove?owner=$id&todo=${todo.id}")
+                            window.api.post("remove?owner=$id&todo=${todo.id}")
                             loadAndReplaceTodos(id, todos)
                             loadingCount--
                         }

@@ -10,6 +10,8 @@ import chat.core.components.widgets.TextButton
 import chat.core.components.widgets.TitledTextInput
 import chat.core.styles.ErrorTextStyle
 import com.varabyte.kobweb.browser.api
+import com.varabyte.kobweb.browser.http.bodyAs
+import com.varabyte.kobweb.browser.post
 import com.varabyte.kobweb.compose.dom.ref
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.core.PageContext
@@ -22,7 +24,6 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.toModifier
 import kotlinx.browser.window
 import kotlinx.coroutines.launch
-import kotlinx.serialization.json.Json
 
 @InitRoute
 fun initCreateAccountPage(ctx: InitRouteContext) {
@@ -53,10 +54,9 @@ fun CreateAccountPage(ctx: PageContext) {
             if (!isValid()) return
 
             val account = Account(username, password1)
-            val accountBytes = Json.encodeToString(account).encodeToByteArray()
             coroutine.launch {
-                val response = window.api.postBytes("/account/create", body = accountBytes)
-                    .decodeToString().let { Json.decodeFromString(CreateAccountResponse.serializer(), it) }
+                val response = window.api.post<Account>("/account/create", account)
+                    .bodyAs<CreateAccountResponse>()
 
                 if (response.succeeded) {
                     LoginState.current = LoginState.LoggedIn(account)
