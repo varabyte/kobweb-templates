@@ -3,14 +3,15 @@ package ${package}.pages
 <#macro worker_imports>
   <#if useWorker?boolean>
 import com.varabyte.kobweb.worker.rememberWorker
+import ${package}.worker.EchoInput
 import ${package}.worker.EchoWorker
   </#if>
 </#macro>
 <#macro worker>
   <#if useWorker?boolean>
-    val worker = rememberWorker { EchoWorker { output -> console.log("Echoed: $output") } }
+    val worker = rememberWorker { EchoWorker { output -> console.log("Echoed: ${'$'}{output.message}") } }
     LaunchedEffect(Unit) {
-        worker.postInput("Hello, worker!")
+        worker.postInput(EchoInput("Hello, worker!"))
     }
 
   </#if>
