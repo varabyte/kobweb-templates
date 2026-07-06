@@ -1,3 +1,7 @@
+# Chat
+
+![A screenshot of the application](screenshot.png)
+
 This is an example of how to break up a Kobweb project into multiple modules.
 
 As a concrete use-case, we create a chat server which requires logging in with an account to use it.

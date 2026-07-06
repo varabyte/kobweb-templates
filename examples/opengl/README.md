@@ -1,3 +1,7 @@
+# OpenGL
+
+![A screenshot of the application](screenshot.png)
+
 This is a [Kobweb](https://github.com/varabyte/kobweb) project instantiated from the `examples/opengl` template.
 
 The purpose of this project is to demonstrate the `CanvasGl` composable to drive 3D, OpenGL content.
