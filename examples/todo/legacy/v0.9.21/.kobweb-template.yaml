@@ -1,5 +1,7 @@
 metadata:
+  name: "examples/todo"
   description: "An example TODO app, showcasing fullstack client / server communication"
+  # Starting in 0.9.22, we use a new feature for letting the user choose the DB strategy
+  maximumVersion: "0.9.21"
 
 # No need for any instructions - we just copy the demo as is
-

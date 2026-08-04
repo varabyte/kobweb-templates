@@ -1,0 +1,18 @@
+name: kobweb-todo
+
+services:
+
+  # This configuration of MongoDB is NOT SECURE.
+  # It is meant for development only.
+  # In production, you should AT LEAST configure authentication, backups and replication.
+  # See https://hub.docker.com/_/mongo for the list of options.
+  mongo:
+    image: "mongo:8.0.6"
+    hostname: "mongo"
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+
+volumes:
+  mongodb-data:

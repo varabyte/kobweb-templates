@@ -1,0 +1,25 @@
+metadata:
+  name: "examples/todo"
+  description: "An example TODO app, showcasing fullstack client / server communication"
+  minimumVersion: "0.9.22"
+
+instructions:
+
+  - !<ChooseVar>
+    name: "dbStrategy"
+    prompt: "What strategy would you like to employ for the database?"
+    note: "You can change this later. Keep \"In Memory\" if you're not sure."
+    choices:
+      - "In Memory"
+      - "MongoDB"
+    transform: "${kebabCase(value)}"
+
+  - !<Group>
+    condition: "${(dbStrategy == \"mongodb\")?c}"
+    instructions:
+      - !<Inform>
+        message: "MongoDB requires additional setup. Please consult the README!"
+      - !<BlankLine>
+
+  - !<ProcessFreemarker>
+
