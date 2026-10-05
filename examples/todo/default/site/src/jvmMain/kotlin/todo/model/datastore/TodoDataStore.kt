@@ -4,8 +4,9 @@ import com.mongodb.kotlin.client.coroutine.MongoClient
 import com.varabyte.kobweb.api.data.add
 import com.varabyte.kobweb.api.init.InitApi
 import com.varabyte.kobweb.api.init.InitApiContext
-import todo.model.datastore.impl.InMemoryDataStore
+import opensavvy.ktmongo.coroutines.asKtMongo
 import todo.model.TodoItem
+import todo.model.datastore.impl.InMemoryDataStore
 import todo.model.datastore.impl.MongoDbDataStore
 
 interface TodoDataStore {
@@ -17,10 +18,10 @@ interface TodoDataStore {
 enum class TodoStoreImpl(internal val init: () -> TodoDataStore) {
     InMemory({ InMemoryDataStore() }),
     MongoDb({
-        val database = MongoClient.create("mongodb://localhost:27017")
-            .getDatabase("kobweb-todo-example")
+        val database = MongoClient.create("mongodb://localhost:27017").asKtMongo()
+            .database("kobweb-todo-example")
 
-        MongoDbDataStore(database)
+        MongoDbDataStore(database.collection("todos"))
     })
 }
 @InitApi

@@ -1,9 +1,8 @@
 package todo.model.datastore.impl
 
-import com.mongodb.kotlin.client.coroutine.MongoDatabase
 import kotlinx.serialization.Serializable
 import opensavvy.ktmongo.bson.types.ObjectId
-import opensavvy.ktmongo.coroutines.asKtMongo
+import opensavvy.ktmongo.coroutines.CoroutineMongoCollection
 import todo.model.TodoItem
 import todo.model.datastore.TodoDataStore
 
@@ -18,8 +17,9 @@ data class TodoItemDto(
 /**
  * Transient data store implementation that is wiped out every time the server is shutdown.
  */
-class MongoDbDataStore(database: MongoDatabase) : TodoDataStore {
-    private val collection = database.getCollection<TodoItemDto>("todos").asKtMongo()
+class MongoDbDataStore(
+    private val collection: CoroutineMongoCollection<TodoItemDto>,
+) : TodoDataStore {
 
     override suspend fun add(ownerId: String, todo: String) {
         val id = collection.newId()
