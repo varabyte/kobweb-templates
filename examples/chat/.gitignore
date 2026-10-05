@@ -7,15 +7,10 @@ kotlin-js-store
 # IntelliJ ignores
 *.iml
 /*.ipr
-
-/.idea
+.idea
 
 # Gradle ignores
 .gradle
-
-# Kobweb ignores
-.kobweb/*
-!.kobweb/conf.yaml
 
 # Kotlin ignores
 .kotlin
